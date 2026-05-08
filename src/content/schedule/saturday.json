@@ -1,0 +1,11 @@
+{
+  "day": "Saturday",
+  "date": "Nov 16",
+  "order": 2,
+  "events": [
+    { "time": "9:00 AM - 12:00 PM", "title": "Committee Session II", "location": "Various Classrooms", "type": "Session" },
+    { "time": "12:00 PM - 1:30 PM", "title": "Lunch Break", "location": "Dining Halls", "type": "Social" },
+    { "time": "1:30 PM - 5:00 PM", "title": "Committee Session III", "location": "Various Classrooms", "type": "Session" },
+    { "time": "7:00 PM - 10:00 PM", "title": "Delegate Social", "location": "Gordon Field House", "type": "Social" }
+  ]
+}

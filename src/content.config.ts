@@ -6,9 +6,11 @@ const committees = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string(),
+    type: z.string(),
     topics: z.array(z.string()),
-    chairs: z.array(z.string()),
+    size: z.string(),
     difficulty: z.enum(['Beginner', 'Intermediate', 'Advanced']),
+    order: z.number().default(0),
   })
 });
 
@@ -16,10 +18,11 @@ const schedule = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/schedule" }),
   schema: z.object({
     day: z.string(),
+    date: z.string(),
+    order: z.number().default(0),
     events: z.array(z.object({
-      startTime: z.string(),
-      endTime: z.string(),
-      label: z.string(),
+      time: z.string(),
+      title: z.string(),
       location: z.string(),
       type: z.string()
     }))

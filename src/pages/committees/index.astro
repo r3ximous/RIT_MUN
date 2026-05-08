@@ -1,21 +1,61 @@
 ---
+import { getCollection } from 'astro:content';
+import { ChevronRight, Users, FileText } from 'lucide-react';
 import Layout from '../../layouts/Layout.astro';
+
+const allCommittees = await getCollection('committees');
+const sortedCommittees = allCommittees.sort((a, b) => a.data.order - b.data.order);
 ---
 <Layout title="RIT MUN | Committees">
-	<h1 class="text-4xl font-extrabold text-brand-dark mb-8">Committees</h1>
-	<p class="text-lg mb-8">Browse the list of available committees below.</p>
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-		<a href="/committees/unsc" class="block p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow border-l-4 border-brand-orange">
-			<h2 class="text-2xl font-bold text-brand-dark">United Nations Security Council</h2>
-			<p class="text-gray-600 mt-2">Advanced • Crisis Simulation</p>
-		</a>
-		<a href="/committees/ecosoc" class="block p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow border-l-4 border-brand-orange">
-			<h2 class="text-2xl font-bold text-brand-dark">Economic and Social Council</h2>
-			<p class="text-gray-600 mt-2">Intermediate • Specialized</p>
-		</a>
-		<a href="/committees/disec" class="block p-6 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow border-l-4 border-brand-orange">
-			<h2 class="text-2xl font-bold text-brand-dark">DISEC (General Assembly 1)</h2>
-			<p class="text-gray-600 mt-2">Beginner • General Assembly</p>
-		</a>
-	</div>
+  <div class="max-w-7xl mx-auto px-6 py-20 animate-in fade-in duration-500">
+    <div class="mb-12">
+      <h1 class="text-4xl font-extrabold text-brand-dark mb-4">Committees</h1>
+      <p class="text-xl text-gray-600 max-w-3xl">
+        Explore the councils for this year's conference. Each committee is designed to challenge delegates on pressing global issues.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {sortedCommittees.map((com) => (
+        <a href={`/committees/${com.id}`} class="block bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-brand-orange transition-all group">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <div class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">{com.data.type}</div>
+              <h2 class="text-2xl font-bold text-brand-dark leading-tight pr-4 group-hover:text-brand-orange transition-colors">{com.data.name}</h2>
+            </div>
+            <span class={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
+              com.data.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
+              com.data.difficulty === 'Intermediate' ? 'bg-blue-100 text-blue-800' :
+              'bg-purple-100 text-purple-800'
+            }`}>
+              {com.data.difficulty}
+            </span>
+          </div>
+          
+          <p class="text-gray-600 mb-6">{com.data.description}</p>
+          
+          <div class="mb-6">
+            <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Agenda Topics</h3>
+            <ul class="space-y-2">
+              {com.data.topics.map((topic) => (
+                <li class="flex items-start">
+                  <ChevronRight className="h-5 w-5 text-brand-orange mr-1 flex-shrink-0" client:load />
+                  <span class="text-gray-700">{topic}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+            <span class="text-sm text-gray-500 flex items-center">
+              <Users className="h-4 w-4 mr-1" client:load /> Size: {com.data.size}
+            </span>
+            <span class="text-brand-orange font-semibold flex items-center text-sm">
+              View Guide <FileText className="h-4 w-4 ml-1" client:load />
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
 </Layout>
