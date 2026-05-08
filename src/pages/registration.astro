@@ -1,8 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { FileText } from 'lucide-react';
 ---
 <Layout title="RIT MUN | Registration">
-	<h1 class="text-4xl font-extrabold text-brand-dark mb-8">Delegate & Delegation Registration</h1>
-	<p class="text-xl mb-6">We're so glad you'll be joining us! Please follow the link below to access the secure registration portal.</p>
-	<a href="https://example.com/register" class="inline-block bg-brand-orange text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-md">Open Secure Registration Portal (External)</a>
+  <div class="py-20 px-6 max-w-4xl mx-auto animate-in fade-in duration-500">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+      <div class="bg-brand-dark text-white p-10 md:w-1/2 flex flex-col justify-between">
+        <div>
+          <h1 class="text-4xl font-extrabold mb-6">Join the Debate</h1>
+          <p class="text-gray-300 mb-8 leading-relaxed">
+            Secure your spot at the next RIT MUN conference. Registration includes access to all committee sessions, the delegate social, and conference materials.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center font-bold text-xs">1</div>
+              <span>Early Bird Registration: $45</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center font-bold text-xs">2</div>
+              <span>Regular Registration: $60</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center font-bold text-xs">3</div>
+              <span>Delegation Fee: $30</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="p-10 md:w-1/2 bg-gray-50 flex flex-col justify-center">
+        <div class="bg-brand-orange/10 inline-block p-4 rounded-full mb-6 mx-auto">
+          <FileText className="h-10 w-10 text-brand-orange" client:load/>
+        </div>
+        <h2 class="text-2xl font-bold text-brand-dark mb-4 text-center">Registration Portal</h2>
+        <p class="text-gray-600 mb-8 text-center text-sm">
+          We utilize MyMUN for all conference registrations, allocations, and payments to ensure a seamless experience. 
+        </p>
+        
+        <div class="p-6 bg-brand-light rounded-lg mb-8 text-left border border-gray-200">
+          <h3 class="font-bold text-brand-dark mb-3">Key Deadlines:</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex justify-between border-b border-gray-300 pb-2">
+              <span>Early Bird Ends:</span>
+              <span class="font-semibold">September 15, 2026</span>
+            </li>
+            <li class="flex justify-between border-b border-gray-300 pb-2 pt-2">
+              <span>Regular Ends:</span>
+              <span class="font-semibold">October 20, 2026</span>
+            </li>
+            <li class="flex justify-between pt-2">
+              <span>Position Papers Due:</span>
+              <span class="font-semibold">November 1, 2026</span>
+            </li>
+          </ul>
+        </div>
+
+        <a 
+          href="https://example.com/register" 
+          class="inline-block text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-md transition-colors w-full focus:outline-none focus:ring-2 focus:ring-brand-orange shadow-md"
+        >
+          Apply on MyMUN
+        </a>
+      </div>
+    </div>
+  </div>
 </Layout>

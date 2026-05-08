@@ -1,0 +1,97 @@
+---
+import { Globe, Menu, X } from 'lucide-react';
+const currentPath = Astro.url.pathname;
+const navLinks = [
+  { id: '/committees', label: 'Committees' },
+  { id: '/schedule', label: 'Schedule' },
+  { id: '/registration', label: 'Registration' },
+  { id: '/contact', label: 'Contact' }
+];
+---
+
+<nav class="bg-brand-dark text-white sticky top-0 z-50 border-b-4 border-brand-orange shadow-lg">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    
+    {/* Logo Area */}
+    <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1">
+      <div class="w-10 h-10 bg-brand-orange rounded flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+        <Globe client:idle className="w-6 h-6 text-white" />
+      </div>
+      <span class="text-2xl font-extrabold tracking-tight">
+        RIT <span class="text-brand-orange">MUN</span>
+      </span>
+    </a>
+
+    {/* Desktop Nav */}
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.filter(l => l.id !== '/registration').map((link) => {
+        const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
+        return (
+          <a
+            href={link.id}
+            class={`font-semibold text-sm uppercase tracking-wider transition-colors duration-200 hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange p-1 rounded ${
+              isActive ? 'text-brand-orange border-b-2 border-brand-orange py-1' : 'text-gray-300'
+            }`}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+      <a 
+        href="/registration"
+        class="bg-brand-orange hover:bg-white hover:text-brand-orange text-white px-5 py-2 rounded font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Register
+      </a>
+    </div>
+
+    {/* Mobile Menu Toggle */}
+    <button 
+      id="mobile-menu-btn"
+      class="md:hidden text-white hover:text-brand-orange transition-colors focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <Menu id="menu-icon-open" className="w-8 h-8 block" client:idle />
+      <X id="menu-icon-close" className="w-8 h-8 hidden" client:idle />
+    </button>
+  </div>
+
+  {/* Mobile Nav Dropdown */}
+  <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800">
+    <div class="px-4 py-4 flex flex-col gap-4">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
+        return (
+          <a
+            href={link.id}
+            class={`text-left font-semibold text-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-orange rounded px-2 ${
+              isActive ? 'text-brand-orange' : 'text-gray-300 hover:text-white'
+            }`}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  if (btn && menu && iconOpen && iconClose) {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+  }
+</script>

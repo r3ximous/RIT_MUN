@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import Header from '../components/astro/Header.astro';
+import Footer from '../components/astro/Footer.astro';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -17,24 +20,15 @@ const { title, description = 'Official RIT MUN Website' } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 	</head>
-	<body class="bg-brand-light text-brand-dark">
-		<a href="#main-content" class="sr-only focus:not-sr-only bg-brand-orange text-white p-4 absolute top-0 left-0 z-50">Skip to content</a>
-		<header class="bg-brand-dark text-white p-4">
-			<nav class="container mx-auto flex justify-between">
-				<a href="/" class="font-bold text-xl hover:text-brand-orange transition-colors">RIT MUN</a>
-				<div class="space-x-4">
-					<a href="/committees" class="hover:text-brand-orange transition-colors focus:ring-2 focus:ring-brand-orange">Committees</a>
-					<a href="/schedule" class="hover:text-brand-orange transition-colors focus:ring-2 focus:ring-brand-orange">Schedule</a>
-					<a href="/registration" class="hover:text-brand-orange transition-colors focus:ring-2 focus:ring-brand-orange">Registration</a>
-					<a href="/contact" class="hover:text-brand-orange transition-colors focus:ring-2 focus:ring-brand-orange">Contact</a>
-				</div>
-			</nav>
-		</header>
-		<main id="main-content" class="container mx-auto p-4 min-h-screen selection:bg-brand-orange selection:text-white">
+	<body class="bg-brand-light text-brand-dark min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
+		<a href="#main-content" class="sr-only focus:not-sr-only bg-brand-orange text-white p-4 absolute top-0 left-0 z-[100] font-bold">Skip to content</a>
+		
+		<Header />
+
+		<main id="main-content" class="flex-grow">
 			<slot />
 		</main>
-		<footer class="bg-brand-dark text-white p-4 text-center mt-12">
-			<p>&copy; {new Date().getFullYear()} RIT MUN. All rights reserved.</p>
-		</footer>
+
+		<Footer />
 	</body>
 </html>

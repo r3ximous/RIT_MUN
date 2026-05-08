@@ -1,23 +1,79 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Mail, Phone, MapPin } from 'lucide-react';
 ---
-<Layout title="RIT MUN | Contact">
-	<h1 class="text-4xl font-extrabold text-brand-dark mb-8">Contact Us</h1>
-	<p class="text-lg mb-8">Have a question? We're here to help.</p>
+<Layout title="RIT MUN | Contact Us">
+  <div class="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 text-brand-dark animate-in duration-500 fade-in slide-in-from-bottom-8">
+    <div class="space-y-8 pr-8 flex flex-col justify-center h-full">
+      <h1 class="text-5xl font-extrabold tracking-tight">Get in Touch</h1>
+      <p class="text-xl text-gray-500 leading-relaxed border-l-4 border-brand-orange pl-4">
+        Need assistance with registration, have questions about a committee, or want to sponsor our conference? Our Secretariat is here to help and we typically respond within 24 hours.
+      </p>
 
-	<form class="max-w-lg bg-white p-8 rounded-lg shadow-md border-t-4 border-brand-orange space-y-6" action="mailto:mun@rit.edu" method="POST" enctype="text/plain">
-		<div>
-			<label class="block text-sm font-bold text-brand-dark mb-2" for="name">Name</label>
-			<input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange p-2 border" required />
-		</div>
-		<div>
-			<label class="block text-sm font-bold text-brand-dark mb-2" for="email">Email</label>
-			<input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange p-2 border" required />
-		</div>
-		<div>
-			<label class="block text-sm font-bold text-brand-dark mb-2" for="message">Message</label>
-			<textarea id="message" name="message" rows="4" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange p-2 border" required></textarea>
-		</div>
-		<button type="submit" class="w-full bg-brand-orange text-white py-3 rounded-md font-bold hover:bg-orange-600 transition-colors shadow-md">Send Message</button>
-	</form>
+      <div class="space-y-6 pt-6">
+        <div class="flex items-start gap-4">
+          <div class="bg-brand-orange/10 p-4 rounded-xl text-brand-orange flex-shrink-0">
+            <Mail className="w-8 h-8" client:load/>
+          </div>
+          <div>
+             <h3 class="text-2xl font-bold mb-1">Email</h3>
+             <a href="mailto:secgen@ritmun.org" class="text-brand-orange hover:underline text-lg">secgen@ritmun.org</a>
+          </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+          <div class="bg-brand-orange/10 p-4 rounded-xl text-brand-orange flex-shrink-0">
+             <Phone className="w-8 h-8" client:load/>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-1">Phone</h3>
+            <a href="tel:+15854752411" class="text-gray-600 hover:text-brand-dark transition-colors text-lg">(585) 475-2411</a>
+          </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+          <div class="bg-brand-orange/10 p-4 rounded-xl text-brand-orange flex-shrink-0">
+            <MapPin className="w-8 h-8" client:load/>
+          </div>
+          <div>
+             <h3 class="text-2xl font-bold mb-1">Office</h3>
+             <address class="not-italic text-gray-600 text-lg leading-relaxed">
+               Campus Center Room 1000<br/>
+               Rochester Institute of Technology<br/>
+               1 Lomb Memorial Dr<br/>
+               Rochester, NY 14623
+             </address>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white p-10 rounded-2xl shadow-xl flex flex-col gap-6">
+       <h2 class="text-3xl font-bold mb-2">Send a Message</h2>
+       <form class="space-y-6 flex-grow flex flex-col justify-between" action="/success">
+        <div class="space-y-2">
+          <label for="name" class="block font-semibold">Name</label>
+          <input type="text" id="name" name="name" 
+            class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light transition-all" 
+            placeholder="Jane Doe" required />
+        </div>
+        <div class="space-y-2">
+          <label for="email" class="block font-semibold">Email</label>
+          <input type="email" id="email" name="email" 
+            class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light transition-all" 
+            placeholder="jane@example.com" required />
+        </div>
+        <div class="space-y-2 flex-grow flex flex-col">
+          <label for="message" class="block font-semibold">Message</label>
+          <textarea id="message" name="message" rows="5" 
+            class="w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light flex-grow resize-none transition-all" 
+            placeholder="How can we help you?" required></textarea>
+        </div>
+        <button type="submit" 
+          class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 flex items-center justify-center shadow-lg hover:-translate-y-1">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
 </Layout>
