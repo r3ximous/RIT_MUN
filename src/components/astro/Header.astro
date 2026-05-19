@@ -2,10 +2,10 @@
 import { Globe, Menu, X } from 'lucide-react';
 const currentPath = Astro.url.pathname;
 const navLinks = [
-  { id: '/committees', label: 'Committees' },
-  { id: '/schedule', label: 'Schedule' },
-  { id: '/registration', label: 'Registration' },
-  { id: '/contact', label: 'Contact' }
+  { id: import.meta.env.BASE_URL === '/' ? '/committees' : import.meta.env.BASE_URL + '/committees', label: 'Committees' },
+  { id: import.meta.env.BASE_URL === '/' ? '/schedule' : import.meta.env.BASE_URL + '/schedule', label: 'Schedule' },
+  { id: import.meta.env.BASE_URL === '/' ? '/registration' : import.meta.env.BASE_URL + '/registration', label: 'Registration' },
+  { id: import.meta.env.BASE_URL === '/' ? '/contact' : import.meta.env.BASE_URL + '/contact', label: 'Contact' }
 ];
 ---
 
@@ -13,7 +13,7 @@ const navLinks = [
   <div class="header-container">
     
     {/* Logo Area */}
-    <a href="/" class="header-brand-link group">
+    <a href={`${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/`} class="header-brand-link group">
       <div class="header-logo-box group-hover:rotate-12">
         <Globe client:idle className="header-globe-icon" />
       </div>
@@ -24,7 +24,7 @@ const navLinks = [
 
     {/* Desktop Nav */}
     <div class="header-nav-desktop">
-      {navLinks.filter(l => l.id !== '/registration').map((link) => {
+      {navLinks.filter(l => !l.id.endsWith('/registration')).map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
         return (
           <a
@@ -39,7 +39,7 @@ const navLinks = [
         );
       })}
       <a 
-        href="/registration"
+        href={`${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/registration`}
         class="header-btn-register"
       >
         Register
@@ -59,7 +59,7 @@ const navLinks = [
   </div>
 
   {/* Mobile Nav Dropdown */}
-  <div id="mobile-menu" class="header-mobile-menu">
+  <div id="mobile-menu" class="hidden header-mobile-menu">
     <div class="header-mobile-nav-list">
       {navLinks.map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));

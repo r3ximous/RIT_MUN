@@ -17,7 +17,7 @@ const { title, description = 'Official RIT MUN Website' } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/favicon.svg`} />
 		<title>{title}</title>
 	</head>
 	<body class="layout-body">
