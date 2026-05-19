@@ -16,17 +16,17 @@ const { Content } = await render(committee);
 ---
 
 <Layout title={`RIT MUN | ${committee.data.name}`}>
-  <div class="max-w-4xl mx-auto px-6 py-20 animate-in fade-in duration-500">
-    <a href="/committees" class="inline-flex items-center gap-2 text-brand-orange hover:text-orange-600 font-semibold mb-8 transition-colors">
-      <ArrowLeft className="w-5 h-5" client:load /> Back to Committees
+  <div class="mun-64 animate-in fade-in">
+    <a href="/committees" class="mun-65">
+      <ArrowLeft className="mun-85" client:load /> Back to Committees
     </a>
 
-    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-12">
-      <div class="p-8 md:p-12 border-b border-gray-100">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+    <div class="mun-66">
+      <div class="mun-67">
+        <div class="mun-68">
           <div>
-            <div class="text-sm font-bold text-brand-orange uppercase tracking-wider mb-2">{committee.data.type}</div>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark leading-tight">{committee.data.name}</h1>
+            <div class="mun-69">{committee.data.type}</div>
+            <h1 class="mun-70">{committee.data.name}</h1>
           </div>
           <span class={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap self-start ${
             committee.data.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
@@ -37,45 +37,45 @@ const { Content } = await render(committee);
           </span>
         </div>
 
-        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        <p class="mun-71">
           {committee.data.description}
         </p>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-brand-light p-6 rounded-xl border border-gray-200">
-            <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-brand-orange" client:load/>
+        <div class="mun-72">
+          <div class="mun-73">
+            <h3 class="mun-74">
+              <FileText className="mun-86" client:load/>
               Agenda Topics
             </h3>
-            <ul class="space-y-3">
+            <ul class="mun-75">
               {committee.data.topics.map((topic) => (
-                <li class="flex items-start">
-                  <ChevronRight className="h-5 w-5 text-brand-orange mr-2 flex-shrink-0" client:load />
-                  <span class="text-brand-dark font-medium leading-snug">{topic}</span>
+                <li class="mun-56">
+                  <ChevronRight className="mun-87" client:load />
+                  <span class="mun-76">{topic}</span>
                 </li>
               ))}
             </ul>
           </div>
           
-          <div class="flex flex-col justify-center space-y-6">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange">
-                <Users className="w-6 h-6" client:load />
+          <div class="mun-77">
+            <div class="mun-78">
+              <div class="mun-79">
+                <Users className="mun-88" client:load />
               </div>
               <div>
-                <div class="text-sm text-gray-500 font-semibold mb-1">Committee Size</div>
-                <div class="text-lg font-bold text-brand-dark">{committee.data.size}</div>
+                <div class="mun-80">Committee Size</div>
+                <div class="mun-81">{committee.data.size}</div>
               </div>
             </div>
-            <a href="#" class="inline-flex items-center justify-center bg-brand-dark hover:bg-black text-white px-6 py-4 rounded-xl font-bold transition-colors w-full sm:w-auto shadow-md hover:-translate-y-1">
+            <a href="#" class="mun-82">
               Download Background Guide
             </a>
           </div>
         </div>
       </div>
 
-      <div class="p-8 md:p-12 prose prose-lg max-w-none text-gray-700 prose-headings:text-brand-dark prose-a:text-brand-orange">
-        <h2 class="text-2xl font-bold text-brand-dark border-b-2 border-brand-orange inline-block pb-1 mb-6">Welcome Letter</h2>
+      <div class="mun-83 prose prose-lg prose-headings:text-brand-dark prose-a:text-brand-orange">
+        <h2 class="mun-84">Welcome Letter</h2>
         <Content />
       </div>
     </div>

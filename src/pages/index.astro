@@ -5,10 +5,10 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 ---
 <Layout title="RIT MUN | Homepage">
 	{/* Hero Section */}
-	<section class="relative bg-brand-dark text-white py-32 px-6 overflow-hidden flex flex-col items-center justify-center min-h-[70vh] text-center"
+	<section class="mun-109"
 		style="background-image: radial-gradient(circle at center, #2a2a2a 0%, #1E1E1E 100%)">
-		<div class="absolute inset-0 opacity-10 pointer-events-none">
-			<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+		<div class="mun-110">
+			<svg class="mun-111" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
 						<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#F76902" stroke-width="1"/>
@@ -18,22 +18,22 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 			</svg>
 		</div>
 		
-		<div class="z-10 max-w-4xl mx-auto space-y-6">
-			<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-orange text-sm font-semibold mb-4 border border-brand-orange/30">
-				<Globe className="w-4 h-4" client:load />
+		<div class="mun-112">
+			<div class="mun-113">
+				<Globe className="mun-125" client:load />
 				<span>RIT Model United Nations Conference</span>
 			</div>
-			<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">
-				Diplomacy in <span class="text-brand-orange">Action</span>
+			<h1 class="mun-114">
+				Diplomacy in <span class="mun-18">Action</span>
 			</h1>
-			<p class="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto">
+			<p class="mun-115">
 				Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.
 			</p>
-			<div class="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="/registration" class="px-8 py-4 bg-brand-orange hover:bg-orange-600 text-white rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-brand-orange/50 hover:-translate-y-1 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-white">
-					Register Now <ArrowRight className="w-5 h-5" client:load />
+			<div class="mun-116">
+				<a href="/registration" class="mun-117">
+					Register Now <ArrowRight className="mun-85" client:load />
 				</a>
-				<a href="/committees" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg font-bold text-lg transition-all focus:outline-none focus:ring-2 focus:ring-brand-orange">
+				<a href="/committees" class="mun-118">
 					View Committees
 				</a>
 			</div>
@@ -44,32 +44,32 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 	<CountdownTimer client:load />
 
 	{/* About Section */}
-	<section class="py-20 px-6 bg-brand-light">
-		<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
-			<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-				<div class="w-14 h-14 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center mb-6">
-					<Users className="w-8 h-8" client:load />
+	<section class="mun-119">
+		<div class="mun-120">
+			<div class="mun-121">
+				<div class="mun-122">
+					<Users className="mun-108" client:load />
 				</div>
-				<h3 class="text-2xl font-bold mb-3 text-brand-dark">Diverse Committees</h3>
-				<p class="text-gray-600 leading-relaxed">
+				<h3 class="mun-123">Diverse Committees</h3>
+				<p class="mun-124">
 					From the fast-paced Crisis committees to the expansive General Assembly, we offer a dynamic range of topics suitable for all experience levels.
 				</p>
 			</div>
-			<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-				<div class="w-14 h-14 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center mb-6">
-					<Award className="w-8 h-8" client:load />
+			<div class="mun-121">
+				<div class="mun-122">
+					<Award className="mun-108" client:load />
 				</div>
-				<h3 class="text-2xl font-bold mb-3 text-brand-dark">Skill Building</h3>
-				<p class="text-gray-600 leading-relaxed">
+				<h3 class="mun-123">Skill Building</h3>
+				<p class="mun-124">
 					Enhance your public speaking, negotiation, and policy-writing skills. RIT MUN is designed to challenge and grow tomorrow's leaders.
 				</p>
 			</div>
-			<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-				<div class="w-14 h-14 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center mb-6">
-					<MapPin className="w-8 h-8" client:load />
+			<div class="mun-121">
+				<div class="mun-122">
+					<MapPin className="mun-108" client:load />
 				</div>
-				<h3 class="text-2xl font-bold mb-3 text-brand-dark">RIT Campus</h3>
-				<p class="text-gray-600 leading-relaxed">
+				<h3 class="mun-123">RIT Campus</h3>
+				<p class="mun-124">
 					Experience the cutting-edge facilities of the Rochester Institute of Technology, blending technology with traditional diplomacy.
 				</p>
 			</div>

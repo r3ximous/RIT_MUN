@@ -27,18 +27,18 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform -translate-y-1/2 mx-4 md:mx-auto max-w-4xl flex flex-wrap justify-around items-center gap-4">
-      <div className="text-center md:text-left flex-1 min-w-[200px]">
-        <h3 className="text-xl font-bold text-brand-dark">Conference Starts In:</h3>
-        <p className="text-gray-500 text-sm">Prepare your position papers!</p>
+    <div className="mun-27">
+      <div className="mun-28">
+        <h3 className="mun-29">Conference Starts In:</h3>
+        <p className="mun-30">Prepare your position papers!</p>
       </div>
-      <div className="flex gap-4 md:gap-8 justify-center">
+      <div className="mun-31">
         {Object.entries(timeLeft).map(([unit, value]) => (
-          <div key={unit} className="text-center">
-            <div className="bg-brand-dark text-white text-3xl md:text-5xl font-bold w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-lg shadow-inner">
+          <div key={unit} className="mun-32">
+            <div className="mun-33">
               {value.toString().padStart(2, '0')}
             </div>
-            <div className="text-xs md:text-sm uppercase tracking-wider mt-2 font-semibold text-gray-600">
+            <div className="mun-34">
               {unit}
             </div>
           </div>

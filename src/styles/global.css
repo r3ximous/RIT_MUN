@@ -10,3 +10,171 @@ body {
   @apply bg-brand-light text-brand-dark;
   font-family: system-ui, -apple-system, sans-serif;
 } 
+
+
+@layer components {
+  .mun-1 { @apply bg-brand-dark text-white py-12 border-t border-gray-800 mt-auto; }
+  .mun-2 { @apply max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8; }
+  .mun-3 { @apply col-span-2; }
+  .mun-4 { @apply flex items-center gap-2 mb-4; }
+  .mun-5 { @apply text-xl font-bold; }
+  .mun-6 { @apply text-gray-400 max-w-sm mb-6; }
+  .mun-7 { @apply font-bold text-lg mb-4 text-brand-orange; }
+  .mun-8 { @apply space-y-2 text-gray-400; }
+  .mun-9 { @apply hover:text-white transition-colors focus:ring-2 focus:ring-brand-orange rounded p-1; }
+  .mun-10 { @apply pt-4 mt-4 border-t border-gray-800 text-xs text-gray-500; }
+  .mun-11 { @apply max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm; }
+  .mun-12 { @apply w-6 h-6 text-brand-orange; }
+  .mun-13 { @apply bg-brand-dark text-white sticky top-0 z-50 border-b-4 border-brand-orange shadow-lg; }
+  .mun-14 { @apply max-w-7xl mx-auto px-6 h-20 flex items-center justify-between; }
+  .mun-15 { @apply flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1; }
+  .mun-16 { @apply w-10 h-10 bg-brand-orange rounded flex items-center justify-center transform transition-transform; }
+  .mun-17 { @apply text-2xl font-extrabold tracking-tight; }
+  .mun-18 { @apply text-brand-orange; }
+  .mun-19 { @apply hidden md:flex items-center gap-8; }
+  .mun-20 { @apply bg-brand-orange hover:bg-white hover:text-brand-orange text-white px-5 py-2 rounded font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-white; }
+  .mun-21 { @apply md:hidden text-white hover:text-brand-orange transition-colors focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1; }
+  .mun-22 { @apply hidden md:hidden bg-brand-dark border-t border-gray-800; }
+  .mun-23 { @apply px-4 py-4 flex flex-col gap-4; }
+  .mun-24 { @apply w-6 h-6 text-white; }
+  .mun-25 { @apply w-8 h-8 block; }
+  .mun-26 { @apply w-8 h-8 hidden; }
+  .mun-27 { @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform -translate-y-1/2 mx-4 md:mx-auto max-w-4xl flex flex-wrap justify-around items-center gap-4; }
+  .mun-28 { @apply text-center md:text-left flex-1 min-w-[200px]; }
+  .mun-29 { @apply text-xl font-bold text-brand-dark; }
+  .mun-30 { @apply text-gray-500 text-sm; }
+  .mun-31 { @apply flex gap-4 md:gap-8 justify-center; }
+  .mun-32 { @apply text-center; }
+  .mun-33 { @apply bg-brand-dark text-white text-3xl md:text-5xl font-bold w-16 h-16 md:w-24 md:h-24 flex items-center justify-center rounded-lg shadow-inner; }
+  .mun-34 { @apply text-xs md:text-sm uppercase tracking-wider mt-2 font-semibold text-gray-600; }
+  .mun-35 { @apply bg-brand-light text-brand-dark min-h-screen flex flex-col selection:bg-brand-orange selection:text-white; }
+  .mun-36 { @apply sr-only focus:not-sr-only bg-brand-orange text-white p-4 absolute top-0 left-0 z-[100] font-bold; }
+  .mun-37 { @apply flex-grow; }
+  .mun-38 { @apply flex flex-col items-center justify-center min-h-[60vh] text-center; }
+  .mun-39 { @apply text-6xl text-brand-orange font-extrabold mb-4; }
+  .mun-40 { @apply text-2xl text-brand-dark mb-8; }
+  .mun-41 { @apply text-lg text-gray-600 mb-8 max-w-lg; }
+  .mun-42 { @apply bg-brand-orange text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-md; }
+  .mun-43 { @apply max-w-7xl mx-auto px-6 py-20 duration-500; }
+  .mun-44 { @apply mb-12; }
+  .mun-45 { @apply text-4xl font-extrabold text-brand-dark mb-4; }
+  .mun-46 { @apply text-xl text-gray-600 max-w-3xl; }
+  .mun-47 { @apply grid grid-cols-1 md:grid-cols-2 gap-8; }
+  .mun-48 { @apply block bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-brand-orange transition-all; }
+  .mun-49 { @apply flex justify-between items-start mb-4; }
+  .mun-50 { @apply text-xs font-bold text-brand-orange uppercase tracking-wider mb-2; }
+  .mun-51 { @apply text-2xl font-bold text-brand-dark leading-tight pr-4 transition-colors; }
+  .mun-52 { @apply text-gray-600 mb-6; }
+  .mun-53 { @apply mb-6; }
+  .mun-54 { @apply text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2; }
+  .mun-55 { @apply space-y-2; }
+  .mun-56 { @apply flex items-start; }
+  .mun-57 { @apply text-gray-700; }
+  .mun-58 { @apply pt-4 border-t border-gray-100 flex justify-between items-center; }
+  .mun-59 { @apply text-sm text-gray-500 flex items-center; }
+  .mun-60 { @apply text-brand-orange font-semibold flex items-center text-sm; }
+  .mun-61 { @apply h-5 w-5 text-brand-orange mr-1 flex-shrink-0; }
+  .mun-62 { @apply h-4 w-4 mr-1; }
+  .mun-63 { @apply h-4 w-4 ml-1; }
+  .mun-64 { @apply max-w-4xl mx-auto px-6 py-20 duration-500; }
+  .mun-65 { @apply inline-flex items-center gap-2 text-brand-orange hover:text-orange-600 font-semibold mb-8 transition-colors; }
+  .mun-66 { @apply bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mb-12; }
+  .mun-67 { @apply p-8 md:p-12 border-b border-gray-100; }
+  .mun-68 { @apply flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6; }
+  .mun-69 { @apply text-sm font-bold text-brand-orange uppercase tracking-wider mb-2; }
+  .mun-70 { @apply text-4xl md:text-5xl font-extrabold text-brand-dark leading-tight; }
+  .mun-71 { @apply text-xl text-gray-600 leading-relaxed mb-8; }
+  .mun-72 { @apply grid md:grid-cols-2 gap-8; }
+  .mun-73 { @apply bg-brand-light p-6 rounded-xl border border-gray-200; }
+  .mun-74 { @apply text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2; }
+  .mun-75 { @apply space-y-3; }
+  .mun-76 { @apply text-brand-dark font-medium leading-snug; }
+  .mun-77 { @apply flex flex-col justify-center space-y-6; }
+  .mun-78 { @apply flex items-center gap-3; }
+  .mun-79 { @apply w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange; }
+  .mun-80 { @apply text-sm text-gray-500 font-semibold mb-1; }
+  .mun-81 { @apply text-lg font-bold text-brand-dark; }
+  .mun-82 { @apply inline-flex items-center justify-center bg-brand-dark hover:bg-black text-white px-6 py-4 rounded-xl font-bold transition-colors w-full sm:w-auto shadow-md hover:-translate-y-1; }
+  .mun-83 { @apply p-8 md:p-12 max-w-none text-gray-700; }
+  .mun-84 { @apply text-2xl font-bold text-brand-dark border-b-2 border-brand-orange inline-block pb-1 mb-6; }
+  .mun-85 { @apply w-5 h-5; }
+  .mun-86 { @apply w-4 h-4 text-brand-orange; }
+  .mun-87 { @apply h-5 w-5 text-brand-orange mr-2 flex-shrink-0; }
+  .mun-88 { @apply w-6 h-6; }
+  .mun-89 { @apply py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 text-brand-dark duration-500; }
+  .mun-90 { @apply space-y-8 pr-8 flex flex-col justify-center h-full; }
+  .mun-91 { @apply text-5xl font-extrabold tracking-tight; }
+  .mun-92 { @apply text-xl text-gray-500 leading-relaxed border-l-4 border-brand-orange pl-4; }
+  .mun-93 { @apply space-y-6 pt-6; }
+  .mun-94 { @apply flex items-start gap-4; }
+  .mun-95 { @apply bg-brand-orange/10 p-4 rounded-xl text-brand-orange flex-shrink-0; }
+  .mun-96 { @apply text-2xl font-bold mb-1; }
+  .mun-97 { @apply text-brand-orange hover:underline text-lg; }
+  .mun-98 { @apply text-gray-600 hover:text-brand-dark transition-colors text-lg; }
+  .mun-99 { @apply not-italic text-gray-600 text-lg leading-relaxed; }
+  .mun-100 { @apply bg-white p-10 rounded-2xl shadow-xl flex flex-col gap-6; }
+  .mun-101 { @apply text-3xl font-bold mb-2; }
+  .mun-102 { @apply space-y-6 flex-grow flex flex-col justify-between; }
+  .mun-103 { @apply block font-semibold; }
+  .mun-104 { @apply w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light transition-all; }
+  .mun-105 { @apply space-y-2 flex-grow flex flex-col; }
+  .mun-106 { @apply w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light flex-grow resize-none transition-all; }
+  .mun-107 { @apply w-full bg-brand-orange hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 flex items-center justify-center shadow-lg hover:-translate-y-1; }
+  .mun-108 { @apply w-8 h-8; }
+  .mun-109 { @apply relative bg-brand-dark text-white py-32 px-6 overflow-hidden flex flex-col items-center justify-center min-h-[70vh] text-center; }
+  .mun-110 { @apply absolute inset-0 opacity-10 pointer-events-none; }
+  .mun-111 { @apply w-full h-full; }
+  .mun-112 { @apply z-10 max-w-4xl mx-auto space-y-6; }
+  .mun-113 { @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-orange text-sm font-semibold mb-4 border border-brand-orange/30; }
+  .mun-114 { @apply text-5xl md:text-7xl font-extrabold tracking-tight; }
+  .mun-115 { @apply text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto; }
+  .mun-116 { @apply pt-8 flex flex-col sm:flex-row gap-4 justify-center; }
+  .mun-117 { @apply px-8 py-4 bg-brand-orange hover:bg-orange-600 text-white rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-brand-orange/50 hover:-translate-y-1 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-white; }
+  .mun-118 { @apply px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-lg font-bold text-lg transition-all focus:outline-none focus:ring-2 focus:ring-brand-orange; }
+  .mun-119 { @apply py-20 px-6 bg-brand-light; }
+  .mun-120 { @apply max-w-6xl mx-auto grid md:grid-cols-3 gap-12; }
+  .mun-121 { @apply bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow; }
+  .mun-122 { @apply w-14 h-14 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center mb-6; }
+  .mun-123 { @apply text-2xl font-bold mb-3 text-brand-dark; }
+  .mun-124 { @apply text-gray-600 leading-relaxed; }
+  .mun-125 { @apply w-4 h-4; }
+  .mun-126 { @apply py-20 px-6 max-w-4xl mx-auto duration-500; }
+  .mun-127 { @apply bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row; }
+  .mun-128 { @apply bg-brand-dark text-white p-10 md:w-1/2 flex flex-col justify-between; }
+  .mun-129 { @apply text-4xl font-extrabold mb-6; }
+  .mun-130 { @apply text-gray-300 mb-8 leading-relaxed; }
+  .mun-131 { @apply space-y-4; }
+  .mun-132 { @apply w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center font-bold text-xs; }
+  .mun-133 { @apply p-10 md:w-1/2 bg-gray-50 flex flex-col justify-center; }
+  .mun-134 { @apply bg-brand-orange/10 inline-block p-4 rounded-full mb-6 mx-auto; }
+  .mun-135 { @apply text-2xl font-bold text-brand-dark mb-4 text-center; }
+  .mun-136 { @apply text-gray-600 mb-8 text-center text-sm; }
+  .mun-137 { @apply p-6 bg-brand-light rounded-lg mb-8 text-left border border-gray-200; }
+  .mun-138 { @apply font-bold text-brand-dark mb-3; }
+  .mun-139 { @apply space-y-2 text-sm text-gray-700; }
+  .mun-140 { @apply flex justify-between border-b border-gray-300 pb-2; }
+  .mun-141 { @apply font-semibold; }
+  .mun-142 { @apply flex justify-between border-b border-gray-300 pb-2 pt-2; }
+  .mun-143 { @apply flex justify-between pt-2; }
+  .mun-144 { @apply inline-block text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-md transition-colors w-full focus:outline-none focus:ring-2 focus:ring-brand-orange shadow-md; }
+  .mun-145 { @apply h-10 w-10 text-brand-orange; }
+  .mun-146 { @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 duration-500; }
+  .mun-147 { @apply mb-16 text-center; }
+  .mun-148 { @apply text-4xl md:text-5xl font-extrabold text-brand-dark mb-6; }
+  .mun-149 { @apply text-xl text-gray-600 max-w-2xl mx-auto; }
+  .mun-150 { @apply space-y-12 relative; }
+  .mun-151 { @apply relative bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-lg transition-transform hover:-translate-y-1; }
+  .mun-152 { @apply bg-brand-dark px-8 py-6 flex justify-between items-center transition-colors; }
+  .mun-153 { @apply text-3xl font-extrabold text-white; }
+  .mun-154 { @apply text-brand-orange text-lg font-semibold bg-white/10 px-4 py-1 rounded-full; }
+  .mun-155 { @apply divide-y divide-gray-100; }
+  .mun-156 { @apply flex flex-col sm:flex-row px-8 py-6 hover:bg-orange-50/50 transition-colors relative; }
+  .mun-157 { @apply sm:w-1/3 mb-3 sm:mb-0 pt-1 flex items-start text-brand-orange; }
+  .mun-158 { @apply font-bold text-lg leading-none; }
+  .mun-159 { @apply sm:w-2/3; }
+  .mun-160 { @apply text-xl font-bold text-brand-dark mb-2; }
+  .mun-161 { @apply flex items-center text-sm font-medium text-gray-500; }
+  .mun-162 { @apply mx-3 text-gray-300; }
+  .mun-163 { @apply w-5 h-5 mr-3 flex-shrink-0; }
+  .mun-164 { @apply h-4 w-4 mr-2 text-gray-400; }
+}

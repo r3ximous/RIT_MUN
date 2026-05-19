@@ -7,36 +7,36 @@ const scheduleCollection = await getCollection('schedule');
 const sortedDays = scheduleCollection.sort((a, b) => a.data.order - b.data.order);
 ---
 <Layout title="RIT MUN | Schedule">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-in fade-in duration-500">
-    <div class="mb-16 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">Conference Schedule</h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+  <div class="mun-146 animate-in fade-in">
+    <div class="mun-147">
+      <h1 class="mun-148">Conference Schedule</h1>
+      <p class="mun-149">
         Plan your weekend. All times are local (EST).
       </p>
     </div>
 
-    <div class="space-y-12 relative">
+    <div class="mun-150">
       {sortedDays.map((dayPlan) => (
-        <section class="relative bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-lg transition-transform hover:-translate-y-1 group">
-          <div class="bg-brand-dark px-8 py-6 flex justify-between items-center group-hover:bg-black transition-colors">
-            <h2 class="text-3xl font-extrabold text-white">{dayPlan.data.day}</h2>
-            <span class="text-brand-orange text-lg font-semibold bg-white/10 px-4 py-1 rounded-full">{dayPlan.data.date}</span>
+        <section class="mun-151 group">
+          <div class="mun-152 group-hover:bg-black">
+            <h2 class="mun-153">{dayPlan.data.day}</h2>
+            <span class="mun-154">{dayPlan.data.date}</span>
           </div>
           
-          <div class="divide-y divide-gray-100">
+          <div class="mun-155">
             {dayPlan.data.events.map((event) => (
-              <div class="flex flex-col sm:flex-row px-8 py-6 hover:bg-orange-50/50 transition-colors relative">
-                <div class="sm:w-1/3 mb-3 sm:mb-0 pt-1 flex items-start text-brand-orange">
-                  <Clock className="w-5 h-5 mr-3 flex-shrink-0" client:load/>
-                  <span class="font-bold text-lg leading-none">{event.time}</span>
+              <div class="mun-156">
+                <div class="mun-157">
+                  <Clock className="mun-163" client:load/>
+                  <span class="mun-158">{event.time}</span>
                 </div>
                 
-                <div class="sm:w-2/3">
-                  <h3 class="text-xl font-bold text-brand-dark mb-2">{event.title}</h3>
-                  <div class="flex items-center text-sm font-medium text-gray-500">
-                    <MapPin className="h-4 w-4 mr-2 text-gray-400" client:load/>
+                <div class="mun-159">
+                  <h3 class="mun-160">{event.title}</h3>
+                  <div class="mun-161">
+                    <MapPin className="mun-164" client:load/>
                     {event.location}
-                    <span class="mx-3 text-gray-300">•</span>
+                    <span class="mun-162">•</span>
                     <span class={`px-3 py-1 rounded-full text-xs uppercase tracking-wider font-bold ${
                       event.type === 'Session' ? 'bg-blue-100 text-blue-800' :
                       event.type === 'Ceremony' ? 'bg-brand-orange text-white' :

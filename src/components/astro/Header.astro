@@ -9,21 +9,21 @@ const navLinks = [
 ];
 ---
 
-<nav class="bg-brand-dark text-white sticky top-0 z-50 border-b-4 border-brand-orange shadow-lg">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<nav class="mun-13">
+  <div class="mun-14">
     
     {/* Logo Area */}
-    <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1">
-      <div class="w-10 h-10 bg-brand-orange rounded flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-        <Globe client:idle className="w-6 h-6 text-white" />
+    <a href="/" class="mun-15 group">
+      <div class="mun-16 group-hover:rotate-12">
+        <Globe client:idle className="mun-24" />
       </div>
-      <span class="text-2xl font-extrabold tracking-tight">
-        RIT <span class="text-brand-orange">MUN</span>
+      <span class="mun-17">
+        RIT <span class="mun-18">MUN</span>
       </span>
     </a>
 
     {/* Desktop Nav */}
-    <div class="hidden md:flex items-center gap-8">
+    <div class="mun-19">
       {navLinks.filter(l => l.id !== '/registration').map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
         return (
@@ -40,7 +40,7 @@ const navLinks = [
       })}
       <a 
         href="/registration"
-        class="bg-brand-orange hover:bg-white hover:text-brand-orange text-white px-5 py-2 rounded font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+        class="mun-20"
       >
         Register
       </a>
@@ -49,18 +49,18 @@ const navLinks = [
     {/* Mobile Menu Toggle */}
     <button 
       id="mobile-menu-btn"
-      class="md:hidden text-white hover:text-brand-orange transition-colors focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1"
+      class="mun-21"
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <Menu id="menu-icon-open" className="w-8 h-8 block" client:idle />
-      <X id="menu-icon-close" className="w-8 h-8 hidden" client:idle />
+      <Menu id="menu-icon-open" className="mun-25" client:idle />
+      <X id="menu-icon-close" className="mun-26" client:idle />
     </button>
   </div>
 
   {/* Mobile Nav Dropdown */}
-  <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-800">
-    <div class="px-4 py-4 flex flex-col gap-4">
+  <div id="mobile-menu" class="mun-22">
+    <div class="mun-23">
       {navLinks.map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
         return (
