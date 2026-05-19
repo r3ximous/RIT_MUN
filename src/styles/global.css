@@ -34,7 +34,7 @@ body {
   .header-nav-desktop { @apply hidden md:flex items-center gap-8; }
   .header-btn-register { @apply bg-brand-orange hover:bg-white hover:text-brand-orange text-white px-5 py-2 rounded font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-white; }
   .header-mobile-toggle { @apply md:hidden text-white hover:text-brand-orange transition-colors focus:outline-none focus:ring-2 focus:ring-brand-orange rounded p-1; }
-  .header-mobile-menu { @apply hidden md:hidden bg-brand-dark border-t border-gray-800; }
+  .header-mobile-menu { @apply md:hidden bg-brand-dark border-t border-gray-800; }
   .header-mobile-nav-list { @apply px-4 py-4 flex flex-col gap-4; }
   .header-globe-icon { @apply w-6 h-6 text-white; }
   .icon-block { @apply w-8 h-8 block; }
