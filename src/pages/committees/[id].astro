@@ -17,7 +17,7 @@ const { Content } = await render(committee);
 
 <Layout title={`RIT MUN | ${committee.data.name}`}>
   <div class="committee-detail-wrapper animate-in fade-in">
-    <a href={`${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/committees`} class="back-to-committees">
+    <a href="/committees" class="back-to-committees">
       <ArrowLeft className="icon-arrow-left" client:load /> Back to Committees
     </a>
 
