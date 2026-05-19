@@ -7,36 +7,36 @@ const scheduleCollection = await getCollection('schedule');
 const sortedDays = scheduleCollection.sort((a, b) => a.data.order - b.data.order);
 ---
 <Layout title="RIT MUN | Schedule">
-  <div class="mun-146 animate-in fade-in">
-    <div class="mun-147">
-      <h1 class="mun-148">Conference Schedule</h1>
-      <p class="mun-149">
+  <div class="schedule-page-wrapper animate-in fade-in">
+    <div class="schedule-header">
+      <h1 class="schedule-title">Conference Schedule</h1>
+      <p class="schedule-subtitle">
         Plan your weekend. All times are local (EST).
       </p>
     </div>
 
-    <div class="mun-150">
+    <div class="schedule-days-list">
       {sortedDays.map((dayPlan) => (
-        <section class="mun-151 group">
-          <div class="mun-152 group-hover:bg-black">
-            <h2 class="mun-153">{dayPlan.data.day}</h2>
-            <span class="mun-154">{dayPlan.data.date}</span>
+        <section class="schedule-day-card group">
+          <div class="schedule-day-header group-hover:bg-black">
+            <h2 class="schedule-day-title">{dayPlan.data.day}</h2>
+            <span class="schedule-day-date">{dayPlan.data.date}</span>
           </div>
           
-          <div class="mun-155">
+          <div class="schedule-events">
             {dayPlan.data.events.map((event) => (
-              <div class="mun-156">
-                <div class="mun-157">
-                  <Clock className="mun-163" client:load/>
-                  <span class="mun-158">{event.time}</span>
+              <div class="schedule-event-item">
+                <div class="event-time-col">
+                  <Clock className="icon-clock" client:load/>
+                  <span class="event-time">{event.time}</span>
                 </div>
                 
-                <div class="mun-159">
-                  <h3 class="mun-160">{event.title}</h3>
-                  <div class="mun-161">
-                    <MapPin className="mun-164" client:load/>
+                <div class="event-details-col">
+                  <h3 class="event-title">{event.title}</h3>
+                  <div class="event-location-row">
+                    <MapPin className="icon-map-pin" client:load/>
                     {event.location}
-                    <span class="mun-162">•</span>
+                    <span class="event-separator">•</span>
                     <span class={`px-3 py-1 rounded-full text-xs uppercase tracking-wider font-bold ${
                       event.type === 'Session' ? 'bg-blue-100 text-blue-800' :
                       event.type === 'Ceremony' ? 'bg-brand-orange text-white' :

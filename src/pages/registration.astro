@@ -3,61 +3,61 @@ import Layout from '../layouts/Layout.astro';
 import { FileText } from 'lucide-react';
 ---
 <Layout title="RIT MUN | Registration">
-  <div class="mun-126 animate-in fade-in">
-    <div class="mun-127">
-      <div class="mun-128">
+  <div class="registration-page-wrapper animate-in fade-in">
+    <div class="registration-card">
+      <div class="registration-info-col">
         <div>
-          <h1 class="mun-129">Join the Debate</h1>
-          <p class="mun-130">
+          <h1 class="registration-title">Join the Debate</h1>
+          <p class="registration-desc">
             Secure your spot at the next RIT MUN conference. Registration includes access to all committee sessions, the delegate social, and conference materials.
           </p>
-          <ul class="mun-131">
-            <li class="mun-78">
-              <div class="mun-132">1</div>
+          <ul class="registration-steps">
+            <li class="committee-meta-item">
+              <div class="step-number">1</div>
               <span>Early Bird Registration: $45</span>
             </li>
-            <li class="mun-78">
-              <div class="mun-132">2</div>
+            <li class="committee-meta-item">
+              <div class="step-number">2</div>
               <span>Regular Registration: $60</span>
             </li>
-            <li class="mun-78">
-              <div class="mun-132">3</div>
+            <li class="committee-meta-item">
+              <div class="step-number">3</div>
               <span>Delegation Fee: $30</span>
             </li>
           </ul>
         </div>
       </div>
       
-      <div class="mun-133">
-        <div class="mun-134">
-          <FileText className="mun-145" client:load/>
+      <div class="registration-portal-col">
+        <div class="portal-icon-box">
+          <FileText className="icon-lg" client:load/>
         </div>
-        <h2 class="mun-135">Registration Portal</h2>
-        <p class="mun-136">
+        <h2 class="portal-title">Registration Portal</h2>
+        <p class="portal-desc">
           We utilize MyMUN for all conference registrations, allocations, and payments to ensure a seamless experience. 
         </p>
         
-        <div class="mun-137">
-          <h3 class="mun-138">Key Deadlines:</h3>
-          <ul class="mun-139">
-            <li class="mun-140">
+        <div class="deadlines-box">
+          <h3 class="deadlines-title">Key Deadlines:</h3>
+          <ul class="deadlines-list">
+            <li class="deadline-item">
               <span>Early Bird Ends:</span>
-              <span class="mun-141">September 15, 2026</span>
+              <span class="deadline-date">September 15, 2026</span>
             </li>
-            <li class="mun-142">
+            <li class="deadline-item-mid">
               <span>Regular Ends:</span>
-              <span class="mun-141">October 20, 2026</span>
+              <span class="deadline-date">October 20, 2026</span>
             </li>
-            <li class="mun-143">
+            <li class="deadline-item-last">
               <span>Position Papers Due:</span>
-              <span class="mun-141">November 1, 2026</span>
+              <span class="deadline-date">November 1, 2026</span>
             </li>
           </ul>
         </div>
 
         <a 
           href="https://example.com/register" 
-          class="mun-144"
+          class="portal-action-btn"
         >
           Apply on MyMUN
         </a>

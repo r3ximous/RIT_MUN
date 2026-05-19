@@ -7,21 +7,21 @@ const allCommittees = await getCollection('committees');
 const sortedCommittees = allCommittees.sort((a, b) => a.data.order - b.data.order);
 ---
 <Layout title="RIT MUN | Committees">
-  <div class="mun-43 animate-in fade-in">
-    <div class="mun-44">
-      <h1 class="mun-45">Committees</h1>
-      <p class="mun-46">
+  <div class="committees-page-wrapper animate-in fade-in">
+    <div class="committees-header">
+      <h1 class="committees-title">Committees</h1>
+      <p class="committees-subtitle">
         Explore the councils for this year's conference. Each committee is designed to challenge delegates on pressing global issues.
       </p>
     </div>
 
-    <div class="mun-47">
+    <div class="committees-grid">
       {sortedCommittees.map((com) => (
-        <a href={`/committees/${com.id}`} class="mun-48 group">
-          <div class="mun-49">
+        <a href={`/committees/${com.id}`} class="committee-card group">
+          <div class="committee-card-header">
             <div>
-              <div class="mun-50">{com.data.type}</div>
-              <h2 class="mun-51 group-hover:text-brand-orange">{com.data.name}</h2>
+              <div class="committee-type-badge">{com.data.type}</div>
+              <h2 class="committee-card-title group-hover:text-brand-orange">{com.data.name}</h2>
             </div>
             <span class={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
               com.data.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
@@ -32,26 +32,26 @@ const sortedCommittees = allCommittees.sort((a, b) => a.data.order - b.data.orde
             </span>
           </div>
           
-          <p class="mun-52">{com.data.description}</p>
+          <p class="committee-card-desc">{com.data.description}</p>
           
-          <div class="mun-53">
-            <h3 class="mun-54">Agenda Topics</h3>
-            <ul class="mun-55">
+          <div class="committee-card-agenda">
+            <h3 class="agenda-title">Agenda Topics</h3>
+            <ul class="agenda-list">
               {com.data.topics.map((topic) => (
-                <li class="mun-56">
-                  <ChevronRight className="mun-61" client:load />
-                  <span class="mun-57">{topic}</span>
+                <li class="agenda-item">
+                  <ChevronRight className="agenda-icon" client:load />
+                  <span class="agenda-item-text">{topic}</span>
                 </li>
               ))}
             </ul>
           </div>
           
-          <div class="mun-58">
-            <span class="mun-59">
-              <Users className="mun-62" client:load /> Size: {com.data.size}
+          <div class="committee-card-footer">
+            <span class="committee-size-info">
+              <Users className="size-icon" client:load /> Size: {com.data.size}
             </span>
-            <span class="mun-60">
-              View Guide <FileText className="mun-63" client:load />
+            <span class="committee-view-guide">
+              View Guide <FileText className="view-guide-icon" client:load />
             </span>
           </div>
         </a>

@@ -3,41 +3,41 @@ import Layout from '../layouts/Layout.astro';
 import { Mail, Phone, MapPin } from 'lucide-react';
 ---
 <Layout title="RIT MUN | Contact Us">
-  <div class="mun-89 animate-in fade-in slide-in-from-bottom-8">
-    <div class="mun-90">
-      <h1 class="mun-91">Get in Touch</h1>
-      <p class="mun-92">
+  <div class="contact-page-wrapper animate-in fade-in slide-in-from-bottom-8">
+    <div class="contact-info-col">
+      <h1 class="contact-title">Get in Touch</h1>
+      <p class="contact-subtitle">
         Need assistance with registration, have questions about a committee, or want to sponsor our conference? Our Secretariat is here to help and we typically respond within 24 hours.
       </p>
 
-      <div class="mun-93">
-        <div class="mun-94">
-          <div class="mun-95">
-            <Mail className="mun-108" client:load/>
+      <div class="contact-methods">
+        <div class="contact-method-item">
+          <div class="contact-icon-box">
+            <Mail className="icon-md" client:load/>
           </div>
           <div>
-             <h3 class="mun-96">Email</h3>
-             <a href="mailto:secgen@ritmun.org" class="mun-97">secgen@ritmun.org</a>
+             <h3 class="contact-method-title">Email</h3>
+             <a href="mailto:secgen@ritmun.org" class="contact-email-link">secgen@ritmun.org</a>
           </div>
         </div>
         
-        <div class="mun-94">
-          <div class="mun-95">
-             <Phone className="mun-108" client:load/>
+        <div class="contact-method-item">
+          <div class="contact-icon-box">
+             <Phone className="icon-md" client:load/>
           </div>
           <div>
-            <h3 class="mun-96">Phone</h3>
-            <a href="tel:+15854752411" class="mun-98">(585) 475-2411</a>
+            <h3 class="contact-method-title">Phone</h3>
+            <a href="tel:+15854752411" class="contact-phone-link">(585) 475-2411</a>
           </div>
         </div>
         
-        <div class="mun-94">
-          <div class="mun-95">
-            <MapPin className="mun-108" client:load/>
+        <div class="contact-method-item">
+          <div class="contact-icon-box">
+            <MapPin className="icon-md" client:load/>
           </div>
           <div>
-             <h3 class="mun-96">Office</h3>
-             <address class="mun-99">
+             <h3 class="contact-method-title">Office</h3>
+             <address class="contact-address">
                Campus Center Room 1000<br/>
                Rochester Institute of Technology<br/>
                1 Lomb Memorial Dr<br/>
@@ -48,29 +48,29 @@ import { Mail, Phone, MapPin } from 'lucide-react';
       </div>
     </div>
 
-    <div class="mun-100">
-       <h2 class="mun-101">Send a Message</h2>
-       <form class="mun-102" action="/success">
-        <div class="mun-55">
-          <label for="name" class="mun-103">Name</label>
+    <div class="contact-form-box">
+       <h2 class="contact-form-title">Send a Message</h2>
+       <form class="contact-form" action="/success">
+        <div class="agenda-list">
+          <label for="name" class="form-label">Name</label>
           <input type="text" id="name" name="name" 
-            class="mun-104" 
+            class="form-input" 
             placeholder="Jane Doe" required />
         </div>
-        <div class="mun-55">
-          <label for="email" class="mun-103">Email</label>
+        <div class="agenda-list">
+          <label for="email" class="form-label">Email</label>
           <input type="email" id="email" name="email" 
-            class="mun-104" 
+            class="form-input" 
             placeholder="jane@example.com" required />
         </div>
-        <div class="mun-105">
-          <label for="message" class="mun-103">Message</label>
+        <div class="form-group-flex">
+          <label for="message" class="form-label">Message</label>
           <textarea id="message" name="message" rows="5" 
-            class="mun-106" 
+            class="form-textarea" 
             placeholder="How can we help you?" required></textarea>
         </div>
         <button type="submit" 
-          class="mun-107">
+          class="form-submit-btn">
           Send Message
         </button>
       </form>

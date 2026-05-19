@@ -20,12 +20,12 @@ const { title, description = 'Official RIT MUN Website' } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 	</head>
-	<body class="mun-35">
-		<a href="#main-content" class="mun-36">Skip to content</a>
+	<body class="layout-body">
+		<a href="#main-content" class="skip-to-content">Skip to content</a>
 		
 		<Header />
 
-		<main id="main-content" class="mun-37">
+		<main id="main-content" class="layout-main">
 			<slot />
 		</main>
 

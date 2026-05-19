@@ -5,10 +5,10 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 ---
 <Layout title="RIT MUN | Homepage">
 	{/* Hero Section */}
-	<section class="mun-109"
+	<section class="hero-section"
 		style="background-image: radial-gradient(circle at center, #2a2a2a 0%, #1E1E1E 100%)">
-		<div class="mun-110">
-			<svg class="mun-111" xmlns="http://www.w3.org/2000/svg">
+		<div class="hero-bg-pattern">
+			<svg class="hero-bg-svg" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
 						<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#F76902" stroke-width="1"/>
@@ -18,22 +18,22 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 			</svg>
 		</div>
 		
-		<div class="mun-112">
-			<div class="mun-113">
-				<Globe className="mun-125" client:load />
+		<div class="hero-content">
+			<div class="hero-badge">
+				<Globe className="icon-sm" client:load />
 				<span>RIT Model United Nations Conference</span>
 			</div>
-			<h1 class="mun-114">
-				Diplomacy in <span class="mun-18">Action</span>
+			<h1 class="hero-title">
+				Diplomacy in <span class="text-brand-highlight">Action</span>
 			</h1>
-			<p class="mun-115">
+			<p class="hero-subtitle">
 				Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.
 			</p>
-			<div class="mun-116">
-				<a href="/registration" class="mun-117">
-					Register Now <ArrowRight className="mun-85" client:load />
+			<div class="hero-actions">
+				<a href="/registration" class="hero-btn-primary">
+					Register Now <ArrowRight className="icon-arrow-left" client:load />
 				</a>
-				<a href="/committees" class="mun-118">
+				<a href="/committees" class="hero-btn-secondary">
 					View Committees
 				</a>
 			</div>
@@ -44,32 +44,32 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 	<CountdownTimer client:load />
 
 	{/* About Section */}
-	<section class="mun-119">
-		<div class="mun-120">
-			<div class="mun-121">
-				<div class="mun-122">
-					<Users className="mun-108" client:load />
+	<section class="features-section">
+		<div class="features-grid">
+			<div class="feature-card">
+				<div class="feature-icon-box">
+					<Users className="icon-md" client:load />
 				</div>
-				<h3 class="mun-123">Diverse Committees</h3>
-				<p class="mun-124">
+				<h3 class="feature-title">Diverse Committees</h3>
+				<p class="feature-desc">
 					From the fast-paced Crisis committees to the expansive General Assembly, we offer a dynamic range of topics suitable for all experience levels.
 				</p>
 			</div>
-			<div class="mun-121">
-				<div class="mun-122">
-					<Award className="mun-108" client:load />
+			<div class="feature-card">
+				<div class="feature-icon-box">
+					<Award className="icon-md" client:load />
 				</div>
-				<h3 class="mun-123">Skill Building</h3>
-				<p class="mun-124">
+				<h3 class="feature-title">Skill Building</h3>
+				<p class="feature-desc">
 					Enhance your public speaking, negotiation, and policy-writing skills. RIT MUN is designed to challenge and grow tomorrow's leaders.
 				</p>
 			</div>
-			<div class="mun-121">
-				<div class="mun-122">
-					<MapPin className="mun-108" client:load />
+			<div class="feature-card">
+				<div class="feature-icon-box">
+					<MapPin className="icon-md" client:load />
 				</div>
-				<h3 class="mun-123">RIT Campus</h3>
-				<p class="mun-124">
+				<h3 class="feature-title">RIT Campus</h3>
+				<p class="feature-desc">
 					Experience the cutting-edge facilities of the Rochester Institute of Technology, blending technology with traditional diplomacy.
 				</p>
 			</div>

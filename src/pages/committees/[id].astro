@@ -16,17 +16,17 @@ const { Content } = await render(committee);
 ---
 
 <Layout title={`RIT MUN | ${committee.data.name}`}>
-  <div class="mun-64 animate-in fade-in">
-    <a href="/committees" class="mun-65">
-      <ArrowLeft className="mun-85" client:load /> Back to Committees
+  <div class="committee-detail-wrapper animate-in fade-in">
+    <a href="/committees" class="back-to-committees">
+      <ArrowLeft className="icon-arrow-left" client:load /> Back to Committees
     </a>
 
-    <div class="mun-66">
-      <div class="mun-67">
-        <div class="mun-68">
+    <div class="committee-detail-card">
+      <div class="committee-detail-header">
+        <div class="committee-detail-title-row">
           <div>
-            <div class="mun-69">{committee.data.type}</div>
-            <h1 class="mun-70">{committee.data.name}</h1>
+            <div class="committee-detail-badge">{committee.data.type}</div>
+            <h1 class="committee-detail-title">{committee.data.name}</h1>
           </div>
           <span class={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap self-start ${
             committee.data.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
@@ -37,45 +37,45 @@ const { Content } = await render(committee);
           </span>
         </div>
 
-        <p class="mun-71">
+        <p class="committee-detail-desc">
           {committee.data.description}
         </p>
 
-        <div class="mun-72">
-          <div class="mun-73">
-            <h3 class="mun-74">
-              <FileText className="mun-86" client:load/>
+        <div class="committee-info-grid">
+          <div class="committee-agenda-box">
+            <h3 class="committee-agenda-header">
+              <FileText className="icon-file-text" client:load/>
               Agenda Topics
             </h3>
-            <ul class="mun-75">
+            <ul class="committee-agenda-list">
               {committee.data.topics.map((topic) => (
-                <li class="mun-56">
-                  <ChevronRight className="mun-87" client:load />
-                  <span class="mun-76">{topic}</span>
+                <li class="agenda-item">
+                  <ChevronRight className="icon-chevron-right" client:load />
+                  <span class="committee-agenda-text">{topic}</span>
                 </li>
               ))}
             </ul>
           </div>
           
-          <div class="mun-77">
-            <div class="mun-78">
-              <div class="mun-79">
-                <Users className="mun-88" client:load />
+          <div class="committee-meta-col">
+            <div class="committee-meta-item">
+              <div class="committee-meta-icon-box">
+                <Users className="icon-users" client:load />
               </div>
               <div>
-                <div class="mun-80">Committee Size</div>
-                <div class="mun-81">{committee.data.size}</div>
+                <div class="committee-meta-label">Committee Size</div>
+                <div class="committee-meta-value">{committee.data.size}</div>
               </div>
             </div>
-            <a href="#" class="mun-82">
+            <a href="#" class="committee-action-btn">
               Download Background Guide
             </a>
           </div>
         </div>
       </div>
 
-      <div class="mun-83 prose prose-lg prose-headings:text-brand-dark prose-a:text-brand-orange">
-        <h2 class="mun-84">Welcome Letter</h2>
+      <div class="committee-content-prose prose prose-lg prose-headings:text-brand-dark prose-a:text-brand-orange">
+        <h2 class="committee-letter-title">Welcome Letter</h2>
         <Content />
       </div>
     </div>

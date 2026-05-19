@@ -27,18 +27,18 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="mun-27">
-      <div className="mun-28">
-        <h3 className="mun-29">Conference Starts In:</h3>
-        <p className="mun-30">Prepare your position papers!</p>
+    <div className="countdown-wrapper">
+      <div className="countdown-text-col">
+        <h3 className="countdown-title">Conference Starts In:</h3>
+        <p className="countdown-subtitle">Prepare your position papers!</p>
       </div>
-      <div className="mun-31">
+      <div className="countdown-units-row">
         {Object.entries(timeLeft).map(([unit, value]) => (
-          <div key={unit} className="mun-32">
-            <div className="mun-33">
+          <div key={unit} className="countdown-unit-col">
+            <div className="countdown-number-box">
               {value.toString().padStart(2, '0')}
             </div>
-            <div className="mun-34">
+            <div className="countdown-unit-label">
               {unit}
             </div>
           </div>

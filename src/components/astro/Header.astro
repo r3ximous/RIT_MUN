@@ -9,21 +9,21 @@ const navLinks = [
 ];
 ---
 
-<nav class="mun-13">
-  <div class="mun-14">
+<nav class="layout-header">
+  <div class="header-container">
     
     {/* Logo Area */}
-    <a href="/" class="mun-15 group">
-      <div class="mun-16 group-hover:rotate-12">
-        <Globe client:idle className="mun-24" />
+    <a href="/" class="header-brand-link group">
+      <div class="header-logo-box group-hover:rotate-12">
+        <Globe client:idle className="header-globe-icon" />
       </div>
-      <span class="mun-17">
-        RIT <span class="mun-18">MUN</span>
+      <span class="header-brand-title">
+        RIT <span class="text-brand-highlight">MUN</span>
       </span>
     </a>
 
     {/* Desktop Nav */}
-    <div class="mun-19">
+    <div class="header-nav-desktop">
       {navLinks.filter(l => l.id !== '/registration').map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
         return (
@@ -40,7 +40,7 @@ const navLinks = [
       })}
       <a 
         href="/registration"
-        class="mun-20"
+        class="header-btn-register"
       >
         Register
       </a>
@@ -49,18 +49,18 @@ const navLinks = [
     {/* Mobile Menu Toggle */}
     <button 
       id="mobile-menu-btn"
-      class="mun-21"
+      class="header-mobile-toggle"
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <Menu id="menu-icon-open" className="mun-25" client:idle />
-      <X id="menu-icon-close" className="mun-26" client:idle />
+      <Menu id="menu-icon-open" className="icon-block" client:idle />
+      <X id="menu-icon-close" className="icon-hidden" client:idle />
     </button>
   </div>
 
   {/* Mobile Nav Dropdown */}
-  <div id="mobile-menu" class="mun-22">
-    <div class="mun-23">
+  <div id="mobile-menu" class="header-mobile-menu">
+    <div class="header-mobile-nav-list">
       {navLinks.map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
         return (
