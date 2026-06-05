@@ -4,8 +4,17 @@ const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
+    
+    // date variables
+    const year = 2026;
+    const month = 11;
+    const day = 1;
+    const hour = 9;
+    const minute = 0;
+    const second = 0;
+
     // Target date: Dec 1, 2026, 9:00 AM
-    const targetDate = new Date(2026, 11, 1, 9, 0, 0);
+    const targetDate = new Date(year, month, day, hour, minute, second);
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
