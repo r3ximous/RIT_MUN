@@ -1,6 +1,0 @@
-- Add instagram in the footer 
-- Add RIT Logo
-- Add more pages to the website and add to the nav bar
-    - Executive board
-    - Resources 
-    - FAQ

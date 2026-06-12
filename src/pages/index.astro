@@ -5,10 +5,10 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 ---
 <Layout title="RIT MUN | Homepage">
 	{/* Hero Section */}
-	<section class="hero-section"
+	<section class="relative bg-brand-dark text-white pt-24 pb-32 px-6 overflow-hidden min-h-[70vh] flex items-center"
 		style="background-image: radial-gradient(circle at center, #2a2a2a 0%, #1E1E1E 100%)">
-		<div class="hero-bg-pattern">
-			<svg class="hero-bg-svg" xmlns="http://www.w3.org/2000/svg">
+		<div class="hero-bg-pattern absolute inset-0 opacity-10 pointer-events-none">
+			<svg class="hero-bg-svg w-full h-full" xmlns="http://www.w3.org/2000/svg">
 				<defs>
 					<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
 						<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#F76902" stroke-width="1"/>
@@ -18,24 +18,33 @@ import { Globe, Users, Award, MapPin, ArrowRight } from 'lucide-react';
 			</svg>
 		</div>
 		
-		<div class="hero-content">
-			<div class="hero-badge">
-				<Globe className="icon-sm" client:load />
-				<span>RIT Model United Nations Conference</span>
+		<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 z-10 w-full relative">
+			<div class="hero-content flex-1 max-w-2xl text-center lg:text-left space-y-6">
+				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-orange text-sm font-semibold mb-2 border border-brand-orange/30">
+					<Globe className="w-4 h-4" client:load />
+					<span>RIT Model United Nations Conference</span>
+				</div>
+				<h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+					Diplomacy in <span class="text-brand-highlight">Action</span>
+				</h1>
+				<p class="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-2xl">
+					Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.
+				</p>
+				<div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+					<a href="/registration" class="hero-btn-primary">
+						Register Now <ArrowRight className="icon-arrow-left" client:load />
+					</a>
+					<a href="/committees" class="hero-btn-secondary">
+						View Committees
+					</a>
+				</div>
 			</div>
-			<h1 class="hero-title">
-				Diplomacy in <span class="text-brand-highlight">Action</span>
-			</h1>
-			<p class="hero-subtitle">
-				Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.
-			</p>
-			<div class="hero-actions">
-				<a href="/registration" class="hero-btn-primary">
-					Register Now <ArrowRight className="icon-arrow-left" client:load />
-				</a>
-				<a href="/committees" class="hero-btn-secondary">
-					View Committees
-				</a>
+			
+			<div class="flex-1 w-full lg:w-1/2 relative lg:ml-auto">
+				<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-brand-orange/20 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+					<img src={(await import('../Images/banner_plain_2.png')).default.src} alt="RIT Campus and MUN Conference Banner" class="w-full h-auto object-cover" />
+				</div>
+				<div class="absolute -bottom-6 -right-6 lg:-bottom-10 lg:-right-10 w-full h-full bg-brand-orange/10 rounded-2xl border-2 border-brand-orange/30 -z-10"></div>
 			</div>
 		</div>
 	</section>

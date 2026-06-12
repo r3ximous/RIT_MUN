@@ -1,9 +1,14 @@
 ---
-import { Globe, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '../../Images/mun_logo_circle.png';
+
 const currentPath = Astro.url.pathname;
 const navLinks = [
   { id: '/committees', label: 'Committees' },
   { id: '/schedule', label: 'Schedule' },
+  { id: '/executive-board', label: 'Executive Board' },
+  { id: '/resources', label: 'Resources' },
+  { id: '/faq', label: 'FAQ' },
   { id: '/registration', label: 'Registration' },
   { id: '/contact', label: 'Contact' }
 ];
@@ -14,8 +19,8 @@ const navLinks = [
     
     {/* Logo Area */}
     <a href="/" class="header-brand-link group">
-      <div class="header-logo-box group-hover:rotate-12">
-        <Globe client:idle className="header-globe-icon" />
+      <div class="group-hover:rotate-12 transition-transform duration-300">
+        <img src={logo.src} alt="RIT MUN" class="w-12 h-12 object-contain" />
       </div>
       <span class="header-brand-title">
         RIT <span class="text-brand-highlight">MUN</span>

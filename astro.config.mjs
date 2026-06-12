@@ -19,7 +19,11 @@ export default defineConfig({
   // @ts-ignore
   site: BASE_URL,
   vite: {
-    plugins: [tailwindcss()]
+    // @ts-ignore
+    plugins: [tailwindcss()],
+    resolve: {
+      tsconfigPaths: false // <-- This fixes the missing field crash
+    }
   },
 
   integrations: [react(), relativeLinks()],
