@@ -10,6 +10,21 @@ import { BookOpen, Link as LinkIcon, FileText } from 'lucide-react';
     </div>
 
     <div class="space-y-8">
+      {/* Delegate Handbook */}
+      <a 
+        href="/documents/Final%20delegate%20handbook%20.docx" 
+        download="Final delegate handbook .docx"
+        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      >
+        <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
+          <BookOpen className="w-8 h-8" client:load />
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">Delegate Handbook</h2>
+          <p class="text-gray-600">Comprehensive conference guidance and reference material for delegates.</p>
+        </div>
+      </a>
+
       {/* Rules of Procedure */}
       <a href="#" class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group">
         <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">

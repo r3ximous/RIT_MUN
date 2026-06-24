@@ -1,15 +1,22 @@
 ---
+import { Image } from 'astro:assets';
 import logo from '../../Images/mun_logo_circle.png';
 ---
 <footer class="layout-footer">
   <div class="footer-grid">
     <div class="footer-brand-col">
       <div class="footer-brand-logo">
-         <img src={logo.src} alt="RIT MUN" class="w-8 h-8 object-contain" />
+         <Image 
+           src={logo} 
+           alt="RIT MUN" 
+           width={32} 
+           height={32} 
+           class="w-8 h-8 object-contain" 
+         />
          <span class="footer-brand-text">RIT MUN</span>
       </div>
       <p class="footer-brand-desc">
-        Rochester Institute of Technology Model United Nations. Empowering students through diplomacy, debate, and international relations.
+        Rocheestor Institute of Technology Model United Nations. Empowering students through diplomacy, debate, and international relations.
       </p>
       <div class="mt-4">
         <a href="https://www.instagram.com/ritd.mun/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange transition-colors">
