@@ -21,9 +21,6 @@ export default defineConfig({
   vite: {
     // @ts-ignore
     plugins: [tailwindcss()],
-    resolve: {
-      tsconfigPaths: false // <-- This fixes the missing field crash
-    }
   },
 
   integrations: [react(), relativeLinks()],
