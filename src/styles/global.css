@@ -24,11 +24,11 @@ body {
   }
 
   .layout-main { 
-    @apply flex-grow; 
+    @apply grow; 
   }
 
   .skip-to-content { 
-    @apply sr-only focus:not-sr-only bg-brand-orange text-white p-4 absolute top-0 left-0 z-[100] font-bold; 
+    @apply sr-only focus:not-sr-only bg-brand-orange text-white p-4 absolute top-0 left-0 z-100 font-bold; 
   }
 
 
@@ -164,7 +164,7 @@ body {
   }
 
   .countdown-text-col { 
-    @apply text-center md:text-left flex-1 min-w-[200px]; 
+    @apply text-center md:text-left flex-1 min-w-50; 
   }
 
   .countdown-title { 
@@ -536,7 +536,7 @@ body {
   }
 
   .contact-icon-box { 
-    @apply bg-brand-orange/10 p-4 rounded-xl text-brand-orange flex-shrink-0; 
+    @apply bg-brand-orange/10 p-4 rounded-xl text-brand-orange shrink-0; 
   }
 
   .contact-method-title { 
@@ -564,7 +564,7 @@ body {
   }
 
   .contact-form { 
-    @apply space-y-6 flex-grow flex flex-col justify-between; 
+    @apply space-y-6 grow flex flex-col justify-between; 
   }
 
   .form-label { 
@@ -576,11 +576,11 @@ body {
   }
 
   .form-group-flex { 
-    @apply space-y-2 flex-grow flex flex-col; 
+    @apply space-y-2 grow flex-col; 
   }
 
   .form-textarea { 
-    @apply w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light flex-grow resize-none transition-all; 
+    @apply w-full px-5 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none bg-brand-light grow resize-none transition-all; 
   }
 
   .form-submit-btn { 
@@ -672,14 +672,14 @@ body {
   .icon-md { @apply w-8 h-8; }
   .icon-sm { @apply w-4 h-4; }
   .icon-lg { @apply h-10 w-10 text-brand-orange; }
-  .icon-clock { @apply w-5 h-5 mr-3 flex-shrink-0; }
+  .icon-clock { @apply w-5 h-5 mr-3 shrink-0; }
   .icon-map-pin { @apply h-4 w-4 mr-2 text-gray-400; }
   .icon-arrow-left { @apply w-5 h-5; }
   .icon-file-text { @apply w-4 h-4 text-brand-orange; }
   .icon-users { @apply w-6 h-6; }
-  .icon-chevron-right { @apply h-5 w-5 text-brand-orange mr-2 flex-shrink-0; }
+  .icon-chevron-right { @apply h-5 w-5 text-brand-orange mr-2 shrink-0; }
   
-  .agenda-icon { @apply h-5 w-5 text-brand-orange mr-1 flex-shrink-0; }
+  .agenda-icon { @apply h-5 w-5 text-brand-orange mr-1 shrink-0; }
   .size-icon { @apply h-4 w-4 mr-1; }
   .view-guide-icon { @apply h-4 w-4 ml-1; }
 }
