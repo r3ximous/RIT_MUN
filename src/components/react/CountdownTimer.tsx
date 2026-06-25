@@ -4,7 +4,7 @@ const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    
+
     // date variables
     const year = 2026;
     const month = 11;

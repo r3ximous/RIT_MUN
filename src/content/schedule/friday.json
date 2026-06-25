@@ -3,8 +3,23 @@
   "date": "Nov 15",
   "order": 1,
   "events": [
-    { "time": "3:00 PM - 5:00 PM", "title": "Registration & Check-in", "location": "Campus Center", "type": "Admin" },
-    { "time": "5:30 PM - 6:30 PM", "title": "Opening Ceremonies", "location": "Ingle Auditorium", "type": "Ceremony" },
-    { "time": "7:00 PM - 10:00 PM", "title": "Committee Session I", "location": "Various Classrooms", "type": "Session" }
+    {
+      "time": "3:00 PM - 5:00 PM",
+      "title": "Registration & Check-in",
+      "location": "Campus Center",
+      "type": "Admin"
+    },
+    {
+      "time": "5:30 PM - 6:30 PM",
+      "title": "Opening Ceremonies",
+      "location": "Ingle Auditorium",
+      "type": "Ceremony"
+    },
+    {
+      "time": "7:00 PM - 10:00 PM",
+      "title": "Committee Session I",
+      "location": "Various Classrooms",
+      "type": "Session"
+    }
   ]
 }

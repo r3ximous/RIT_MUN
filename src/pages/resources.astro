@@ -1,60 +1,110 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { BookOpen, Link as LinkIcon, FileText } from 'lucide-react';
+import Layout from "../layouts/Layout.astro";
+import { BookOpen, Link as LinkIcon, FileText } from "lucide-react";
 ---
+
 <Layout title="RIT MUN | Resources">
   <div class="max-w-4xl mx-auto px-6 py-20 animate-in fade-in">
     <div class="mb-16">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">Delegate Resources</h1>
-      <p class="text-xl text-gray-600 max-w-2xl">Essential documents, guides, and links to help you prepare for the conference and excel in committee sessions.</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">
+        Delegate Resources
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl">
+        Essential documents, guides, and links to help you prepare for the
+        conference and excel in committee sessions.
+      </p>
     </div>
 
     <div class="space-y-8">
       {/* Delegate Handbook */}
-      <a 
-        href="/documents/Final%20delegate%20handbook%20.docx" 
+      <a
+        href="/documents/Final%20delegate%20handbook%20.docx"
         download="Final delegate handbook .docx"
         class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
       >
-        <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
+        <div
+          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
+        >
           <BookOpen className="w-8 h-8" client:load />
         </div>
         <div>
-          <h2 class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">Delegate Handbook</h2>
-          <p class="text-gray-600">Comprehensive conference guidance and reference material for delegates.</p>
+          <h2
+            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
+          >
+            Delegate Handbook
+          </h2>
+          <p class="text-gray-600">
+            Comprehensive conference guidance and reference material for
+            delegates.
+          </p>
         </div>
       </a>
 
       {/* Rules of Procedure */}
-      <a href="#" class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group">
-        <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
+      <a
+        href="#"
+        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      >
+        <div
+          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
+        >
           <BookOpen className="w-8 h-8" client:load />
         </div>
         <div>
-          <h2 class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">Rules of Procedure</h2>
-          <p class="text-gray-600">The official parliamentary rules used in all RIT MUN committees.</p>
+          <h2
+            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
+          >
+            Rules of Procedure
+          </h2>
+          <p class="text-gray-600">
+            The official parliamentary rules used in all RIT MUN committees.
+          </p>
         </div>
       </a>
 
       {/* Position Paper Guide */}
-      <a href="#" class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group">
-        <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
+      <a
+        href="#"
+        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      >
+        <div
+          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
+        >
           <FileText className="w-8 h-8" client:load />
         </div>
         <div>
-          <h2 class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">Position Paper Guide</h2>
-          <p class="text-gray-600">Guidelines, formatting requirements, and examples for writing an excellent position paper.</p>
+          <h2
+            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
+          >
+            Position Paper Guide
+          </h2>
+          <p class="text-gray-600">
+            Guidelines, formatting requirements, and examples for writing an
+            excellent position paper.
+          </p>
         </div>
       </a>
 
       {/* External Links */}
-      <a href="#" class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group">
-        <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
+      <a
+        href="#"
+        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      >
+        <div
+          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
+        >
           <LinkIcon className="w-8 h-8" client:load />
         </div>
         <div>
-          <h2 class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">Research Links</h2>
-          <p class="text-gray-600">Curated databases, UN records, and reliable news sources for your topic research.</p>
+          <h2
+            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
+          >
+            Research Links
+          </h2>
+          <p class="text-gray-600">
+            Curated databases, UN records, and reliable news sources for your
+            topic research.
+          </p>
         </div>
       </a>
     </div>

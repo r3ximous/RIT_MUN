@@ -1,37 +1,63 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../../Images/mun_logo_circle.png';
+import { Image } from "astro:assets";
+import logo from "../../Images/mun_logo_circle.png";
 ---
+
 <footer class="layout-footer">
   <div class="footer-grid">
     <div class="footer-brand-col">
       <div class="footer-brand-logo">
-         <Image 
-           src={logo} 
-           alt="RIT MUN" 
-           width={32} 
-           height={32} 
-           class="w-8 h-8 object-contain" 
-         />
-         <span class="footer-brand-text">RIT MUN</span>
+        <Image
+          src={logo}
+          alt="RIT MUN"
+          width={32}
+          height={32}
+          class="w-8 h-8 object-contain"
+        />
+        <span class="footer-brand-text">RIT MUN</span>
       </div>
       <p class="footer-brand-desc">
-        Rocheestor Institute of Technology Model United Nations. Empowering students through diplomacy, debate, and international relations.
+        Rocheestor Institute of Technology Model United Nations. Empowering
+        students through diplomacy, debate, and international relations.
       </p>
       <div class="mt-4">
-        <a href="https://www.instagram.com/ritd.mun/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        <a
+          href="https://www.instagram.com/ritd.mun/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-6 h-6"
+            ><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path
+              d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+              x1="17.5"
+              x2="17.51"
+              y1="6.5"
+              y2="6.5"></line></svg
+          >
           <span class="text-sm font-semibold">@ritd.mun</span>
         </a>
       </div>
     </div>
-    
+
     <div>
       <h4 class="footer-nav-title">Quick Links</h4>
       <ul class="footer-nav-list">
         <li><a href="/committees" class="footer-nav-link">Committees</a></li>
         <li><a href="/schedule" class="footer-nav-link">Schedule</a></li>
-        <li><a href="/registration" class="footer-nav-link">Registration</a></li>
+        <li>
+          <a href="/registration" class="footer-nav-link">Registration</a>
+        </li>
         <li><a href="/contact" class="footer-nav-link">Contact Us</a></li>
       </ul>
     </div>
@@ -41,9 +67,7 @@ import logo from '../../Images/mun_logo_circle.png';
       <ul class="footer-nav-list">
         <li><a href="#" class="footer-nav-link">Code of Conduct</a></li>
         <li><a href="#" class="footer-nav-link">Privacy Policy</a></li>
-        <li class="footer-copyright-item">
-          Built with Astro & Tailwind
-        </li>
+        <li class="footer-copyright-item">Built with Astro & Tailwind</li>
       </ul>
     </div>
   </div>

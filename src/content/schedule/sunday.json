@@ -3,7 +3,17 @@
   "date": "Nov 17",
   "order": 3,
   "events": [
-    { "time": "9:30 AM - 12:30 PM", "title": "Committee Session IV", "location": "Various Classrooms", "type": "Session" },
-    { "time": "1:30 PM - 3:00 PM", "title": "Closing Ceremonies & Awards", "location": "Ingle Auditorium", "type": "Ceremony" }
+    {
+      "time": "9:30 AM - 12:30 PM",
+      "title": "Committee Session IV",
+      "location": "Various Classrooms",
+      "type": "Session"
+    },
+    {
+      "time": "1:30 PM - 3:00 PM",
+      "title": "Closing Ceremonies & Awards",
+      "location": "Ingle Auditorium",
+      "type": "Ceremony"
+    }
   ]
 }

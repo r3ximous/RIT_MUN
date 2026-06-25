@@ -1,32 +1,31 @@
 ---
-import { Image } from 'astro:assets';
-import { Menu, X } from 'lucide-react';
-import logo from '../../Images/mun_logo_circle.png';
+import { Image } from "astro:assets";
+import { Menu, X } from "lucide-react";
+import logo from "../../Images/mun_logo_circle.png";
 
 const currentPath = Astro.url.pathname;
 const navLinks = [
-  { id: '/committees', label: 'Committees' },
-  { id: '/schedule', label: 'Schedule' },
-  { id: '/executive-board', label: 'Executive Board' },
-  { id: '/resources', label: 'Resources' },
-  { id: '/faq', label: 'FAQ' },
-  { id: '/registration', label: 'Registration' },
-  { id: '/contact', label: 'Contact' }
+  { id: "/committees", label: "Committees" },
+  { id: "/schedule", label: "Schedule" },
+  { id: "/executive-board", label: "Executive Board" },
+  { id: "/resources", label: "Resources" },
+  { id: "/faq", label: "FAQ" },
+  { id: "/registration", label: "Registration" },
+  { id: "/contact", label: "Contact" },
 ];
 ---
 
 <nav class="layout-header">
   <div class="header-container">
-    
     {/* Logo Area */}
     <a href="/" class="header-brand-link group">
       <div class="group-hover:rotate-12 transition-transform duration-300">
-        <Image 
-          src={logo} 
-          alt="RIT MUN" 
-          width={48} 
-          height={48} 
-          class="w-12 h-12 object-contain" 
+        <Image
+          src={logo}
+          alt="RIT MUN"
+          width={48}
+          height={48}
+          class="w-12 h-12 object-contain"
           loading="eager"
         />
       </div>
@@ -37,30 +36,33 @@ const navLinks = [
 
     {/* Desktop Nav */}
     <div class="header-nav-desktop">
-      {navLinks.filter(l => l.id !== '/registration').map((link) => {
-        const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
-        return (
-          <a
-            href={link.id}
-            class={`font-semibold text-sm uppercase tracking-wider transition-colors duration-200 hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange p-1 rounded ${
-              isActive ? 'text-brand-orange border-b-2 border-brand-orange py-1' : 'text-gray-300'
-            }`}
-            aria-current={isActive ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        );
-      })}
-      <a 
-        href="/registration"
-        class="header-btn-register"
-      >
-        Register
-      </a>
+      {
+        navLinks
+          .filter((l) => l.id !== "/registration")
+          .map((link) => {
+            const isActive =
+              currentPath === link.id ||
+              (link.id !== "/" && currentPath.startsWith(link.id));
+            return (
+              <a
+                href={link.id}
+                class={`font-semibold text-sm uppercase tracking-wider transition-colors duration-200 hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange p-1 rounded ${
+                  isActive
+                    ? "text-brand-orange border-b-2 border-brand-orange py-1"
+                    : "text-gray-300"
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            );
+          })
+      }
+      <a href="/registration" class="header-btn-register"> Register </a>
     </div>
 
     {/* Mobile Menu Toggle */}
- <button 
+    <button
       id="mobile-menu-btn"
       class="header-mobile-toggle"
       aria-label="Toggle menu"
@@ -77,52 +79,56 @@ const navLinks = [
 
   <div id="mobile-menu" class="header-mobile-menu hidden">
     <div class="header-mobile-nav-list pb-6 px-6 pt-2 flex flex-col gap-2">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
-        
-        // Render the registration link differently so it looks like a prominent button on mobile
-        if (link.id === '/registration') {
+      {
+        navLinks.map((link) => {
+          const isActive =
+            currentPath === link.id ||
+            (link.id !== "/" && currentPath.startsWith(link.id));
+
+          // Render the registration link differently so it looks like a prominent button on mobile
+          if (link.id === "/registration") {
+            return (
+              <a
+                href={link.id}
+                class="mt-4 text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange"
+              >
+                {link.label}
+              </a>
+            );
+          }
+
           return (
             <a
               href={link.id}
-              class="mt-4 text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange"
+              class={`text-left font-semibold text-lg py-3 px-3 transition-all rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange ${
+                isActive
+                  ? "text-brand-orange bg-brand-orange/10 pl-4"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
+              }`}
+              aria-current={isActive ? "page" : undefined}
             >
               {link.label}
             </a>
           );
-        }
-
-        return (
-          <a
-            href={link.id}
-            class={`text-left font-semibold text-lg py-3 px-3 transition-all rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange ${
-              isActive 
-                ? 'text-brand-orange bg-brand-orange/10 pl-4' 
-                : 'text-gray-300 hover:text-white hover:bg-white/5'
-            }`}
-            aria-current={isActive ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        );
-      })}
+        })
+      }
     </div>
   </div>
 </nav>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
 
   if (btn && menu && iconOpen && iconClose) {
-    btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!isExpanded));
-      menu.classList.toggle('hidden');
-      iconOpen.classList.toggle('hidden');
-      iconClose.classList.toggle('hidden');
+    btn.addEventListener("click", () => {
+      const isExpanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isExpanded));
+      menu.classList.toggle("hidden");
+      iconOpen.classList.toggle("hidden");
+      iconClose.classList.toggle("hidden");
     });
   }
 </script>
