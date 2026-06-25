@@ -60,27 +60,45 @@ const navLinks = [
     </div>
 
     {/* Mobile Menu Toggle */}
-    <button 
+ <button 
       id="mobile-menu-btn"
       class="header-mobile-toggle"
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <Menu id="menu-icon-open" className="icon-block" client:idle />
-      <X id="menu-icon-close" className="icon-hidden" client:idle />
+      <span id="menu-icon-open" class="block">
+        <Menu className="w-7 h-7" client:idle />
+      </span>
+      <span id="menu-icon-close" class="hidden">
+        <X className="w-7 h-7" client:idle />
+      </span>
     </button>
   </div>
 
-  {/* Mobile Nav Dropdown */}
-  <div id="mobile-menu" class="header-mobile-menu">
-    <div class="header-mobile-nav-list">
+  <div id="mobile-menu" class="header-mobile-menu hidden">
+    <div class="header-mobile-nav-list pb-6 px-6 pt-2 flex flex-col gap-2">
       {navLinks.map((link) => {
         const isActive = currentPath === link.id || (link.id !== '/' && currentPath.startsWith(link.id));
+        
+        // Render the registration link differently so it looks like a prominent button on mobile
+        if (link.id === '/registration') {
+          return (
+            <a
+              href={link.id}
+              class="mt-4 text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange"
+            >
+              {link.label}
+            </a>
+          );
+        }
+
         return (
           <a
             href={link.id}
-            class={`text-left font-semibold text-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-orange rounded px-2 ${
-              isActive ? 'text-brand-orange' : 'text-gray-300 hover:text-white'
+            class={`text-left font-semibold text-lg py-3 px-3 transition-all rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange ${
+              isActive 
+                ? 'text-brand-orange bg-brand-orange/10 pl-4' 
+                : 'text-gray-300 hover:text-white hover:bg-white/5'
             }`}
             aria-current={isActive ? 'page' : undefined}
           >
