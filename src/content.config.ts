@@ -14,6 +14,15 @@ const committees = defineCollection({
   })
 });
 
+const executiveBoard = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/executive-board" }),
+  schema: z.object({
+    name: z.string(),
+    role: z.string(),
+    order: z.number().default(0),
+  })
+});
+
 const schedule = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/schedule" }),
   schema: z.object({
@@ -41,6 +50,7 @@ const faqs = defineCollection({
 
 export const collections = {
   'committees': committees,
+  'executive-board': executiveBoard,
   'schedule': schedule,
   'faqs': faqs
 };
