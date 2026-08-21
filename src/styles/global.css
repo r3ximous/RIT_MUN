@@ -132,7 +132,7 @@ body {
      Features Component
      ========================================== */
   .features-section { 
-    @apply py-20 px-6 bg-brand-light; 
+    @apply pt-8 pb-20 px-6 bg-brand-light; 
   }
 
   .features-grid { 
@@ -160,7 +160,7 @@ body {
      Countdown Timer Component
      ========================================== */
   .countdown-wrapper { 
-    @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform -translate-y-1/2 mx-4 md:mx-auto max-w-4xl flex flex-wrap justify-around items-center gap-4; 
+    @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100 transform -translate-y-1/2 -mb-16 md:-mb-12 mx-4 md:mx-auto max-w-4xl flex flex-wrap justify-around items-center gap-4; 
   }
 
   .countdown-text-col { 
