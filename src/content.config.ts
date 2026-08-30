@@ -1,8 +1,8 @@
 import { defineCollection, z } from 'astro:content';
-import { glob, file } from 'astro/loaders';
+import { glob } from 'astro/loaders';
 
 const committees = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/committees" }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/committees' }),
   schema: z.object({
     name: z.string(),
     description: z.string(),
@@ -11,46 +11,48 @@ const committees = defineCollection({
     size: z.string(),
     difficulty: z.enum(['Beginner', 'Intermediate', 'Advanced']),
     order: z.number().default(0),
-  })
+  }),
 });
 
 const executiveBoard = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/executive-board" }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/executive-board' }),
   schema: z.object({
     name: z.string(),
     role: z.string(),
     order: z.number().default(0),
-  })
+  }),
 });
 
 const schedule = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/schedule" }),
+  loader: glob({ pattern: '**/*.json', base: './src/content/schedule' }),
   schema: z.object({
     day: z.string(),
     date: z.string(),
     order: z.number().default(0),
-    events: z.array(z.object({
-      time: z.string(),
-      title: z.string(),
-      location: z.string(),
-      type: z.string()
-    }))
-  })
+    events: z.array(
+      z.object({
+        time: z.string(),
+        title: z.string(),
+        location: z.string(),
+        type: z.string(),
+      }),
+    ),
+  }),
 });
 
 const faqs = defineCollection({
-  loader: glob({ pattern: "**/*.json", base: "./src/content/faqs" }),
+  loader: glob({ pattern: '**/*.json', base: './src/content/faqs' }),
   schema: z.object({
     question: z.string(),
     answer: z.string(),
     category: z.string(),
-    order: z.number()
-  })
+    order: z.number().default(0),
+  }),
 });
 
 export const collections = {
-  'committees': committees,
+  committees: committees,
   'executive-board': executiveBoard,
-  'schedule': schedule,
-  'faqs': faqs
+  schedule: schedule,
+  faqs: faqs,
 };

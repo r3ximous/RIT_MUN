@@ -13,18 +13,21 @@ Welcome to the RIT Model United Nations (MUN) Official Website repository! This 
 ## 📋 Prerequisites
 
 Make sure you have the following installed before contributing:
+
 - [Node.js](https://nodejs.org/en/) (>= **v22.12.0** as specified in package.json engines)
-- A package manager (`npm`, `pnpm`, or `yarn`)
+- `npm` (this project standardizes on npm — please commit changes to `package-lock.json` only, and avoid generating `bun.lock`/`yarn.lock`/`pnpm-lock.yaml`)
 
 ## 🛠️ Getting Started
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repo-url>
    cd RIT_MUN
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    # or pnpm install / yarn install
@@ -48,9 +51,10 @@ Here's an overview of the key directories you'll be working with:
 │   │   ├── astro/      # Astro-specific components (.astro)
 │   │   └── react/      # React components (.tsx)
 │   ├── content/        # Content collections (Markdown & JSON data)
-│   │   ├── committees/ # Markdown files for each committee
-│   │   ├── faqs/       # FAQ content
-│   │   └── schedule/   # JSON files for the event schedule
+│   │   ├── committees/       # Markdown files for each committee
+│   │   ├── executive-board/  # Markdown files for each secretariat member
+│   │   ├── faqs/             # FAQ content
+│   │   └── schedule/         # JSON files for the event schedule
 │   ├── layouts/        # Shared page layouts
 │   ├── pages/          # File-based routing (each .astro file is a route)
 │   └── styles/         # Global stylesheets (Tailwind config)
@@ -63,12 +67,16 @@ Here's an overview of the key directories you'll be working with:
 
 All commands are run from the root of the project, from a terminal:
 
-| Command | Action |
-| :--- | :--- |
-| `npm run dev` | Starts local dev server at `localhost:4321` |
-| `npm run build` | Build your production site to `./dist/` |
-| `npm run preview` | Preview your build locally, before deploying |
-| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
+| Command                | Action                                             |
+| :--------------------- | :------------------------------------------------- |
+| `npm run dev`          | Starts local dev server at `localhost:4321`        |
+| `npm run build`        | Build your production site to `./dist/`            |
+| `npm run preview`      | Preview your build locally, before deploying       |
+| `npm run check`        | Type-check `.astro`/`.ts` files with `astro check` |
+| `npm run lint`         | Lint the project with ESLint                       |
+| `npm run format`       | Format the project with Prettier                   |
+| `npm run format:check` | Check formatting without writing changes           |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check`   |
 
 ## 💡 Contribution Guidelines
 
@@ -76,4 +84,4 @@ All commands are run from the root of the project, from a terminal:
 2. **Content:** All content (committees, schedule) is managed via Astro Content Collections in `src/content/`. Update the respective Markdown or JSON files to change content.
 3. **Styling:** Use Tailwind CSS utility classes for styling components. Global styles are managed in `src/styles/global.css`.
 
-Happy coding! 🎉 
+Happy coding! 🎉

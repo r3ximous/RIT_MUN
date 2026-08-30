@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href?: string;
+  download?: string;
+}
+
+const { title, description, href, download } = Astro.props;
+const isAvailable = Boolean(href);
+---
+
+{
+  isAvailable ? (
+    <a
+      href={href}
+      download={download}
+      class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+    >
+      <div class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors">
+        <slot name="icon" />
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">
+          {title}
+        </h2>
+        <p class="text-gray-600">{description}</p>
+      </div>
+    </a>
+  ) : (
+    <div
+      class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm border border-gray-100 opacity-70"
+      aria-disabled="true"
+    >
+      <div class="bg-orange-50 p-4 rounded-lg text-brand-orange">
+        <slot name="icon" />
+      </div>
+      <div>
+        <div class="flex items-center gap-3 mb-2 flex-wrap">
+          <h2 class="text-2xl font-bold text-brand-dark">{title}</h2>
+          <span class="text-xs font-bold uppercase tracking-wider bg-gray-200 text-gray-500 px-2 py-1 rounded-full">
+            Coming Soon
+          </span>
+        </div>
+        <p class="text-gray-600">{description}</p>
+      </div>
+    </div>
+  )
+}

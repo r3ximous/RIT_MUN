@@ -1,12 +1,12 @@
 ---
-name: "United Nations Security Council (UNSC)"
-description: "Tackling immediate threats to international peace and security with dynamic crisis updates."
-type: "Crisis"
-difficulty: "Advanced"
-size: "Small"
+name: 'United Nations Security Council (UNSC)'
+description: 'Tackling immediate threats to international peace and security with dynamic crisis updates.'
+type: 'Crisis'
+difficulty: 'Advanced'
+size: 'Small'
 topics:
-  - "Cyberwarfare & International Security"
-  - "The Situation in the South China Sea"
+  - 'Cyberwarfare & International Security'
+  - 'The Situation in the South China Sea'
 order: 1
 ---
 

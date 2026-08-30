@@ -2,26 +2,30 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
-import { process } from 'zod/v4/core';
 import relativeLinks from 'astro-relative-links';
+import sitemap from '@astrojs/sitemap';
 
-const SERVER_PORT = 3000;
-const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
+// Astro's default dev server port (see README "Getting Started").
+const DEV_URL = 'http://localhost:4321';
 
-const LIVE_URL = 'https://astro-react-tailwindcss-starter.vercel.app';
+// TODO: confirm this is still the right domain. It comes from the legacy site
+// linked in prompts/roadmap.md, but that conflicts with the Rochester, NY
+// contact info used elsewhere on this site (contact.astro) - double check
+// which campus/domain this site is actually for before shipping.
+const PRODUCTION_URL = 'https://ritmun.ritdubai.ae';
 
-
-let BASE_URL = LOCALHOST_URL;
-
+// `site` must be an absolute, production URL so that the sitemap, canonical
+// links, and Open Graph tags resolve correctly. Only `astro build` (used for
+// the real deploy) gets the production URL; `dev`/`preview` keep localhost.
+// (`process` is a Node.js global here, no import needed.)
+const isProductionBuild = process.argv.includes('build');
 
 // https://astro.build/config
 export default defineConfig({
-  // @ts-ignore
-  site: BASE_URL,
+  site: isProductionBuild ? PRODUCTION_URL : DEV_URL,
   vite: {
-    // @ts-ignore
     plugins: [tailwindcss()],
   },
 
-  integrations: [react(), relativeLinks()],
+  integrations: [react(), relativeLinks(), sitemap()],
 });

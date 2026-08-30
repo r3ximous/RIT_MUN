@@ -1,12 +1,50 @@
 ---
-import { Image } from "astro:assets";
-import bannerImg from "../Images/banner_plain_2.png";
-import Layout from "../layouts/Layout.astro";
-import CountdownTimer from "../components/react/CountdownTimer";
-import { Globe, Users, Award, MapPin, ArrowRight } from "lucide-react";
+import { Image } from 'astro:assets';
+import bannerImg from '../Images/banner_plain_2.png';
+import Layout from '../layouts/Layout.astro';
+import CountdownTimer from '../components/react/CountdownTimer';
+import { Users, Award, MapPin, ArrowRight } from 'lucide-react';
+
+// Structured data so search engines understand this page represents a real
+// event (dates/location mirror the schedule collection and Contact page).
+const eventJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'RIT Model United Nations Conference',
+  description:
+    'Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.',
+  startDate: '2026-12-04T15:00:00-05:00',
+  endDate: '2026-12-06T15:00:00-05:00',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+  location: {
+    '@type': 'Place',
+    name: 'Rochester Institute of Technology',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '1 Lomb Memorial Dr',
+      addressLocality: 'Rochester',
+      addressRegion: 'NY',
+      postalCode: '14623',
+      addressCountry: 'US',
+    },
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'RIT Model United Nations',
+    url: Astro.site ? new URL('/', Astro.site).toString() : undefined,
+  },
+};
 ---
 
 <Layout title="RIT MUN | Homepage">
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(eventJsonLd)}
+    />
+  </Fragment>
   {/* Hero Section */}
   <section
     class="relative text-white pt-24 pb-32 px-6 overflow-hidden min-h-[70vh] flex items-center"
@@ -18,6 +56,10 @@ import { Globe, Users, Award, MapPin, ArrowRight } from "lucide-react";
         alt="RIT MUN Conference"
         class="w-full h-full object-cover object-center"
         loading="eager"
+        widths={[640, 1024, 1600, 2000]}
+        sizes="100vw"
+        format="avif"
+        quality="high"
       />
       {/* Dark overlay to guarantee text readability */}
       <div
@@ -72,7 +114,7 @@ import { Globe, Users, Award, MapPin, ArrowRight } from "lucide-react";
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon-box">
-          <Users className="icon-md" client:load />
+          <Users className="icon-md" aria-hidden="true" />
         </div>
         <h3 class="feature-title">Diverse Committees</h3>
         <p class="feature-desc">
@@ -83,7 +125,7 @@ import { Globe, Users, Award, MapPin, ArrowRight } from "lucide-react";
       </div>
       <div class="feature-card">
         <div class="feature-icon-box">
-          <Award className="icon-md" client:load />
+          <Award className="icon-md" aria-hidden="true" />
         </div>
         <h3 class="feature-title">Skill Building</h3>
         <p class="feature-desc">
@@ -93,7 +135,7 @@ import { Globe, Users, Award, MapPin, ArrowRight } from "lucide-react";
       </div>
       <div class="feature-card">
         <div class="feature-icon-box">
-          <MapPin className="icon-md" client:load />
+          <MapPin className="icon-md" aria-hidden="true" />
         </div>
         <h3 class="feature-title">RIT Campus</h3>
         <p class="feature-desc">

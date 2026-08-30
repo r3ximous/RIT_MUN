@@ -1,43 +1,60 @@
 ---
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
 
-//imppoort header and footer components
 import Header from '../components/astro/Header.astro';
 import Footer from '../components/astro/Footer.astro';
-
-//Vercel module imports
-import SpeedInsights from "@vercel/speed-insights/astro"
-import Analytics from '@vercel/analytics/astro'
+import defaultOgImage from '../Images/banner_plain_2.png';
 
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
 
 const { title, description = 'Official RIT MUN Website' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const optimizedOgImage = await getImage({
+  src: defaultOgImage,
+  width: 1200,
+  height: 630,
+});
+const ogImageURL = new URL(optimizedOgImage.src, Astro.site);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-	</head>
-	<body class="layout-body">
-		<a href="#main-content" class="skip-to-content">Skip to content</a>
-		
-		<Header />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
 
-		<main id="main-content" class="layout-main">
-			<slot />
-		</main>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RIT MUN" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
 
-		<Footer />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
-		<SpeedInsights />
-		<Analytics />
-	</body>
+    <slot name="head" />
+  </head>
+  <body class="layout-body">
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <Header />
+
+    <main id="main-content" class="layout-main">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
 </html>

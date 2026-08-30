@@ -1,5 +1,5 @@
 ---
-name: "Jana Dardir"
-role: "Head of Finance"
+name: 'Jana Dardir'
+role: 'Head of Finance'
 order: 3
 ---

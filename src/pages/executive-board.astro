@@ -7,20 +7,31 @@ const sortedBoardMembers = boardMembers.sort(
   (a, b) => a.data.order - b.data.order,
 );
 ---
+
 <Layout title="RIT MUN | Executive Board">
   <div class="max-w-4xl mx-auto px-6 py-20 animate-in fade-in">
     <div class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">Executive Board</h1>
-      <p class="text-xl text-gray-600">Meet the secretariat members organizing this year's conference.</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">
+        Executive Board
+      </h1>
+      <p class="text-xl text-gray-600">
+        Meet the secretariat members organizing this year's conference.
+      </p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
-      {sortedBoardMembers.map((member) => (
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-          <h2 class="text-2xl font-bold text-brand-dark mb-2">{member.data.name}</h2>
-          <p class="text-brand-orange font-semibold uppercase tracking-wide text-sm">{member.data.role}</p>
-        </div>
-      ))}
+      {
+        sortedBoardMembers.map((member) => (
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+            <h2 class="text-2xl font-bold text-brand-dark mb-2">
+              {member.data.name}
+            </h2>
+            <p class="text-brand-orange font-semibold uppercase tracking-wide text-sm">
+              {member.data.role}
+            </p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </Layout>

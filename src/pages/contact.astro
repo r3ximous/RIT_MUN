@@ -2,78 +2,129 @@
 import Layout from '../layouts/Layout.astro';
 import { Mail, Phone, MapPin } from 'lucide-react';
 ---
+
 <Layout title="RIT MUN | Contact Us">
   <div class="contact-page-wrapper animate-in fade-in slide-in-from-bottom-8">
     <div class="contact-info-col">
       <h1 class="contact-title">Get in Touch</h1>
       <p class="contact-subtitle">
-        Need assistance with registration, have questions about a committee, or want to sponsor our conference? Our Secretariat is here to help and we typically respond within 24 hours.
+        Need assistance with registration, have questions about a committee, or
+        want to sponsor our conference? Our Secretariat is here to help and we
+        typically respond within 24 hours.
       </p>
 
       <div class="contact-methods">
         <div class="contact-method-item">
           <div class="contact-icon-box">
-            <Mail className="icon-md" client:load/>
+            <Mail className="icon-md" aria-hidden="true" />
           </div>
           <div>
-             <h3 class="contact-method-title">Email</h3>
-             <a href="mailto:secgen@ritmun.org" class="contact-email-link">secgen@ritmun.org</a>
+            <h3 class="contact-method-title">Email</h3>
+            <a href="mailto:secgen@ritmun.org" class="contact-email-link"
+              >secgen@ritmun.org</a
+            >
           </div>
         </div>
-        
+
         <div class="contact-method-item">
           <div class="contact-icon-box">
-             <Phone className="icon-md" client:load/>
+            <Phone className="icon-md" aria-hidden="true" />
           </div>
           <div>
             <h3 class="contact-method-title">Phone</h3>
-            <a href="tel:+15854752411" class="contact-phone-link">(585) 475-2411</a>
+            <a href="tel:+15854752411" class="contact-phone-link"
+              >(585) 475-2411</a
+            >
           </div>
         </div>
-        
+
         <div class="contact-method-item">
           <div class="contact-icon-box">
-            <MapPin className="icon-md" client:load/>
+            <MapPin className="icon-md" aria-hidden="true" />
           </div>
           <div>
-             <h3 class="contact-method-title">Office</h3>
-             <address class="contact-address">
-               Campus Center Room 1000<br/>
-               Rochester Institute of Technology<br/>
-               1 Lomb Memorial Dr<br/>
-               Rochester, NY 14623
-             </address>
+            <h3 class="contact-method-title">Office</h3>
+            <address class="contact-address">
+              Campus Center Room 1000<br />
+              Rochester Institute of Technology<br />
+              1 Lomb Memorial Dr<br />
+              Rochester, NY 14623
+            </address>
           </div>
         </div>
       </div>
     </div>
 
     <div class="contact-form-box">
-       <h2 class="contact-form-title">Send a Message</h2>
-       <form class="contact-form" action="/success">
+      <h2 class="contact-form-title">Send a Message</h2>
+      <form id="contact-form" class="contact-form">
         <div class="agenda-list">
           <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" name="name" 
-            class="form-input" 
-            placeholder="Jane Doe" required />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-input"
+            placeholder="Jane Doe"
+            required
+          />
         </div>
         <div class="agenda-list">
           <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" name="email" 
-            class="form-input" 
-            placeholder="jane@example.com" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="jane@example.com"
+            required
+          />
         </div>
         <div class="form-group-flex">
           <label for="message" class="form-label">Message</label>
-          <textarea id="message" name="message" rows="5" 
-            class="form-textarea" 
-            placeholder="How can we help you?" required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            class="form-textarea"
+            placeholder="How can we help you?"
+            required></textarea>
         </div>
-        <button type="submit" 
-          class="form-submit-btn">
-          Send Message
-        </button>
+        <button type="submit" class="form-submit-btn"> Send Message </button>
       </form>
+      {
+        /* TODO: this form isn't wired up to a real backend yet (this site has
+          no server runtime - it's static FTP hosting). Point it at a form
+          service like Formspree/Getform, or a mailto fallback, once decided.
+          For now, submissions are intercepted client-side so delegates get an
+          honest confirmation instead of a broken redirect. */
+      }
+      <div
+        id="contact-form-success"
+        role="status"
+        class="hidden rounded-lg border border-brand-orange/30 bg-brand-orange/10 p-4 text-brand-dark"
+      >
+        Thanks for reaching out! This form is still being connected to our inbox
+        &mdash; please email us directly at{' '}
+        <a href="mailto:secgen@ritmun.org" class="contact-email-link"
+          >secgen@ritmun.org</a
+        >{' '}
+        in the meantime and we'll get back to you within 24 hours.
+      </div>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById(
+      'contact-form',
+    ) as HTMLFormElement | null;
+    const success = document.getElementById('contact-form-success');
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      form.reset();
+      form.classList.add('hidden');
+      success?.classList.remove('hidden');
+    });
+  </script>
 </Layout>

@@ -1,6 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { BookOpen, Link as LinkIcon, FileText } from "lucide-react";
+import Layout from '../layouts/Layout.astro';
+import { BookOpen, Link as LinkIcon, FileText } from 'lucide-react';
+import ResourceCard from '../components/astro/ResourceCard.astro';
 ---
 
 <Layout title="RIT MUN | Resources">
@@ -16,97 +17,35 @@ import { BookOpen, Link as LinkIcon, FileText } from "lucide-react";
     </div>
 
     <div class="space-y-8">
-      {/* Delegate Handbook */}
-      <a
+      <ResourceCard
+        title="Delegate Handbook"
+        description="Comprehensive conference guidance and reference material for delegates."
         href="/documents/Final%20delegate%20handbook%20.docx"
         download="Final delegate handbook .docx"
-        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
       >
-        <div
-          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
-        >
-          <BookOpen className="w-8 h-8" client:load />
-        </div>
-        <div>
-          <h2
-            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
-          >
-            Delegate Handbook
-          </h2>
-          <p class="text-gray-600">
-            Comprehensive conference guidance and reference material for
-            delegates.
-          </p>
-        </div>
-      </a>
+        <BookOpen slot="icon" className="w-8 h-8" aria-hidden="true" />
+      </ResourceCard>
 
-      {/* Rules of Procedure */}
-      <a
-        href="#"
-        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      <ResourceCard
+        title="Rules of Procedure"
+        description="The official parliamentary rules used in all RIT MUN committees."
       >
-        <div
-          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
-        >
-          <BookOpen className="w-8 h-8" client:load />
-        </div>
-        <div>
-          <h2
-            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
-          >
-            Rules of Procedure
-          </h2>
-          <p class="text-gray-600">
-            The official parliamentary rules used in all RIT MUN committees.
-          </p>
-        </div>
-      </a>
+        <BookOpen slot="icon" className="w-8 h-8" aria-hidden="true" />
+      </ResourceCard>
 
-      {/* Position Paper Guide */}
-      <a
-        href="#"
-        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      <ResourceCard
+        title="Position Paper Guide"
+        description="Guidelines, formatting requirements, and examples for writing an excellent position paper."
       >
-        <div
-          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
-        >
-          <FileText className="w-8 h-8" client:load />
-        </div>
-        <div>
-          <h2
-            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
-          >
-            Position Paper Guide
-          </h2>
-          <p class="text-gray-600">
-            Guidelines, formatting requirements, and examples for writing an
-            excellent position paper.
-          </p>
-        </div>
-      </a>
+        <FileText slot="icon" className="w-8 h-8" aria-hidden="true" />
+      </ResourceCard>
 
-      {/* External Links */}
-      <a
-        href="#"
-        class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all group"
+      <ResourceCard
+        title="Research Links"
+        description="Curated databases, UN records, and reliable news sources for your topic research."
       >
-        <div
-          class="bg-orange-50 p-4 rounded-lg text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors"
-        >
-          <LinkIcon className="w-8 h-8" client:load />
-        </div>
-        <div>
-          <h2
-            class="text-2xl font-bold text-brand-dark mb-2 group-hover:text-brand-orange transition-colors"
-          >
-            Research Links
-          </h2>
-          <p class="text-gray-600">
-            Curated databases, UN records, and reliable news sources for your
-            topic research.
-          </p>
-        </div>
-      </a>
+        <LinkIcon slot="icon" className="w-8 h-8" aria-hidden="true" />
+      </ResourceCard>
     </div>
   </div>
 </Layout>

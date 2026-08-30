@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-
     // date variables
     const year = 2026;
-    const month = 11;
-    const day = 1;
+    const month = 12;
+    const day = 4;
     const hour = 9;
     const minute = 0;
     const second = 0;
 
-    // Target date: Dec 1, 2026, 9:00 AM
+    // Target date: Dec 4, 2026, 9:00 AM
     const targetDate = new Date(year, month, day, hour, minute, second);
 
     const interval = setInterval(() => {
@@ -23,9 +27,11 @@ const CountdownTimer = () => {
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          ),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       } else {
         clearInterval(interval);
@@ -47,9 +53,7 @@ const CountdownTimer = () => {
             <div className="countdown-number-box">
               {value.toString().padStart(2, '0')}
             </div>
-            <div className="countdown-unit-label">
-              {unit}
-            </div>
+            <div className="countdown-unit-label">{unit}</div>
           </div>
         ))}
       </div>

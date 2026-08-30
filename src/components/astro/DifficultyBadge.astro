@@ -1,0 +1,26 @@
+---
+interface Props {
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  size?: 'sm' | 'lg';
+  class?: string;
+}
+
+const { difficulty, size = 'sm', class: className = '' } = Astro.props;
+
+const colorClasses: Record<Props['difficulty'], string> = {
+  Beginner: 'bg-green-100 text-green-800',
+  Intermediate: 'bg-blue-100 text-blue-800',
+  Advanced: 'bg-purple-100 text-purple-800',
+};
+
+const sizeClasses: Record<'sm' | 'lg', string> = {
+  sm: 'px-3 py-1 text-xs font-semibold',
+  lg: 'px-4 py-2 text-sm font-bold',
+};
+---
+
+<span
+  class={`rounded-full whitespace-nowrap ${sizeClasses[size]} ${colorClasses[difficulty]} ${className}`}
+>
+  {difficulty}
+</span>

@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import { HelpCircle } from "lucide-react";
-import Layout from "../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import { HelpCircle } from 'lucide-react';
+import Layout from '../layouts/Layout.astro';
 
-const allFaqs = await getCollection("faqs");
+const allFaqs = await getCollection('faqs');
 const sortedFaqs = allFaqs.sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -13,7 +13,7 @@ const sortedFaqs = allFaqs.sort((a, b) => a.data.order - b.data.order);
       <div
         class="inline-flex justify-center items-center bg-orange-100 p-4 rounded-full text-brand-orange mb-6"
       >
-        <HelpCircle className="w-10 h-10" client:load />
+        <HelpCircle className="w-10 h-10" aria-hidden="true" />
       </div>
       <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">
         Frequently Asked Questions

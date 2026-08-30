@@ -1,5 +1,5 @@
 ---
-name: "Layan Salahat"
-role: "Head of Logistics"
+name: 'Layan Salahat'
+role: 'Head of Logistics'
 order: 4
 ---

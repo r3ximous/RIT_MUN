@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { FileText } from 'lucide-react';
 ---
+
 <Layout title="RIT MUN | Registration">
   <div class="registration-page-wrapper animate-in fade-in">
     <div class="registration-card">
@@ -9,7 +10,9 @@ import { FileText } from 'lucide-react';
         <div>
           <h1 class="registration-title">Join the Debate</h1>
           <p class="registration-desc">
-            Secure your spot at the next RIT MUN conference. Registration includes access to all committee sessions, the delegate social, and conference materials.
+            Secure your spot at the next RIT MUN conference. Registration
+            includes access to all committee sessions, the delegate social, and
+            conference materials.
           </p>
           <ul class="registration-steps">
             <li class="committee-meta-item">
@@ -27,16 +30,17 @@ import { FileText } from 'lucide-react';
           </ul>
         </div>
       </div>
-      
+
       <div class="registration-portal-col">
         <div class="portal-icon-box">
-          <FileText className="icon-lg" client:load/>
+          <FileText className="icon-lg" aria-hidden="true" />
         </div>
         <h2 class="portal-title">Registration Portal</h2>
         <p class="portal-desc">
-          We utilize MyMUN for all conference registrations, allocations, and payments to ensure a seamless experience. 
+          We utilize MyMUN for all conference registrations, allocations, and
+          payments to ensure a seamless experience.
         </p>
-        
+
         <div class="deadlines-box">
           <h3 class="deadlines-title">Key Deadlines:</h3>
           <ul class="deadlines-list">
@@ -55,12 +59,13 @@ import { FileText } from 'lucide-react';
           </ul>
         </div>
 
-        <a 
-          href="https://example.com/register" 
-          class="portal-action-btn"
+        <button
+          type="button"
+          class="portal-action-btn opacity-60 cursor-not-allowed"
+          disabled
         >
-          Apply on MyMUN
-        </a>
+          Apply on MyMUN (Coming Soon)
+        </button>
       </div>
     </div>
   </div>
