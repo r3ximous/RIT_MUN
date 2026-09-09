@@ -1,0 +1,61 @@
+---
+// src/components/CountdownTimer.astro
+---
+
+<div class="countdown-wrapper">
+  <div class="countdown-text-col">
+    <h3 class="countdown-title">Conference Starts In:</h3>
+    <p class="countdown-subtitle">Prepare your position papers!</p>
+  </div>
+  <div class="countdown-units-row">
+    <div class="countdown-unit-col">
+      <div class="countdown-number-box" id="timer-days">00</div>
+      <div class="countdown-unit-label">days</div>
+    </div>
+    <div class="countdown-unit-col">
+      <div class="countdown-number-box" id="timer-hours">00</div>
+      <div class="countdown-unit-label">hours</div>
+    </div>
+    <div class="countdown-unit-col">
+      <div class="countdown-number-box" id="timer-minutes">00</div>
+      <div class="countdown-unit-label">minutes</div>
+    </div>
+    <div class="countdown-unit-col">
+      <div class="countdown-number-box" id="timer-seconds">00</div>
+      <div class="countdown-unit-label">seconds</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Target date: Dec 4, 2026, 9:00 AM (Month index 11 = December)
+  const targetDate = new Date(2026, 11, 4, 9, 0, 0).getTime();
+
+  const daysEl = document.getElementById("timer-days");
+  const hoursEl = document.getElementById("timer-hours");
+  const minutesEl = document.getElementById("timer-minutes");
+  const secondsEl = document.getElementById("timer-seconds");
+
+  function updateTimer() {
+    const now = Date.now();
+    const difference = targetDate - now;
+
+    if (difference <= 0) {
+      clearInterval(interval);
+      return;
+    }
+
+    const d = Math.floor(difference / 86400000);
+    const h = Math.floor((difference % 86400000) / 3600000);
+    const m = Math.floor((difference % 3600000) / 60000);
+    const s = Math.floor((difference % 60000) / 1000);
+
+    if (daysEl) daysEl.textContent = String(d).padStart(2, "0");
+    if (hoursEl) hoursEl.textContent = String(h).padStart(2, "0");
+    if (minutesEl) minutesEl.textContent = String(m).padStart(2, "0");
+    if (secondsEl) secondsEl.textContent = String(s).padStart(2, "0");
+  }
+
+  updateTimer();
+  const interval = setInterval(updateTimer, 1000);
+</script>

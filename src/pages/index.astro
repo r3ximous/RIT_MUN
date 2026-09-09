@@ -1,38 +1,38 @@
 ---
-import { Image } from 'astro:assets';
-import bannerImg from '../Images/banner_plain_2.png';
-import Layout from '../layouts/Layout.astro';
-import CountdownTimer from '../components/react/CountdownTimer';
-import { Users, Award, MapPin, ArrowRight } from 'lucide-react';
+import { Image } from "astro:assets";
+import bannerImg from "../Images/banner_plain_2.png";
+import Layout from "../layouts/Layout.astro";
+import CountdownTimer from "../components/react/CountdownTimer";
+import { Users, Award, MapPin, ArrowRight } from "lucide-react";
 
 // Structured data so search engines understand this page represents a real
 // event (dates/location mirror the schedule collection and Contact page).
 const eventJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Event',
-  name: 'RIT Model United Nations Conference',
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: "RIT Model United Nations Conference",
   description:
-    'Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.',
-  startDate: '2026-12-04T15:00:00-05:00',
-  endDate: '2026-12-06T15:00:00-05:00',
-  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  eventStatus: 'https://schema.org/EventScheduled',
+    "Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.",
+  startDate: "2026-12-04T15:00:00-05:00",
+  endDate: "2026-12-06T15:00:00-05:00",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  eventStatus: "https://schema.org/EventScheduled",
   location: {
-    '@type': 'Place',
-    name: 'Rochester Institute of Technology',
+    "@type": "Place",
+    name: "Rochester Institute of Technology",
     address: {
-      '@type': 'PostalAddress',
-      streetAddress: '1 Lomb Memorial Dr',
-      addressLocality: 'Rochester',
-      addressRegion: 'NY',
-      postalCode: '14623',
-      addressCountry: 'US',
+      "@type": "PostalAddress",
+      streetAddress: "1 Lomb Memorial Dr",
+      addressLocality: "Rochester",
+      addressRegion: "NY",
+      postalCode: "14623",
+      addressCountry: "US",
     },
   },
   organizer: {
-    '@type': 'Organization',
-    name: 'RIT Model United Nations',
-    url: Astro.site ? new URL('/', Astro.site).toString() : undefined,
+    "@type": "Organization",
+    name: "RIT Model United Nations",
+    url: Astro.site ? new URL("/", Astro.site).toString() : undefined,
   },
 };
 ---
