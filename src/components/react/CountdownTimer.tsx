@@ -10,9 +10,9 @@ const CountdownTimer = () => {
 
   useEffect(() => {
     // date variables
-    const year = 2026;
-    const month = 12;
-    const day = 4;
+    const year = 2027;
+    const month = 1;
+    const day = 22;
     const hour = 9;
     const minute = 0;
     const second = 0;
