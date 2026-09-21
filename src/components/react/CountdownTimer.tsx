@@ -9,15 +9,14 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    // date variables
-    const year = 2027;
-    const month = 1;
-    const day = 22;
-    const hour = 9;
-    const minute = 0;
+    // Target date: Early Bird Deadline - November 1, 2026 at 11:59 PM
+    const year = 2026;
+    const month = 10; // November (0-indexed)
+    const day = 1;
+    const hour = 23;
+    const minute = 59;
     const second = 0;
 
-    // Target date: Dec 4, 2026, 9:00 AM
     const targetDate = new Date(year, month, day, hour, minute, second);
 
     const interval = setInterval(() => {
@@ -44,8 +43,8 @@ const CountdownTimer = () => {
   return (
     <div className="countdown-wrapper">
       <div className="countdown-text-col">
-        <h3 className="countdown-title">Conference Starts In:</h3>
-        <p className="countdown-subtitle">Prepare your position papers!</p>
+        <h3 className="countdown-title">Early Bird Registration Ends In:</h3>
+        <p className="countdown-subtitle">Save $15 - Register before November 1st!</p>
       </div>
       <div className="countdown-units-row">
         {Object.entries(timeLeft).map(([unit, value]) => (

@@ -3,7 +3,29 @@ import { Image } from "astro:assets";
 import bannerImg from "../Images/banner_plain_2.png";
 import Layout from "../layouts/Layout.astro";
 import CountdownTimer from "../components/react/CountdownTimer";
-import { Users, Award, MapPin, ArrowRight } from "lucide-react";
+import { Users, Award, MapPin, ArrowRight, Calendar, Building2, DollarSign } from "lucide-react";
+
+// Conference details - specific and verifiable
+const conferenceDetails = {
+  name: "RIT Model United Nations Conference 2026",
+  dates: "December 4-6, 2026",
+  location: "Rochester Institute of Technology",
+  venue: "Gosnell Hall & Student Alumni Union",
+  committees: 12,
+  expectedDelegates: "250+",
+  schoolsAttended: "40+",
+  earlyBirdPrice: "$40",
+  regularPrice: "$55",
+  earlyBirdDeadline: "November 1, 2026",
+};
+
+// Actual committee lineup
+const committeeLineup = [
+  { name: "UN Security Council", type: "Crisis", difficulty: "Advanced" },
+  { name: "World Health Organization", type: "Specialized", difficulty: "Beginner" },
+  { name: "UN Human Rights Council", type: "General Assembly", difficulty: "Intermediate" },
+  { name: "DISEC", type: "General Assembly", difficulty: "Intermediate" },
+];
 
 // Structured data so search engines understand this page represents a real
 // event (dates/location mirror the schedule collection and Contact page).
@@ -12,7 +34,7 @@ const eventJsonLd = {
   "@type": "Event",
   name: "RIT Model United Nations Conference",
   description:
-    "Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.",
+    "Join 250+ delegates from 40+ schools at Rochester Institute of Technology for our annual MUN conference featuring 12 committees across three days of debate.",
   startDate: "2026-12-04T15:00:00-05:00",
   endDate: "2026-12-06T15:00:00-05:00",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -33,6 +55,13 @@ const eventJsonLd = {
     "@type": "Organization",
     name: "RIT Model United Nations",
     url: Astro.site ? new URL("/", Astro.site).toString() : undefined,
+  },
+  offers: {
+    "@type": "Offer",
+    price: "40.00",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    validFrom: "2026-09-01",
   },
 };
 ---
@@ -76,20 +105,19 @@ const eventJsonLd = {
         <div
           class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-orange text-sm font-semibold mb-2 border border-brand-orange/30 backdrop-blur-sm"
         >
-          <span>RIT Model United Nations Conference</span>
+          <span>{conferenceDetails.dates} • {conferenceDetails.venue}</span>
         </div>
 
         <h1
           class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight"
         >
-          Diplomacy in <span class="text-brand-highlight">Action</span>
+          Debate Global Crises at <span class="text-brand-highlight">RIT</span>
         </h1>
 
         <p
           class="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl mx-auto md:mx-0"
         >
-          Join hundreds of delegates at Rochester Institute of Technology for a
-          weekend of rigorous debate, negotiation, and global problem-solving.
+          Join {conferenceDetails.expectedDelegates} delegates from {conferenceDetails.schoolsAttended} schools for our annual conference featuring {conferenceDetails.committees} committees. Early bird registration: {conferenceDetails.earlyBirdPrice}.
         </p>
 
         <div
@@ -106,42 +134,108 @@ const eventJsonLd = {
     </div>
   </section>
 
-  {/* Island Architecture: Countdown */}
+  {/* Island Architecture: Countdown - Now tied to early bird deadline */}
   <CountdownTimer client:load />
 
-  {/* About Section */}
+  {/* About Section - Replaced generic feature cards with specific info */}
   <section class="features-section">
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <Users className="icon-md" aria-hidden="true" />
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-8 text-center">What to Expect</h2>
+      
+      {/* Quick Stats Bar */}
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div class="flex justify-center mb-2">
+            <Users className="w-8 h-8 text-brand-orange" />
+          </div>
+          <div class="text-3xl font-bold text-brand-dark">{conferenceDetails.expectedDelegates}</div>
+          <div class="text-sm text-gray-600">Delegates</div>
         </div>
-        <h3 class="feature-title">Diverse Committees</h3>
-        <p class="feature-desc">
-          From the fast-paced Crisis committees to the expansive General
-          Assembly, we offer a dynamic range of topics suitable for all
-          experience levels.
-        </p>
+        <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div class="flex justify-center mb-2">
+            <Award className="w-8 h-8 text-brand-orange" />
+          </div>
+          <div class="text-3xl font-bold text-brand-dark">{conferenceDetails.committees}</div>
+          <div class="text-sm text-gray-600">Committees</div>
+        </div>
+        <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div class="flex justify-center mb-2">
+            <Building2 className="w-8 h-8 text-brand-orange" />
+          </div>
+          <div class="text-3xl font-bold text-brand-dark">{conferenceDetails.schoolsAttended}</div>
+          <div class="text-sm text-gray-600">Schools</div>
+        </div>
+        <div class="text-center p-4 bg-white rounded-lg shadow-sm">
+          <div class="flex justify-center mb-2">
+            <DollarSign className="w-8 h-8 text-brand-orange" />
+          </div>
+          <div class="text-3xl font-bold text-brand-dark">{conferenceDetails.earlyBirdPrice}</div>
+          <div class="text-sm text-gray-600">Early Bird</div>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <Award className="icon-md" aria-hidden="true" />
+
+      {/* Committee Preview */}
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-brand-dark mb-6">Featured Committees</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          {committeeLineup.map((committee) => (
+            <div class="bg-white p-6 rounded-xl border border-gray-200 hover:border-brand-orange transition-colors">
+              <div class="flex justify-between items-start mb-3">
+                <h4 class="text-xl font-bold text-brand-dark">{committee.name}</h4>
+                <span class="text-xs font-semibold text-brand-orange uppercase tracking-wider bg-orange-50 px-2 py-1 rounded">{committee.type}</span>
+              </div>
+              <p class="text-gray-600 text-sm mb-3">Difficulty: {committee.difficulty}</p>
+              <a href="/committees" class="text-brand-orange font-semibold text-sm hover:underline">View all topics →</a>
+            </div>
+          ))}
         </div>
-        <h3 class="feature-title">Skill Building</h3>
-        <p class="feature-desc">
-          Enhance your public speaking, negotiation, and policy-writing skills.
-          RIT MUN is designed to challenge and grow tomorrow's leaders.
-        </p>
+        <div class="text-center mt-8">
+          <a href="/committees" class="inline-flex items-center gap-2 text-brand-orange font-bold hover:text-orange-600 transition-colors">
+            See all {conferenceDetails.committees} committees <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <MapPin className="icon-md" aria-hidden="true" />
+
+      {/* Weekend Timeline */}
+      <div>
+        <h3 class="text-2xl font-bold text-brand-dark mb-6">Conference Timeline</h3>
+        <div class="space-y-4">
+          <div class="flex gap-4 items-start">
+            <div class="w-32 flex-shrink-0 text-right">
+              <div class="font-bold text-brand-dark">Friday, Dec 4</div>
+              <div class="text-sm text-gray-600">3:00 PM - 10:00 PM</div>
+            </div>
+            <div class="flex-1 bg-white p-4 rounded-lg border-l-4 border-brand-orange">
+              <div class="font-bold text-brand-dark">Registration & Opening Ceremonies</div>
+              <div class="text-sm text-gray-600">Check-in at Campus Center, followed by opening ceremonies in Ingle Auditorium</div>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-32 flex-shrink-0 text-right">
+              <div class="font-bold text-brand-dark">Saturday, Dec 5</div>
+              <div class="text-sm text-gray-600">8:00 AM - 6:00 PM</div>
+            </div>
+            <div class="flex-1 bg-white p-4 rounded-lg border-l-4 border-brand-orange">
+              <div class="font-bold text-brand-dark">Full Day of Committee Sessions</div>
+              <div class="text-sm text-gray-600">Three sessions of debate, negotiation, and resolution drafting</div>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start">
+            <div class="w-32 flex-shrink-0 text-right">
+              <div class="font-bold text-brand-dark">Sunday, Dec 6</div>
+              <div class="text-sm text-gray-600">8:00 AM - 3:00 PM</div>
+            </div>
+            <div class="flex-1 bg-white p-4 rounded-lg border-l-4 border-brand-orange">
+              <div class="font-bold text-brand-dark">Final Session & Closing Ceremonies</div>
+              <div class="text-sm text-gray-600">Final debates followed by awards ceremony</div>
+            </div>
+          </div>
         </div>
-        <h3 class="feature-title">RIT Campus</h3>
-        <p class="feature-desc">
-          Experience the cutting-edge facilities of the Rochester Institute of
-          Technology, blending technology with traditional diplomacy.
-        </p>
+        <div class="text-center mt-8">
+          <a href="/schedule" class="inline-flex items-center gap-2 text-brand-orange font-bold hover:text-orange-600 transition-colors">
+            View full schedule <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </div>
   </section>
