@@ -1,147 +1,258 @@
 ---
-import { Image } from "astro:assets";
-import bannerImg from "../Images/banner_plain_2.png";
-import Layout from "../layouts/Layout.astro";
-import CountdownTimer from "../components/react/CountdownTimer";
-import { Users, Award, MapPin, ArrowRight } from "lucide-react";
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import CountdownTimer from '../components/react/CountdownTimer';
 
-// Structured data so search engines understand this page represents a real
-// event (dates/location mirror the schedule collection and Contact page).
+const committees = (await getCollection('committees')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const schedule = (await getCollection('schedule')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const committeeCount = committees.length;
+const topicCount = committees.reduce(
+  (total, committee) => total + committee.data.topics.length,
+  0,
+);
+const conferenceDays = schedule.length;
+const sessionCount = schedule.reduce(
+  (total, day) =>
+    total + day.data.events.filter((event) => event.type === 'Session').length,
+  0,
+);
+
 const eventJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Event",
-  name: "RIT Model United Nations Conference",
+  '@context': 'https://schema.org',
+  '@type': 'EducationEvent',
+  name: 'RIT Dubai Model United Nations 2026',
   description:
-    "Join hundreds of delegates at Rochester Institute of Technology for a weekend of rigorous debate, negotiation, and global problem-solving.",
-  startDate: "2026-12-04T15:00:00-05:00",
-  endDate: "2026-12-06T15:00:00-05:00",
-  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  eventStatus: "https://schema.org/EventScheduled",
+    'Join delegates at RIT Dubai for a weekend of rigorous debate, negotiation and global problem-solving.',
+  startDate: '2026-12-04T15:00:00+04:00',
+  endDate: '2026-12-06T15:00:00+04:00',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
-    "@type": "Place",
-    name: "Rochester Institute of Technology",
+    '@type': 'Place',
+    name: 'Rochester Institute of Technology of Dubai',
     address: {
-      "@type": "PostalAddress",
-      streetAddress: "1 Lomb Memorial Dr",
-      addressLocality: "Rochester",
-      addressRegion: "NY",
-      postalCode: "14623",
-      addressCountry: "US",
+      '@type': 'PostalAddress',
+      streetAddress: 'Dubai Silicon Oasis',
+      addressLocality: 'Dubai',
+      addressCountry: 'AE',
     },
   },
   organizer: {
-    "@type": "Organization",
-    name: "RIT Model United Nations",
-    url: Astro.site ? new URL("/", Astro.site).toString() : undefined,
+    '@type': 'CollegeOrUniversity',
+    name: 'Rochester Institute of Technology of Dubai',
   },
+};
+
+const committeeAbbreviations: Record<string, string> = {
+  unsc: 'UNSC',
+  who: 'WHO',
+  unhrc: 'UNHRC',
+  disec: 'DISEC',
 };
 ---
 
-<Layout title="RIT MUN | Homepage">
+<Layout
+  title="RIT Dubai MUN | Home"
+  description="RIT Dubai Model United Nations, December 4–6, 2026 at Rochester Institute of Technology of Dubai."
+>
   <Fragment slot="head">
-    <script
-      type="application/ld+json"
-      is:inline
-      set:html={JSON.stringify(eventJsonLd)}
-    />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(eventJsonLd)} />
   </Fragment>
-  {/* Hero Section */}
-  <section
-    class="relative text-white pt-24 pb-32 px-6 overflow-hidden min-h-[70vh] flex items-center"
-  >
-    {/* Optimized Absolute Background Image */}
-    <div class="absolute inset-0 w-full h-full z-0">
-      <Image
-        src={bannerImg}
-        alt="RIT MUN Conference"
-        class="w-full h-full object-cover object-center"
-        loading="eager"
-        widths={[640, 1024, 1600, 2000]}
+
+  <section class="hero" aria-labelledby="hero-title">
+    <picture class="hero-photo">
+      <source
+        type="image/avif"
+        srcset="/img/campus-800.avif 800w, /img/campus.avif 1366w"
         sizes="100vw"
-        format="avif"
-        quality="high"
       />
-      {/* Dark overlay to guarantee text readability */}
-      <div
-        class="absolute inset-0 bg-brand-dark/20 bg-linear-to-r from-brand-dark/95 to-brand-dark/40"
-      >
-      </div>
-    </div>
-
-    {/* Content Area */}
-    <div class="max-w-7xl mx-auto flex flex-col z-10 w-full relative">
-      <div
-        class="hero-content max-w-3xl text-center md:text-left space-y-6 mx-auto md:mx-0"
-      >
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-brand-orange text-sm font-semibold mb-2 border border-brand-orange/30 backdrop-blur-sm"
-        >
-          <span>RIT Model United Nations Conference</span>
-        </div>
-
-        <h1
-          class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight"
-        >
-          Diplomacy in <span class="text-brand-highlight">Action</span>
-        </h1>
-
-        <p
-          class="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl mx-auto md:mx-0"
-        >
-          Join hundreds of delegates at Rochester Institute of Technology for a
-          weekend of rigorous debate, negotiation, and global problem-solving.
-        </p>
-
-        <div
-          class="pt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-        >
-          <a href="/registration" class="hero-btn-primary">
-            Register Now <ArrowRight />
-          </a>
-          <a href="/committees" class="hero-btn-secondary backdrop-blur-md">
-            View Committees
-          </a>
-        </div>
+      <img
+        src="/img/campus.jpg"
+        srcset="/img/campus-800.jpg 800w, /img/campus.jpg 1366w"
+        sizes="100vw"
+        alt="The entrance of Rochester Institute of Technology of Dubai, with the RIT sign in orange above the doors"
+        width="1366"
+        height="688"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <p class="hero-tag">Diplomacy in Action</p>
+      <h1 id="hero-title">RIT Dubai Model United Nations</h1>
+      <p class="hero-meta">December 4–6, 2026 at RIT Dubai, Dubai Silicon Oasis</p>
+      <div class="hero-ctas">
+        <a class="btn btn-orange btn-lg" href="/registration/">Register</a>
+        <a class="btn btn-outline btn-lg btn-on-dark" href="/committees/">Explore committees</a>
       </div>
     </div>
   </section>
 
-  {/* Island Architecture: Countdown */}
-  <CountdownTimer client:load />
+  <section class="cd-bar" aria-label="Countdown to the conference">
+    <div class="wrap cd-bar-in">
+      <CountdownTimer client:load />
+      <div class="cd-side">
+        <p><strong>December 4–6, 2026</strong><br />RIT Dubai, Dubai Silicon Oasis</p>
+        <a class="btn btn-outline btn-on-dark" href="/documents/ritd-mun-2026.ics" download="ritd-mun-2026.ics">
+          Add to calendar
+        </a>
+      </div>
+    </div>
+  </section>
 
-  {/* About Section */}
-  <section class="features-section">
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <Users className="icon-md" aria-hidden="true" />
-        </div>
-        <h3 class="feature-title">Diverse Committees</h3>
-        <p class="feature-desc">
-          From the fast-paced Crisis committees to the expansive General
-          Assembly, we offer a dynamic range of topics suitable for all
-          experience levels.
+  <section class="section stats-section" aria-label="At a glance">
+    <div class="wrap">
+      <ul class="stats" aria-label="The conference in numbers">
+        <li class="stat"><b class="num"><span class="sr-only">{committeeCount}</span><span aria-hidden="true">{committeeCount}</span></b><span>Committees</span></li>
+        <li class="stat"><b class="num"><span class="sr-only">{topicCount}</span><span aria-hidden="true">{topicCount}</span></b><span>Agenda topics</span></li>
+        <li class="stat"><b class="num"><span class="sr-only">{conferenceDays}</span><span aria-hidden="true">{conferenceDays}</span></b><span>Days of debate</span></li>
+        <li class="stat"><b class="num"><span class="sr-only">{sessionCount}</span><span aria-hidden="true">{sessionCount}</span></b><span>Committee sessions</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section intro" aria-labelledby="intro-title">
+    <div class="wrap intro-in">
+      <div class="intro-copy">
+        <h2 id="intro-title" class="section-h">A conference built for young diplomats</h2>
+        <p class="lead">
+          Join delegates at RIT Dubai for a weekend of rigorous debate,
+          negotiation and global problem-solving.
         </p>
+        <p>Open to high school and university students. Beginners to advanced delegates are welcome.</p>
+        <p><a class="link-arrow" href="/resources/">New to Model UN? Start with the delegate guides</a></p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <Award className="icon-md" aria-hidden="true" />
+      <ul class="pillars">
+        <li class="pillar">
+          <h3>Diverse committees</h3>
+          <p>From fast-paced crisis rooms to the expansive General Assembly, there is a seat for every level of experience.</p>
+        </li>
+        <li class="pillar">
+          <h3>Skill building</h3>
+          <p>Sharpen public speaking, negotiation and policy writing: skills that carry into university and beyond.</p>
+        </li>
+        <li class="pillar">
+          <h3>RIT Dubai campus</h3>
+          <p>Debate inside the cutting-edge facilities of Rochester Institute of Technology's Dubai campus.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-label="Welcome letter">
+    <div class="wrap narrow">
+      <article class="letter" aria-labelledby="letter-title">
+        <header class="letter-head">
+          <h2 id="letter-title" class="section-h">Letter from the Secretary-General</h2>
+          <p class="draft-chip">Draft placeholder: to be replaced with the Secretary-General’s own letter</p>
+        </header>
+        <div class="letter-body">
+          <p>Dear delegates,</p>
+          <p>
+            Welcome to RIT Dubai Model United Nations. Over three days at our
+            campus in Dubai Silicon Oasis, you will debate the questions that
+            real diplomats continue to address, from cyber security to access
+            to essential medicines.
+          </p>
+          <p>
+            Whether this is your first conference or your tenth, our committees
+            are designed to challenge you and help you grow as a speaker,
+            negotiator and writer. Our chairs and Secretariat will support you
+            at every step.
+          </p>
+          <p>We look forward to welcoming you to RIT Dubai in December.</p>
+          <p class="sig">
+            <span class="sig-name">Rex Marciano</span>
+            <span class="sig-role">Secretary-General, RIT Dubai Model United Nations</span>
+          </p>
         </div>
-        <h3 class="feature-title">Skill Building</h3>
-        <p class="feature-desc">
-          Enhance your public speaking, negotiation, and policy-writing skills.
-          RIT MUN is designed to challenge and grow tomorrow's leaders.
-        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="committees-title">
+    <div class="wrap">
+      <div class="section-top">
+        <h2 id="committees-title" class="section-h">Committees</h2>
+        <a class="link-arrow" href="/committees/">Compare all committees</a>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon-box">
-          <MapPin className="icon-md" aria-hidden="true" />
-        </div>
-        <h3 class="feature-title">RIT Campus</h3>
-        <p class="feature-desc">
-          Experience the cutting-edge facilities of the Rochester Institute of
-          Technology, blending technology with traditional diplomacy.
+      <ul class="com-cards">
+        {committees.map((committee) => (
+          <li class="com-card">
+            <div class="com-card-top">
+              <span class={`tag tag-${committee.data.difficulty.toLowerCase()}`}>
+                {committee.data.difficulty}
+              </span>
+              <span class="com-type">{committee.data.type}</span>
+            </div>
+            <h3>
+              <a class="card-link" href={`/committees/${committee.id}/`}>
+                <abbr title={committee.data.name}>{committeeAbbreviations[committee.id] ?? committee.id.toUpperCase()}</abbr>
+              </a>
+            </h3>
+            <p class="com-full">{committee.data.name}</p>
+            <ul class="com-topics">
+              {committee.data.topics.map((topic) => <li>{topic}</li>)}
+            </ul>
+            <a class="link-arrow" href={`/committees/${committee.id}/`}>Committee details</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="dates-title">
+    <div class="wrap split">
+      <div>
+        <h2 id="dates-title" class="section-h">Key dates</h2>
+        <ol class="key-dates">
+          <li class="kd" data-kind="registration">
+            <time datetime="2026-09-15" class="num tbc">September 15, 2026</time>
+            <span>Early bird registration closes</span>
+          </li>
+          <li class="kd" data-kind="registration">
+            <time datetime="2026-10-20" class="num">October 20, 2026</time>
+            <span>Regular registration closes</span>
+          </li>
+          <li class="kd" data-kind="paper">
+            <time datetime="2026-11-01" class="num">November 1, 2026</time>
+            <span>Position papers due</span>
+          </li>
+          <li class="kd kd-final" data-kind="conference">
+            <time datetime="2026-12-04" class="num">December 4–6, 2026</time>
+            <span>Conference at RIT Dubai</span>
+          </li>
+        </ol>
+      </div>
+      <aside class="fee-teaser" aria-labelledby="fee-teaser-title">
+        <h3 id="fee-teaser-title">Registration fees</h3>
+        <ul>
+          <li><span>Early bird</span><b class="num">USD 45</b></li>
+          <li><span>Regular</span><b class="num">USD 60</b></li>
+          <li><span>Delegation fee</span><b class="num">USD 30</b></li>
+        </ul>
+        <a class="link-arrow" href="/registration/">Fees and how to register</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="wrap cta-in">
+      <h2 id="cta-title">Take your seat at RIT Dubai MUN 2026</h2>
+      <div class="reg-cta">
+        <p class="reg-status"><span class="reg-status-dot" aria-hidden="true"></span>The registration form opens soon</p>
+        <p>
+          Registration is through the RIT Dubai MUN registration form. Follow
+          <a href="https://www.instagram.com/ritd.mun/" target="_blank" rel="noopener">
+            @ritd.mun on Instagram<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          for the announcement.
         </p>
+        <a class="btn btn-orange btn-lg" href="/registration/">Registration details</a>
       </div>
     </div>
   </section>

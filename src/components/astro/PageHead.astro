@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  lede: string;
+  crumbs?: Array<{ label: string; href?: string }>;
+}
+
+const { title, lede, crumbs = [] } = Astro.props;
+---
+
+<section class="page-head" aria-labelledby="page-title">
+  <picture class="page-head-photo">
+    <source
+      type="image/avif"
+      srcset="/img/campus-800.avif 800w, /img/campus.avif 1366w"
+      sizes="100vw"
+    />
+    <img
+      src="/img/campus.jpg"
+      srcset="/img/campus-800.jpg 800w, /img/campus.jpg 1366w"
+      sizes="100vw"
+      alt=""
+      width="1366"
+      height="688"
+      fetchpriority="high"
+    />
+  </picture>
+  <div class="page-head-shade" aria-hidden="true"></div>
+  <div class="page-head-in">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        {crumbs.map((crumb) =>
+          crumb.href ? (
+            <li><a href={crumb.href}>{crumb.label}</a></li>
+          ) : (
+            <li><span aria-current="page">{crumb.label}</span></li>
+          ),
+        )}
+      </ol>
+    </nav>
+    <h1 id="page-title">{title}</h1>
+    <p class="page-lede">{lede}</p>
+  </div>
+</section>

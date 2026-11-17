@@ -1,72 +1,79 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { FileText } from 'lucide-react';
+import PageHead from '../components/astro/PageHead.astro';
 ---
 
-<Layout title="RIT MUN | Registration">
-  <div class="registration-page-wrapper animate-in fade-in">
-    <div class="registration-card">
-      <div class="registration-info-col">
-        <div>
-          <h1 class="registration-title">Join the Debate</h1>
-          <p class="registration-desc">
-            Secure your spot at the next RIT MUN conference. Registration
-            includes access to all committee sessions, the delegate social, and
-            conference materials.
-          </p>
-          <ul class="registration-steps">
-            <li class="committee-meta-item">
-              <div class="step-number">1</div>
-              <span>Early Bird Registration: $45</span>
-            </li>
-            <li class="committee-meta-item">
-              <div class="step-number">2</div>
-              <span>Regular Registration: $60</span>
-            </li>
-            <li class="committee-meta-item">
-              <div class="step-number">3</div>
-              <span>Delegation Fee: $30</span>
-            </li>
-          </ul>
-        </div>
+<Layout title="Registration | RIT Dubai MUN 2026">
+  <PageHead
+    title="Registration"
+    lede="Registration includes access to all committee sessions, the delegate social and conference materials."
+    crumbs={[{ label: 'Registration' }]}
+  />
+
+  <section class="registration-section">
+    <div class="registration-content">
+      <p class="eyebrow">Conference fees</p>
+      <h2>Fees</h2>
+      <div class="fees">
+        <article class="fee">
+          <span class="fee-label">Early bird</span>
+          <span class="fee-price"><small>USD</small>45</span>
+          <span class="fee-note">Until September 15, 2026</span>
+        </article>
+        <article class="fee">
+          <span class="fee-label">Regular</span>
+          <span class="fee-price"><small>USD</small>60</span>
+          <span class="fee-note">Until October 20, 2026</span>
+        </article>
+        <article class="fee">
+          <span class="fee-label">Delegation fee</span>
+          <span class="fee-price"><small>USD</small>30</span>
+          <span class="fee-note">Details on the registration form</span>
+        </article>
       </div>
-
-      <div class="registration-portal-col">
-        <div class="portal-icon-box">
-          <FileText className="icon-lg" aria-hidden="true" />
-        </div>
-        <h2 class="portal-title">Registration Portal</h2>
-        <p class="portal-desc">
-          We utilize MyMUN for all conference registrations, allocations, and
-          payments to ensure a seamless experience.
+      <p class="included">Registration includes access to all committee sessions, the delegate social and conference materials.</p>
+      <div class="reg-status">
+        <p><span class="status-dot"></span>The registration form opens soon</p>
+        <p>
+          Follow <a href="https://www.instagram.com/ritd.mun/" target="_blank" rel="noopener">@ritd.mun on Instagram</a>
+          for the announcement.
         </p>
-
-        <div class="deadlines-box">
-          <h3 class="deadlines-title">Key Deadlines:</h3>
-          <ul class="deadlines-list">
-            <li class="deadline-item">
-              <span>Early Bird Ends:</span>
-              <span class="deadline-date">September 15, 2026</span>
-            </li>
-            <li class="deadline-item-mid">
-              <span>Regular Ends:</span>
-              <span class="deadline-date">October 20, 2026</span>
-            </li>
-            <li class="deadline-item-last">
-              <span>Position Papers Due:</span>
-              <span class="deadline-date">November 1, 2026</span>
-            </li>
-          </ul>
-        </div>
-
-        <button
-          type="button"
-          class="portal-action-btn opacity-60 cursor-not-allowed"
-          disabled
-        >
-          Apply on MyMUN (Coming Soon)
-        </button>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="registration-how">
+    <div class="registration-how-in">
+      <div>
+        <p class="eyebrow">The process</p>
+        <h2>How to register</h2>
+        <ol class="steps">
+          <li>Fill in the RIT Dubai MUN registration form, as an individual delegate or part of a school delegation.</li>
+          <li>Pay your registration fee following the instructions the Secretariat sends you.</li>
+          <li>Receive your committee and country allocation from the Secretariat.</li>
+          <li>Research your country and submit your position paper by November 1, 2026.</li>
+        </ol>
+        <p class="tools-note">Exact steps will be confirmed when the registration form opens.</p>
+      </div>
+      <div>
+        <p class="eyebrow">Plan ahead</p>
+        <h2>Key dates</h2>
+        <ol class="key-dates">
+          <li><time datetime="2026-09-15">September 15, 2026</time><span>Early bird registration closes</span></li>
+          <li><time datetime="2026-10-20">October 20, 2026</time><span>Regular registration closes</span></li>
+          <li><time datetime="2026-11-01">November 1, 2026</time><span>Position papers due</span></li>
+          <li class="final-date"><time datetime="2026-12-04">December 4–6, 2026</time><span>Conference at RIT Dubai</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="position-papers-section">
+    <div>
+      <p class="eyebrow">Awards and preparation</p>
+      <h2>Position papers</h2>
+      <p class="note-strong">Position papers are required for award consideration and are due November 1, 2026.</p>
+      <a class="link-arrow" href="/delegates/position-papers/">Read the position paper guide</a>
+    </div>
+  </section>
 </Layout>

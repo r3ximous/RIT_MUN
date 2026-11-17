@@ -1,18 +1,18 @@
 {
   "day": "Sunday",
-  "date": "Dec 6",
+  "date": "December 6, 2026",
   "order": 3,
   "events": [
     {
-      "time": "9:30 AM - 12:30 PM",
+      "time": "09:30 – 12:30",
       "title": "Committee Session IV",
       "location": "Various Classrooms",
       "type": "Session"
     },
     {
-      "time": "1:30 PM - 3:00 PM",
+      "time": "13:30 – 15:00",
       "title": "Closing Ceremonies & Awards",
-      "location": "Ingle Auditorium",
+      "location": "Auditorium",
       "type": "Ceremony"
     }
   ]

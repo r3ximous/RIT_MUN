@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { MapPin, Clock } from 'lucide-react';
 import EventTypeBadge from '../components/astro/EventTypeBadge.astro';
+import PageHead from '../components/astro/PageHead.astro';
 
 const scheduleCollection = await getCollection('schedule');
 const sortedDays = scheduleCollection.sort(
@@ -11,12 +12,15 @@ const sortedDays = scheduleCollection.sort(
 ---
 
 <Layout title="RIT MUN | Schedule">
+  <PageHead
+    title="Conference schedule"
+    lede="Three days at RIT Dubai. All times are Gulf Standard Time (UTC+4)."
+    crumbs={[{ label: 'Schedule' }]}
+  />
   <div class="schedule-page-wrapper animate-in fade-in">
-    <div class="schedule-header">
-      <h1 class="schedule-title">Conference Schedule</h1>
-      <p class="schedule-subtitle">
-        Plan your weekend. All times are local (EST).
-      </p>
+    <div class="section-tools">
+      <a class="btn btn-outline" href="/documents/ritd-mun-2026.ics" download="ritd-mun-2026.ics">Add to calendar</a>
+      <p class="tools-note">Venues marked TBC will be confirmed closer to the conference.</p>
     </div>
 
     <div class="schedule-days-list">

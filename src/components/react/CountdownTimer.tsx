@@ -9,16 +9,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    // date variables
-    const year = 2027;
-    const month = 1;
-    const day = 22;
-    const hour = 9;
-    const minute = 0;
-    const second = 0;
-
-    // Target date: Dec 4, 2026, 9:00 AM
-    const targetDate = new Date(year, month, day, hour, minute, second);
+    const targetDate = new Date('2026-12-04T15:00:00+04:00');
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -42,19 +33,14 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="countdown-wrapper">
-      <div className="countdown-text-col">
-        <h3 className="countdown-title">Conference Starts In:</h3>
-        <p className="countdown-subtitle">Prepare your position papers!</p>
-      </div>
-      <div className="countdown-units-row">
+    <div className="countdown">
+      <p className="cd-label">The conference opens in</p>
+      <div className="cd-units num" aria-label="Time remaining">
         {Object.entries(timeLeft).map(([unit, value]) => (
-          <div key={unit} className="countdown-unit-col">
-            <div className="countdown-number-box">
-              {value.toString().padStart(2, '0')}
-            </div>
-            <div className="countdown-unit-label">{unit}</div>
-          </div>
+          <span key={unit} className="cd-unit">
+            <b>{value.toString().padStart(2, '0')}</b>
+            <small>{unit}</small>
+          </span>
         ))}
       </div>
     </div>

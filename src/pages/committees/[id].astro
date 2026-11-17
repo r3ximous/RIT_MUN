@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import { ChevronRight, Users, ArrowLeft, FileText } from 'lucide-react';
 import Layout from '../../layouts/Layout.astro';
 import DifficultyBadge from '../../components/astro/DifficultyBadge.astro';
+import PageHead from '../../components/astro/PageHead.astro';
 
 export async function getStaticPaths() {
   const allCommittees = await getCollection('committees');
@@ -17,6 +18,11 @@ const { Content } = await render(committee);
 ---
 
 <Layout title={`RIT MUN | ${committee.data.name}`}>
+  <PageHead
+    title={committee.data.name}
+    lede={committee.data.description}
+    crumbs={[{ label: 'Committees', href: '/committees' }, { label: committee.data.name }]}
+  />
   <div class="committee-detail-wrapper animate-in fade-in">
     <a href="/committees" class="back-to-committees">
       <ArrowLeft className="icon-arrow-left" aria-hidden="true" /> Back to Committees

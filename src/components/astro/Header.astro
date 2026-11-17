@@ -1,67 +1,55 @@
 ---
-import { Image } from 'astro:assets';
 import { Menu, X } from 'lucide-react';
-import logo from '../../Images/mun_logo_circle.png';
 
 const currentPath = Astro.url.pathname;
 const navLinks = [
   { id: '/committees', label: 'Committees' },
   { id: '/schedule', label: 'Schedule' },
-  { id: '/executive-board', label: 'Executive Board' },
-  { id: '/resources', label: 'Resources' },
+  { id: '/executive-board', label: 'Secretariat' },
+  { id: '/resources', label: 'Delegates' },
   { id: '/faq', label: 'FAQ' },
-  { id: '/registration', label: 'Registration' },
   { id: '/contact', label: 'Contact' },
 ];
 ---
 
-<nav class="layout-header">
+<header class="layout-header">
   <div class="header-container">
-    {/* Logo Area */}
-    <a href="/" class="header-brand-link group">
-      <div class="group-hover:rotate-12 transition-transform duration-300">
-        <Image
-          src={logo}
-          alt="RIT MUN"
-          width={48}
-          height={48}
-          class="w-12 h-12 object-contain"
-          loading="eager"
-        />
-      </div>
-      <span class="header-brand-title">
-        RIT <span class="text-brand-highlight">MUN</span>
-      </span>
+    <a href="/" class="header-brand-link" aria-label="RIT Dubai MUN, home">
+      <img
+        class="header-rit-logo"
+        src="/brand/rit-dubai-orange-white.png"
+        alt="RIT Dubai"
+        width="715"
+        height="101"
+      />
+      <span class="header-brand-divider" aria-hidden="true"></span>
+      <img
+        class="header-crest"
+        src="/brand/ritmun-crest-light.png"
+        alt=""
+        width="257"
+        height="216"
+      />
     </a>
 
-    {/* Desktop Nav */}
-    <div class="header-nav-desktop">
-      {
-        navLinks
-          .filter((l) => l.id !== '/registration')
-          .map((link) => {
-            const isActive =
-              currentPath === link.id ||
-              (link.id !== '/' && currentPath.startsWith(link.id));
-            return (
-              <a
-                href={link.id}
-                class={`font-semibold text-sm uppercase tracking-wider transition-colors duration-200 hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange p-1 rounded ${
-                  isActive
-                    ? 'text-brand-orange border-b-2 border-brand-orange py-1'
-                    : 'text-gray-300'
-                }`}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {link.label}
-              </a>
-            );
-          })
-      }
-      <a href="/registration" class="header-btn-register"> Register </a>
-    </div>
+    <nav class="header-nav-desktop" aria-label="Primary navigation">
+      {navLinks.map((link) => {
+        const isActive =
+          currentPath === link.id ||
+          (link.id !== '/' && currentPath.startsWith(link.id));
+        return (
+          <a
+            href={link.id}
+            class:list={['header-nav-link', { 'is-active': isActive }]}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
+    <a href="/registration" class="header-btn-register">Register</a>
 
-    {/* Mobile Menu Toggle */}
     <button
       id="mobile-menu-btn"
       class="header-mobile-toggle"
@@ -77,15 +65,13 @@ const navLinks = [
     </button>
   </div>
 
-  <div id="mobile-menu" class="header-mobile-menu hidden">
+  <nav id="mobile-menu" class="header-mobile-menu hidden" aria-label="Mobile navigation">
     <div class="header-mobile-nav-list pb-6 px-6 pt-2 flex flex-col gap-2">
       {
-        navLinks.map((link) => {
+        [{ id: '/', label: 'Home' }, ...navLinks, { id: '/registration', label: 'Registration' }].map((link) => {
           const isActive =
-            currentPath === link.id ||
+              currentPath === link.id ||
             (link.id !== '/' && currentPath.startsWith(link.id));
-
-          // Render the registration link differently so it looks like a prominent button on mobile
           if (link.id === '/registration') {
             return (
               <a
@@ -113,8 +99,8 @@ const navLinks = [
         })
       }
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <script>
   const btn = document.getElementById('mobile-menu-btn');

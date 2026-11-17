@@ -1,43 +1,51 @@
 ---
-import { getCollection } from 'astro:content';
-import { ChevronRight, Users, FileText } from 'lucide-react';
-import Layout from '../../layouts/Layout.astro';
-import DifficultyBadge from '../../components/astro/DifficultyBadge.astro';
+import { getCollection } from "astro:content";
+import { ChevronRight } from "lucide-react";
+import Layout from "../../layouts/Layout.astro";
+import PageHead from "../../components/astro/PageHead.astro";
 
-const allCommittees = await getCollection('committees');
+const allCommittees = await getCollection("committees");
 const sortedCommittees = allCommittees.sort(
   (a, b) => a.data.order - b.data.order,
 );
 ---
 
 <Layout title="RIT MUN | Committees">
+  <PageHead
+    title="Committees"
+    lede="Each committee designed to challenge delegates on pressing global issues—from first-timer friendly to full crisis."
+    crumbs={[{ label: "Committees" }]}
+  />
   <div class="committees-page-wrapper animate-in fade-in">
-    <div class="committees-header">
-      <h1 class="committees-title">Committees</h1>
-      <p class="committees-subtitle">
-        Explore the councils for this year's conference. Each committee is
-        designed to challenge delegates on pressing global issues.
-      </p>
-    </div>
-
-    <div class="committees-grid">
+    <div class="com-list">
       {
         sortedCommittees.map((com) => (
-          <a href={`/committees/${com.id}`} class="committee-card group">
-            <div class="committee-card-header">
-              <div>
-                <div class="committee-type-badge">{com.data.type}</div>
-                <h2 class="committee-card-title group-hover:text-brand-orange">
+          <article class="com-row">
+            <p class="com-abbr" aria-hidden="true">
+              {com.id === "unsc"
+                ? "UNSC"
+                : com.id === "who"
+                  ? "WHO"
+                  : com.id === "unhrc"
+                    ? "UNHRC"
+                    : "DISEC"}
+            </p>
+            <div class="com-row-main">
+              <h2>
+                <a class="card-link" href={`/committees/${com.id}`}>
                   {com.data.name}
-                </h2>
-              </div>
-              <DifficultyBadge difficulty={com.data.difficulty} />
-            </div>
-
-            <p class="committee-card-desc">{com.data.description}</p>
-
-            <div class="committee-card-agenda">
-              <h3 class="agenda-title">Agenda Topics</h3>
+                </a>
+              </h2>
+              <p class="com-meta">
+                <span>{com.data.type}</span>
+                <span
+                  class={`difficulty difficulty-${com.data.difficulty.toLowerCase()}`}
+                >
+                  {com.data.difficulty}
+                </span>
+                <span>{com.data.size} committee</span>
+              </p>
+              <p class="com-blurb">{com.data.description}</p>
               <ul class="agenda-list">
                 {com.data.topics.map((topic) => (
                   <li class="agenda-item">
@@ -47,20 +55,55 @@ const sortedCommittees = allCommittees.sort(
                 ))}
               </ul>
             </div>
-
-            <div class="committee-card-footer">
-              <span class="committee-size-info">
-                <Users className="size-icon" aria-hidden="true" /> Size:{' '}
-                {com.data.size}
-              </span>
-              <span class="committee-view-guide">
-                View Guide{' '}
-                <FileText className="view-guide-icon" aria-hidden="true" />
-              </span>
-            </div>
-          </a>
+            <a class="link-arrow" href={`/committees/${com.id}`}>
+              View committee
+            </a>
+          </article>
         ))
       }
     </div>
+
+    <section class="level-section" aria-labelledby="choose-title">
+      <h2 id="choose-title" class="section-h">Choosing a committee</h2>
+      <div class="levels">
+        {
+          (["Beginner", "Intermediate", "Advanced"] as const).map((level) => {
+            const matches = sortedCommittees.filter(
+              (committee) => committee.data.difficulty === level,
+            );
+            return (
+              <article class="level">
+                <h3>
+                  <span class={`difficulty difficulty-${level.toLowerCase()}`}>
+                    {level}
+                  </span>
+                </h3>
+                <p>
+                  {level === "Beginner"
+                    ? "A good first committee. The pace leaves room to learn procedure as you go."
+                    : level === "Intermediate"
+                      ? "Best for delegates who have attended at least one conference and are comfortable with debate."
+                      : "Recommended for experienced delegates who are confident with procedure and crisis updates."}
+                </p>
+                <p class="level-coms">
+                  {matches.map((committee, index) => (
+                    <>
+                      {index > 0 && ", "}
+                      <a href={`/committees/${committee.id}`}>
+                        {committee.id === "unhrc"
+                          ? "UNHRC"
+                          : committee.id === "unsc"
+                            ? "UNSC"
+                            : committee.id.toUpperCase()}
+                      </a>
+                    </>
+                  ))}
+                </p>
+              </article>
+            );
+          })
+        }
+      </div>
+    </section>
   </div>
 </Layout>

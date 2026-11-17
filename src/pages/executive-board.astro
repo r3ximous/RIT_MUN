@@ -1,37 +1,90 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import PageHead from '../components/astro/PageHead.astro';
 
 const boardMembers = await getCollection('executive-board');
-const sortedBoardMembers = boardMembers.sort(
+const uniqueBoardMembers = boardMembers.filter(
+  (member, index, members) =>
+    members.findIndex(
+      (candidate) =>
+        candidate.data.name === member.data.name &&
+        candidate.data.role === member.data.role,
+    ) === index,
+);
+const sortedBoardMembers = uniqueBoardMembers.sort(
   (a, b) => a.data.order - b.data.order,
 );
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
 ---
 
-<Layout title="RIT MUN | Executive Board">
-  <div class="max-w-4xl mx-auto px-6 py-20 animate-in fade-in">
-    <div class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6">
-        Executive Board
-      </h1>
-      <p class="text-xl text-gray-600">
-        Meet the secretariat members organizing this year's conference.
-      </p>
-    </div>
+<Layout
+  title="Secretariat | RIT Dubai MUN 2026"
+  description="Meet the Secretariat organising RIT Dubai MUN 2026 and read the welcome letter from the Secretary-General."
+>
+  <PageHead
+    title="Secretariat"
+    lede="The students organising this year’s conference."
+    crumbs={[{ label: 'Secretariat' }]}
+  />
 
-    <div class="grid md:grid-cols-2 gap-8">
-      {
-        sortedBoardMembers.map((member) => (
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-            <h2 class="text-2xl font-bold text-brand-dark mb-2">
-              {member.data.name}
-            </h2>
-            <p class="text-brand-orange font-semibold uppercase tracking-wide text-sm">
-              {member.data.role}
-            </p>
-          </div>
-        ))
-      }
+  <section class="section" aria-label="Secretariat members">
+    <div class="wrap">
+      <ul class="board">
+        {sortedBoardMembers.map((member) => (
+          <li class="member">
+            <span class="avatar" aria-hidden="true">{initials(member.data.name)}</span>
+            <span class="member-name">{member.data.name}</span>
+            <span class="member-role">{member.data.role}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-  </div>
+  </section>
+
+  <section class="section section-alt" aria-label="Welcome letter">
+    <div class="wrap narrow">
+      <article class="letter" aria-labelledby="letter-title">
+        <header class="letter-head">
+          <h2 id="letter-title" class="section-h">Letter from the Secretary-General</h2>
+          <p class="draft-chip">Draft placeholder: to be replaced with the Secretary-General’s own letter</p>
+        </header>
+        <div class="letter-body">
+          <p>Dear delegates,</p>
+          <p>
+            Welcome to RIT Dubai Model United Nations. Over three days at our
+            campus in Dubai Silicon Oasis, you will debate the questions that
+            real diplomats continue to address, from cyber security to access
+            to essential medicines.
+          </p>
+          <p>
+            Whether this is your first conference or your tenth, our committees
+            are designed to challenge you and help you grow as a speaker,
+            negotiator and writer. Our chairs and Secretariat will support you
+            at every step.
+          </p>
+          <p>We look forward to welcoming you to RIT Dubai in December.</p>
+          <p class="sig">
+            <span class="sig-name">Rex Marciano</span>
+            <span class="sig-role">Secretary-General, RIT Dubai Model United Nations</span>
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="reach-title">
+    <div class="wrap narrow">
+      <h2 id="reach-title" class="section-h">Reach the Secretariat</h2>
+      <p class="prose-p">The Secretariat typically replies within 24 hours.</p>
+      <p><a class="btn btn-orange" href="/contact/">Contact the Secretariat</a></p>
+    </div>
+  </section>
 </Layout>
