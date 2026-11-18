@@ -1,99 +1,157 @@
 ---
-import { getCollection, render } from 'astro:content';
-import { ChevronRight, Users, ArrowLeft, FileText } from 'lucide-react';
-import Layout from '../../layouts/Layout.astro';
-import DifficultyBadge from '../../components/astro/DifficultyBadge.astro';
-import PageHead from '../../components/astro/PageHead.astro';
+import { getCollection, render } from "astro:content";
+import CommitteeFacts from "../../components/astro/CommitteeFacts.astro";
+import CommitteePager from "../../components/astro/CommitteePager.astro";
+import Layout from "../../layouts/Layout.astro";
+import PageHead from "../../components/astro/PageHead.astro";
+import {
+  difficultyDescriptions,
+  formatExplanations,
+} from "../../data/committee-copy";
 
 export async function getStaticPaths() {
-  const allCommittees = await getCollection('committees');
-  return allCommittees.map((com) => ({
-    params: { id: com.id },
-    props: { committee: com },
-  }));
+  const committees = (await getCollection("committees")).sort(
+    (a, b) => a.data.order - b.data.order,
+  );
+
+  return committees.map((committee, index) => {
+    const previous =
+      committees[(index + committees.length - 1) % committees.length];
+    const next = committees[(index + 1) % committees.length];
+
+    return {
+      params: { id: committee.id },
+      props: {
+        committee,
+        previous: { id: previous.id, abbr: previous.data.abbr },
+        next: { id: next.id, abbr: next.data.abbr },
+      },
+    };
+  });
 }
 
-const { committee } = Astro.props;
+const { committee, previous, next } = Astro.props;
 const { Content } = await render(committee);
+const formatCopy = formatExplanations[committee.data.type];
 ---
 
 <Layout title={`RIT MUN | ${committee.data.name}`}>
   <PageHead
     title={committee.data.name}
     lede={committee.data.description}
-    crumbs={[{ label: 'Committees', href: '/committees' }, { label: committee.data.name }]}
+    kicker={committee.data.abbr}
+    crumbs={[
+      { label: "Committees", href: "/committees/" },
+      { label: committee.data.abbr },
+    ]}
   />
-  <div class="committee-detail-wrapper animate-in fade-in">
-    <a href="/committees" class="back-to-committees">
-      <ArrowLeft className="icon-arrow-left" aria-hidden="true" /> Back to Committees
-    </a>
 
-    <div class="committee-detail-card">
-      <div class="committee-detail-header">
-        <div class="committee-detail-title-row">
-          <div>
-            <div class="committee-detail-badge">{committee.data.type}</div>
-            <h1 class="committee-detail-title">{committee.data.name}</h1>
+  <section class="section" aria-label={`${committee.data.abbr} overview`}>
+    <div class="wrap com-layout">
+      <div class="com-main">
+        <section class="com-block" aria-labelledby="agenda-title">
+          <h2 id="agenda-title" class="section-h" data-reveal>Agenda</h2>
+          <ol class="agenda">
+            {
+              committee.data.topics.map((topic, index) => (
+                <li data-reveal>
+                  <span class="agenda-n num">Topic {index + 1}</span>
+                  <span class="agenda-t">{topic}</span>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="soon-line" data-reveal>
+            <span class="soon-chip">Study guide coming soon</span>
+            The study guide will set out the background to both topics and the questions
+            a resolution should answer.
+          </p>
+        </section>
+
+        <section class="com-block" aria-labelledby="about-title">
+          <h2 id="about-title" class="section-h" data-reveal>About</h2>
+          <div class="prose-p" data-reveal>
+            <Content />
           </div>
-          <DifficultyBadge
-            difficulty={committee.data.difficulty}
-            size="lg"
-            class="self-start"
-          />
+        </section>
+
+        <section class="com-block" aria-labelledby="format-title">
+          <h2 id="format-title" class="section-h" data-reveal>
+            {formatCopy.heading}
+          </h2>
+          <p class="prose-p" data-reveal>{formatCopy.description}</p>
+        </section>
+
+        <section class="com-block" aria-labelledby="fit-title">
+          <h2 id="fit-title" class="section-h" data-reveal>
+            Is this committee right for you?
+          </h2>
+          <p class="prose-p" data-reveal>
+            {difficultyDescriptions[committee.data.difficulty]}
+          </p>
+          <p data-reveal>
+            <a class="link-arrow" href="/committees/">
+              Compare all four committees
+            </a>
+          </p>
+        </section>
+
+        <section class="com-block" aria-labelledby="chairs-title">
+          <h2 id="chairs-title" class="section-h" data-reveal>Chairs</h2>
+          <p class="prose-p" data-reveal>
+            {
+              committee.data.chairs === "TBC" ? (
+                <>
+                  <span class="tbc">The chairs for this committee</span> will be
+                  announced here.
+                </>
+              ) : (
+                committee.data.chairs
+              )
+            }
+          </p>
+        </section>
+      </div>
+
+      <aside class="com-side" aria-label="Committee facts">
+        <CommitteeFacts
+          type={committee.data.type}
+          difficulty={committee.data.difficulty}
+          size={committee.data.size}
+          topicCount={committee.data.topics.length}
+          positionPaperDue={committee.data.positionPaperDue}
+        />
+        <div class="side-links" data-reveal>
+          <a class="link-arrow" href="/delegates/position-papers/">
+            Position paper guide
+          </a>
+          <a class="link-arrow" href="/delegates/rules-of-procedure/">
+            Rules of procedure
+          </a>
         </div>
-
-        <p class="committee-detail-desc">
-          {committee.data.description}
-        </p>
-
-        <div class="committee-info-grid">
-          <div class="committee-agenda-box">
-            <h3 class="committee-agenda-header">
-              <FileText className="icon-file-text" aria-hidden="true" />
-              Agenda Topics
-            </h3>
-            <ul class="committee-agenda-list">
-              {
-                committee.data.topics.map((topic) => (
-                  <li class="agenda-item">
-                    <ChevronRight
-                      className="icon-chevron-right"
-                      aria-hidden="true"
-                    />
-                    <span class="committee-agenda-text">{topic}</span>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-
-          <div class="committee-meta-col">
-            <div class="committee-meta-item">
-              <div class="committee-meta-icon-box">
-                <Users className="icon-users" aria-hidden="true" />
-              </div>
-              <div>
-                <div class="committee-meta-label">Committee Size</div>
-                <div class="committee-meta-value">{committee.data.size}</div>
-              </div>
-            </div>
-            <button
-              type="button"
-              class="committee-action-btn opacity-60 cursor-not-allowed"
-              disabled
+        <div class="reg-cta" data-reveal>
+          <p class="reg-status">
+            <span class="reg-status-dot" aria-hidden="true"></span>The
+            registration form opens soon
+          </p>
+          <p>
+            Registration is through the RIT Dubai MUN registration form. Follow
+            <a
+              href="https://www.instagram.com/ritd.mun/"
+              target="_blank"
+              rel="noopener"
             >
-              Download Background Guide (Coming Soon)
-            </button>
-          </div>
+              @ritd.mun on Instagram<span class="sr-only">
+                (opens in a new tab)</span
+              >
+            </a>
+            for the announcement.
+          </p>
+          <a class="link-arrow" href="/registration/">Registration details</a>
         </div>
-      </div>
-
-      <div
-        class="committee-content-prose prose prose-lg prose-headings:text-brand-dark prose-a:text-brand-orange"
-      >
-        <h2 class="committee-letter-title">Welcome Letter</h2>
-        <Content />
-      </div>
+      </aside>
     </div>
-  </div>
+  </section>
+
+  <CommitteePager previous={previous} next={next} />
 </Layout>

@@ -1,14 +1,14 @@
 ---
-import { Menu, X } from 'lucide-react';
+import { Menu, X } from "lucide-react";
 
 const currentPath = Astro.url.pathname;
 const navLinks = [
-  { id: '/committees', label: 'Committees' },
-  { id: '/schedule', label: 'Schedule' },
-  { id: '/executive-board', label: 'Secretariat' },
-  { id: '/resources', label: 'Delegates' },
-  { id: '/faq', label: 'FAQ' },
-  { id: '/contact', label: 'Contact' },
+  { id: "/committees", label: "Committees" },
+  { id: "/schedule", label: "Schedule" },
+  { id: "/executive-board", label: "Executive Board" },
+  { id: "/resources", label: "Resources" },
+  { id: "/faq", label: "FAQ" },
+  { id: "/contact", label: "Contact" },
 ];
 ---
 
@@ -33,20 +33,22 @@ const navLinks = [
     </a>
 
     <nav class="header-nav-desktop" aria-label="Primary navigation">
-      {navLinks.map((link) => {
-        const isActive =
-          currentPath === link.id ||
-          (link.id !== '/' && currentPath.startsWith(link.id));
-        return (
-          <a
-            href={link.id}
-            class:list={['header-nav-link', { 'is-active': isActive }]}
-            aria-current={isActive ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        );
-      })}
+      {
+        navLinks.map((link) => {
+          const isActive =
+            currentPath === link.id ||
+            (link.id !== "/" && currentPath.startsWith(link.id));
+          return (
+            <a
+              href={link.id}
+              class:list={["header-nav-link", { "is-active": isActive }]}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
     </nav>
     <a href="/registration" class="header-btn-register">Register</a>
 
@@ -65,14 +67,22 @@ const navLinks = [
     </button>
   </div>
 
-  <nav id="mobile-menu" class="header-mobile-menu hidden" aria-label="Mobile navigation">
+  <nav
+    id="mobile-menu"
+    class="header-mobile-menu hidden"
+    aria-label="Mobile navigation"
+  >
     <div class="header-mobile-nav-list pb-6 px-6 pt-2 flex flex-col gap-2">
       {
-        [{ id: '/', label: 'Home' }, ...navLinks, { id: '/registration', label: 'Registration' }].map((link) => {
+        [
+          { id: "/", label: "Home" },
+          ...navLinks,
+          { id: "/registration", label: "Registration" },
+        ].map((link) => {
           const isActive =
-              currentPath === link.id ||
-            (link.id !== '/' && currentPath.startsWith(link.id));
-          if (link.id === '/registration') {
+            currentPath === link.id ||
+            (link.id !== "/" && currentPath.startsWith(link.id));
+          if (link.id === "/registration") {
             return (
               <a
                 href={link.id}
@@ -88,10 +98,10 @@ const navLinks = [
               href={link.id}
               class={`text-left font-semibold text-lg py-3 px-3 transition-all rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange ${
                 isActive
-                  ? 'text-brand-orange bg-brand-orange/10 pl-4'
-                  : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  ? "text-brand-orange bg-brand-orange/10 pl-4"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
               }`}
-              aria-current={isActive ? 'page' : undefined}
+              aria-current={isActive ? "page" : undefined}
             >
               {link.label}
             </a>
@@ -103,18 +113,18 @@ const navLinks = [
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
 
   if (btn && menu && iconOpen && iconClose) {
-    btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!isExpanded));
-      menu.classList.toggle('hidden');
-      iconOpen.classList.toggle('hidden');
-      iconClose.classList.toggle('hidden');
+    btn.addEventListener("click", () => {
+      const isExpanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isExpanded));
+      menu.classList.toggle("hidden");
+      iconOpen.classList.toggle("hidden");
+      iconClose.classList.toggle("hidden");
     });
   }
 </script>

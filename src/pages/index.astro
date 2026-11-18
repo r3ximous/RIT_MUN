@@ -45,13 +45,6 @@ const eventJsonLd = {
     name: "Rochester Institute of Technology of Dubai",
   },
 };
-
-const committeeAbbreviations: Record<string, string> = {
-  unsc: "UNSC",
-  who: "WHO",
-  unhrc: "UNHRC",
-  disec: "DISEC",
-};
 ---
 
 <Layout
@@ -122,31 +115,35 @@ const committeeAbbreviations: Record<string, string> = {
   <section class="section stats-section" aria-label="At a glance">
     <div class="wrap">
       <ul class="stats" aria-label="The conference in numbers">
-        <li class="stat">
+        <li class="stat" data-reveal>
           <b class="num"
             ><span class="sr-only">{committeeCount}</span><span
-              aria-hidden="true">{committeeCount}</span
+              aria-hidden="true"
+              data-count={committeeCount}>{committeeCount}</span
             ></b
           ><span>Committees</span>
         </li>
-        <li class="stat">
+        <li class="stat" data-reveal>
           <b class="num"
-            ><span class="sr-only">{topicCount}</span><span aria-hidden="true"
-              >{topicCount}</span
+            ><span class="sr-only">{topicCount}</span><span
+              aria-hidden="true"
+              data-count={topicCount}>{topicCount}</span
             ></b
           ><span>Agenda topics</span>
         </li>
-        <li class="stat">
+        <li class="stat" data-reveal>
           <b class="num"
             ><span class="sr-only">{conferenceDays}</span><span
-              aria-hidden="true">{conferenceDays}</span
+              aria-hidden="true"
+              data-count={conferenceDays}>{conferenceDays}</span
             ></b
           ><span>Days of debate</span>
         </li>
-        <li class="stat">
+        <li class="stat" data-reveal>
           <b class="num"
-            ><span class="sr-only">{sessionCount}</span><span aria-hidden="true"
-              >{sessionCount}</span
+            ><span class="sr-only">{sessionCount}</span><span
+              aria-hidden="true"
+              data-count={sessionCount}>{sessionCount}</span
             ></b
           ><span>Committee sessions</span>
         </li>
@@ -156,7 +153,7 @@ const committeeAbbreviations: Record<string, string> = {
 
   <section class="section intro" aria-labelledby="intro-title">
     <div class="wrap intro-in">
-      <div class="intro-copy">
+      <div class="intro-copy" data-reveal>
         <h2 id="intro-title" class="section-h">
           A conference built for young diplomats
         </h2>
@@ -175,21 +172,21 @@ const committeeAbbreviations: Record<string, string> = {
         </p>
       </div>
       <ul class="pillars">
-        <li class="pillar">
+        <li class="pillar" data-reveal>
           <h3>Diverse committees</h3>
           <p>
             From fast-paced crisis rooms to the expansive General Assembly,
             there is a seat for every level of experience.
           </p>
         </li>
-        <li class="pillar">
+        <li class="pillar" data-reveal>
           <h3>Skill building</h3>
           <p>
             Sharpen public speaking, negotiation and policy writing: skills that
             carry into university and beyond.
           </p>
         </li>
-        <li class="pillar">
+        <li class="pillar" data-reveal>
           <h3>RIT Dubai campus</h3>
           <p>
             Debate inside the cutting-edge facilities of Rochester Institute of
@@ -202,7 +199,7 @@ const committeeAbbreviations: Record<string, string> = {
 
   <section class="section section-alt" aria-label="Welcome letter">
     <div class="wrap narrow">
-      <article class="letter" aria-labelledby="letter-title">
+      <article class="letter" aria-labelledby="letter-title" data-reveal>
         <header class="letter-head">
           <h2 id="letter-title" class="section-h">
             Letter from the Secretary-General
@@ -247,7 +244,7 @@ const committeeAbbreviations: Record<string, string> = {
       <ul class="com-cards">
         {
           committees.map((committee) => (
-            <li class="com-card">
+            <li class="com-card" data-reveal>
               <div class="com-card-top">
                 <span
                   class={`tag tag-${committee.data.difficulty.toLowerCase()}`}
@@ -258,10 +255,7 @@ const committeeAbbreviations: Record<string, string> = {
               </div>
               <h3>
                 <a class="card-link" href={`/committees/${committee.id}/`}>
-                  <abbr title={committee.data.name}>
-                    {committeeAbbreviations[committee.id] ??
-                      committee.id.toUpperCase()}
-                  </abbr>
+                  <abbr title={committee.data.name}>{committee.data.abbr}</abbr>
                 </a>
               </h3>
               <p class="com-full">{committee.data.name}</p>
@@ -285,25 +279,25 @@ const committeeAbbreviations: Record<string, string> = {
       <div>
         <h2 id="dates-title" class="section-h">Key dates</h2>
         <ol class="key-dates">
-          <li class="kd" data-kind="registration">
+          <li class="kd" data-kind="registration" data-reveal>
             <time datetime="2027-02-13" class="num tbc"></time>
             <span>Early bird registration closes</span>
           </li>
-          <li class="kd" data-kind="registration">
+          <li class="kd" data-kind="registration" data-reveal>
             <time datetime="2027-02-20" class="num">February 20, 2027</time>
             <span>Regular registration closes</span>
           </li>
-          <li class="kd" data-kind="paper">
+          <li class="kd" data-kind="paper" data-reveal>
             <time datetime="2027-02-01" class="num">February 1, 2027</time>
             <span>Position papers due</span>
           </li>
-          <li class="kd kd-final" data-kind="conference">
+          <li class="kd kd-final" data-kind="conference" data-reveal>
             <time datetime="2027-02-04" class="num">February 4–6, 2027</time>
             <span>Conference at RIT Dubai</span>
           </li>
         </ol>
       </div>
-      <aside class="fee-teaser" aria-labelledby="fee-teaser-title">
+      <aside class="fee-teaser" aria-labelledby="fee-teaser-title" data-reveal>
         <h3 id="fee-teaser-title">Registration fees</h3>
         <ul>
           <li><span>Early bird</span><b class="num">AED 165</b></li>
@@ -317,7 +311,7 @@ const committeeAbbreviations: Record<string, string> = {
 
   <section class="cta-band" aria-labelledby="cta-title">
     <div class="wrap cta-in">
-      <h2 id="cta-title">Take your seat at RIT Dubai MUN 2027</h2>
+      <h2 id="cta-title" data-reveal>Take your seat at RIT Dubai MUN 2027</h2>
       <div class="reg-cta">
         <p class="reg-status">
           <span class="reg-status-dot" aria-hidden="true"></span>The

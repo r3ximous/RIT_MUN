@@ -26,7 +26,7 @@ const sortedDays = scheduleCollection.sort(
     <div class="schedule-days-list">
       {
         sortedDays.map((dayPlan) => (
-          <section class="schedule-day-card group">
+          <section class="schedule-day-card group" data-reveal>
             <div class="schedule-day-header group-hover:bg-black">
               <h2 class="schedule-day-title">{dayPlan.data.day}</h2>
               <span class="schedule-day-date">{dayPlan.data.date}</span>

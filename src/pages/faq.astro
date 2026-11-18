@@ -17,7 +17,7 @@ const sortedFaqs = allFaqs.sort((a, b) => a.data.order - b.data.order);
     <div class="faq-list">
       {
         sortedFaqs.map((faq) => (
-          <details class="qa">
+          <details class="qa" data-reveal>
             <summary>
               <span>{faq.data.question}</span>
               <i class="qa-icon" aria-hidden="true"></i>

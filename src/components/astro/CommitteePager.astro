@@ -1,0 +1,26 @@
+---
+interface CommitteeLink {
+  id: string;
+  abbr: string;
+}
+
+interface Props {
+  previous: CommitteeLink;
+  next: CommitteeLink;
+}
+
+const { previous, next } = Astro.props;
+---
+
+<nav class="pager" aria-label="Other committees">
+  <div class="wrap pager-in">
+    <a class="pager-link prev" href={`/committees/${previous.id}/`} rel="prev">
+      <span>Previous committee</span>
+      <b>{previous.abbr}</b>
+    </a>
+    <a class="pager-link next" href={`/committees/${next.id}/`} rel="next">
+      <span>Next committee</span>
+      <b>{next.abbr}</b>
+    </a>
+  </div>
+</nav>

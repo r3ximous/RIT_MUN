@@ -1,12 +1,13 @@
 ---
-name: 'United Nations Human Rights Council (UNHRC)'
-description: 'Addressing systemic human rights violations and establishing global protection frameworks.'
-type: 'General Assembly'
-difficulty: 'Intermediate'
-size: 'Medium'
+abbr: "UNHRC"
+name: "United Nations Human Rights Council"
+description: "Addressing systemic human rights violations and establishing global protection frameworks."
+type: "General Assembly"
+difficulty: "Intermediate"
+size: "Medium"
 topics:
-  - 'Protection of Refugees'
-  - 'Freedom of Expression in the Digital Age'
+  - "Protection of Refugees"
+  - "Freedom of Expression in the Digital Age"
 order: 3
 ---
 

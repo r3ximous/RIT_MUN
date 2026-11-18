@@ -2,14 +2,15 @@
 interface Props {
   title: string;
   lede: string;
+  kicker?: string;
   crumbs?: Array<{ label: string; href?: string }>;
 }
 
-const { title, lede, crumbs = [] } = Astro.props;
+const { title, lede, kicker, crumbs = [] } = Astro.props;
 ---
 
 <section class="page-head" aria-labelledby="page-title">
-  <picture class="page-head-photo">
+  <picture class="page-head-photo" data-reveal>
     <source
       type="image/avif"
       srcset="/img/campus-800.avif 800w, /img/campus.avif 1366w"
@@ -30,16 +31,29 @@ const { title, lede, crumbs = [] } = Astro.props;
     <nav class="crumbs" aria-label="Breadcrumb">
       <ol>
         <li><a href="/">Home</a></li>
-        {crumbs.map((crumb) =>
-          crumb.href ? (
-            <li><a href={crumb.href}>{crumb.label}</a></li>
-          ) : (
-            <li><span aria-current="page">{crumb.label}</span></li>
-          ),
-        )}
+        {
+          crumbs.map((crumb) =>
+            crumb.href ? (
+              <li>
+                <a href={crumb.href}>{crumb.label}</a>
+              </li>
+            ) : (
+              <li>
+                <span aria-current="page">{crumb.label}</span>
+              </li>
+            ),
+          )
+        }
       </ol>
     </nav>
-    <h1 id="page-title">{title}</h1>
-    <p class="page-lede">{lede}</p>
+    {
+      kicker && (
+        <p class="page-kicker" data-reveal>
+          {kicker}
+        </p>
+      )
+    }
+    <h1 id="page-title" data-reveal>{title}</h1>
+    <p class="page-lede" data-reveal>{lede}</p>
   </div>
 </section>

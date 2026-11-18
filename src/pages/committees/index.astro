@@ -1,109 +1,97 @@
 ---
 import { getCollection } from "astro:content";
-import { ChevronRight } from "lucide-react";
+import DifficultyBadge from "../../components/astro/DifficultyBadge.astro";
 import Layout from "../../layouts/Layout.astro";
 import PageHead from "../../components/astro/PageHead.astro";
+import { difficultyDescriptions } from "../../data/committee-copy";
 
-const allCommittees = await getCollection("committees");
-const sortedCommittees = allCommittees.sort(
+const committees = (await getCollection("committees")).sort(
   (a, b) => a.data.order - b.data.order,
 );
+const levels = ["Beginner", "Intermediate", "Advanced"] as const;
 ---
 
 <Layout title="RIT MUN | Committees">
   <PageHead
     title="Committees"
-    lede="Each committee designed to challenge delegates on pressing global issues—from first-timer friendly to full crisis."
+    lede="Four committees, each designed to challenge delegates on pressing global issues, from first-timer friendly to full crisis."
     crumbs={[{ label: "Committees" }]}
   />
-  <div class="committees-page-wrapper animate-in fade-in">
-    <div class="com-list">
-      {
-        sortedCommittees.map((com) => (
-          <article class="com-row">
-            <p class="com-abbr" aria-hidden="true">
-              {com.id === "unsc"
-                ? "UNSC"
-                : com.id === "who"
-                  ? "WHO"
-                  : com.id === "unhrc"
-                    ? "UNHRC"
-                    : "DISEC"}
-            </p>
-            <div class="com-row-main">
-              <h2>
-                <a class="card-link" href={`/committees/${com.id}`}>
-                  {com.data.name}
-                </a>
-              </h2>
-              <p class="com-meta">
-                <span>{com.data.type}</span>
-                <span
-                  class={`difficulty difficulty-${com.data.difficulty.toLowerCase()}`}
-                >
-                  {com.data.difficulty}
-                </span>
-                <span>{com.data.size} committee</span>
-              </p>
-              <p class="com-blurb">{com.data.description}</p>
-              <ul class="agenda-list">
-                {com.data.topics.map((topic) => (
-                  <li class="agenda-item">
-                    <ChevronRight className="agenda-icon" aria-hidden="true" />
-                    <span class="agenda-item-text">{topic}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <a class="link-arrow" href={`/committees/${com.id}`}>
-              View committee
-            </a>
-          </article>
-        ))
-      }
-    </div>
 
-    <section class="level-section" aria-labelledby="choose-title">
-      <h2 id="choose-title" class="section-h">Choosing a committee</h2>
-      <div class="levels">
+  <section class="section" aria-label="All committees">
+    <div class="wrap">
+      <ul class="com-list">
         {
-          (["Beginner", "Intermediate", "Advanced"] as const).map((level) => {
-            const matches = sortedCommittees.filter(
+          committees.map((committee) => (
+            <li class="com-row" data-reveal>
+              <p class="com-abbr" aria-hidden="true">
+                {committee.data.abbr}
+              </p>
+              <div class="com-row-main">
+                <h2>
+                  <a class="card-link" href={`/committees/${committee.id}/`}>
+                    {committee.data.name}
+                  </a>
+                </h2>
+                <p class="com-meta" data-reveal>
+                  <span>{committee.data.type}</span>
+                  <DifficultyBadge difficulty={committee.data.difficulty} />
+                  <span>{committee.data.size} committee</span>
+                </p>
+                <p class="com-blurb" data-reveal>
+                  {committee.data.description}
+                </p>
+                <ul class="com-topics">
+                  {committee.data.topics.map((topic) => (
+                    <li data-reveal>{topic}</li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                class="link-arrow link-arrow--chevron"
+                href={`/committees/${committee.id}/`}
+              >
+                View committee
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="choose-title">
+    <div class="wrap">
+      <h2 id="choose-title" class="section-h" data-reveal>
+        Choosing a committee
+      </h2>
+      <ul class="levels">
+        {
+          levels.map((level) => {
+            const matches = committees.filter(
               (committee) => committee.data.difficulty === level,
             );
             return (
-              <article class="level">
+              <li class="level" data-reveal>
                 <h3>
-                  <span class={`difficulty difficulty-${level.toLowerCase()}`}>
-                    {level}
-                  </span>
+                  <DifficultyBadge difficulty={level} />
                 </h3>
-                <p>
-                  {level === "Beginner"
-                    ? "A good first committee. The pace leaves room to learn procedure as you go."
-                    : level === "Intermediate"
-                      ? "Best for delegates who have attended at least one conference and are comfortable with debate."
-                      : "Recommended for experienced delegates who are confident with procedure and crisis updates."}
-                </p>
+                <p>{difficultyDescriptions[level]}</p>
                 <p class="level-coms">
                   {matches.map((committee, index) => (
                     <>
                       {index > 0 && ", "}
-                      <a href={`/committees/${committee.id}`}>
-                        {committee.id === "unhrc"
-                          ? "UNHRC"
-                          : committee.id === "unsc"
-                            ? "UNSC"
-                            : committee.id.toUpperCase()}
+                      <a href={`/committees/${committee.id}/`}>
+                        {committee.data.abbr}
                       </a>
                     </>
                   ))}
                 </p>
-              </article>
+              </li>
             );
           })
         }
-      </div>
-    </section>
-  </div>
+      </ul>
+    </div>
+  </section>
 </Layout>

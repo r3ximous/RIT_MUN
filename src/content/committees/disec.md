@@ -1,12 +1,13 @@
 ---
-name: 'Disarmament and International Security (DISEC)'
-description: 'Disarmament and International Security Committee focusing on cyber warfare and arms control.'
-type: 'General Assembly'
-difficulty: 'Intermediate'
-size: 'Large'
+abbr: "DISEC"
+name: "Disarmament and International Security Committee"
+description: "Focusing on cyber warfare, arms control and international security."
+type: "General Assembly"
+difficulty: "Intermediate"
+size: "Large"
 topics:
-  - 'Regulation of Autonomous Weapons'
-  - 'Nuclear Proliferation in the Middle East'
+  - "Regulation of Autonomous Weapons"
+  - "Nuclear Proliferation in the Middle East"
 order: 4
 ---
 

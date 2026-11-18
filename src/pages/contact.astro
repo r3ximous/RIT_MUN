@@ -13,14 +13,14 @@ import PageHead from '../components/astro/PageHead.astro';
   <div class="contact-page-wrapper">
     <div class="contact-info-col">
       <p class="eyebrow">The Secretariat</p>
-      <h1 class="contact-title">Get in Touch</h1>
-      <p class="contact-subtitle">
+      <h1 class="contact-title" data-reveal>Get in Touch</h1>
+      <p class="contact-subtitle" data-reveal>
         Need assistance with registration or have a question about a committee?
         The RIT Dubai MUN Secretariat is here to help.
       </p>
 
       <div class="contact-methods">
-        <div class="contact-method-item">
+        <div class="contact-method-item" data-reveal>
           <div class="contact-icon-box">
             <Mail className="icon-md" aria-hidden="true" />
           </div>
@@ -32,7 +32,7 @@ import PageHead from '../components/astro/PageHead.astro';
           </div>
         </div>
 
-        <div class="contact-method-item">
+        <div class="contact-method-item" data-reveal>
           <div class="contact-icon-box">
             <MapPin className="icon-md" aria-hidden="true" />
           </div>
@@ -48,8 +48,8 @@ import PageHead from '../components/astro/PageHead.astro';
       </div>
     </div>
 
-    <div class="contact-form-box">
-      <h2 class="contact-form-title">Send a Message</h2>
+    <div class="contact-form-box" data-reveal>
+      <h2 class="contact-form-title" data-reveal>Send a Message</h2>
       <form id="contact-form" class="contact-form">
         <div>
           <label for="name" class="form-label">Name</label>

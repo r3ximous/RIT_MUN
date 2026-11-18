@@ -1,21 +1,24 @@
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const committees = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/committees' }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/committees" }),
   schema: z.object({
+    abbr: z.string(),
     name: z.string(),
     description: z.string(),
-    type: z.string(),
+    type: z.enum(["Crisis", "General Assembly", "Specialized"]),
     topics: z.array(z.string()),
     size: z.string(),
-    difficulty: z.enum(['Beginner', 'Intermediate', 'Advanced']),
+    difficulty: z.enum(["Beginner", "Intermediate", "Advanced"]),
+    positionPaperDue: z.string().default("November 1, 2026"),
+    chairs: z.string().default("TBC"),
     order: z.number().default(0),
   }),
 });
 
 const executiveBoard = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/executive-board' }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/executive-board" }),
   schema: z.object({
     name: z.string(),
     role: z.string(),
@@ -24,7 +27,7 @@ const executiveBoard = defineCollection({
 });
 
 const schedule = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/schedule' }),
+  loader: glob({ pattern: "**/*.json", base: "./src/content/schedule" }),
   schema: z.object({
     day: z.string(),
     date: z.string(),
@@ -41,7 +44,7 @@ const schedule = defineCollection({
 });
 
 const faqs = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/faqs' }),
+  loader: glob({ pattern: "**/*.json", base: "./src/content/faqs" }),
   schema: z.object({
     question: z.string(),
     answer: z.string(),
@@ -52,7 +55,7 @@ const faqs = defineCollection({
 
 export const collections = {
   committees: committees,
-  'executive-board': executiveBoard,
+  "executive-board": executiveBoard,
   schedule: schedule,
   faqs: faqs,
 };

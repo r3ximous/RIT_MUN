@@ -1,0 +1,22 @@
+---
+import DifficultyBadge from "./DifficultyBadge.astro";
+
+interface Props {
+  type: string;
+  difficulty: "Beginner" | "Intermediate" | "Advanced";
+  size: string;
+  topicCount: number;
+  positionPaperDue: string;
+}
+
+const { type, difficulty, size, topicCount, positionPaperDue } = Astro.props;
+---
+
+<dl class="facts" data-reveal>
+  <div><dt>Format</dt><dd>{type}</dd></div>
+  <div><dt>Level</dt><dd><DifficultyBadge difficulty={difficulty} /></dd></div>
+  <div><dt>Size</dt><dd>{size}</dd></div>
+  <div><dt>Topics</dt><dd>{topicCount}</dd></div>
+  <div><dt>Position paper due</dt><dd>{positionPaperDue}</dd></div>
+  <div><dt>Country allocations</dt><dd>By the Secretariat</dd></div>
+</dl>
